@@ -1,0 +1,33 @@
+# Fichiers Python compilés
+*.pyc
+__pycache__/
+
+# Dossiers de configuration
+.idlerc/
+.ropeproject/
+
+# Dossiers d’environnement virtuel
+env/
+venv/
+mon_env/
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.swp
+.DS_Store
+# Fichiers Python compilés
+*.pyc
+__pycache__/
+
+# Dossiers de configuration
+.idlerc/
+.ropeproject/
+
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.swp
+.DS_Store
+
