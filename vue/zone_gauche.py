@@ -8,8 +8,13 @@ et ses informations
 """
 
 import sys
-import gettext
 from pathlib import Path
+# ⚠️ IMPORTANT
+import gettext
+# ligne ci-dessous -> fonctionnement NORMAL
+from gettext import gettext as _
+# ligne ci-dessous décommmentée -> test if __name__ == "__name__":
+# _ = gettext.gettext
 
 # Ajoute la racine du projet au chemin Python
 dossier_racine = Path(__file__).resolve().parent.parent
@@ -22,11 +27,9 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Signal, QSize, Qt
 from PySide6.QtGui import QPixmap, QIcon
 
-from controleur.application import Application
-from modeles.textes_interface import libelle
-# from modeles.gestionnaire_bdd import GestionnaireBdd  # inutile pour tester la vue seule
+from modele.textes_interface import libelle
 
-_ = gettext.gettext
+from controleur.application import Application
 
 icones = [
     "Gnome-go-first.png",
@@ -44,11 +47,11 @@ class ZoneGauche (QWidget):
     demande_debut = Signal()
     demande_fin = Signal()
         
-    def __init__(self, liste_personnes, recuperer_BDD, configuration_json, parent = None):
+    def __init__(self, liste_personnes, configuration_json, recuperer_BDD, parent = None):
         """Constructeur de la frame de gauche et de ses éléments"""
         super().__init__(parent) # constructeur de la classe parente
         self.configuration_json = configuration_json # configuration de l'interface - json
-        layout_gauche = QVBoxLayout()  
+        self.layout_gauche = QVBoxLayout()  
         # poisition de LayoutGauche dans la fenetre principale de la fenêtreself.LayoutPrincipal(row=0,column=0,rowspan=3,padx=10,pady=2)
         self.modif_bdd = recuperer_BDD
         self.rang = 0 # rang de la personne dans la liste
@@ -56,23 +59,32 @@ class ZoneGauche (QWidget):
         self.liste_personnes=liste_personnes #liste des personnes
         self.resize(150, 100) # définir une taille fixe pour la fenêtre
         self.repertoire_racine = "" # repertoire du projet
+        self.partie_haute()
+        self.partie_milieu()
+        self.partie_basse()
+
+    def partie_haute(self)->None:
+        """partie haute de l'interface"""
         # Partie haute du layout
         # QGridLayout
         # prenom
-        layout_grille = QGridLayout()
+        self.layout_grille = QGridLayout()
         self.prenom = QLabel("-")
         self.prenom.setText(_("Prénom"))
         self.prenom.setStyleSheet("color: #446069; font-weight: bold; font-size: 16px")
-        layout_grille.addWidget(self.prenom, 0, 1)
-        layout_grille.addWidget(QLabel(_("Prénom :")), 0, 0, alignment=Qt.AlignRight)
+        self.layout_grille.addWidget(self.prenom, 0, 1)
+        self.layout_grille.addWidget(QLabel(_("Prénom :")), 0, 0, alignment=Qt.AlignRight)
         # nom
         self.nom = QLabel()
         self.nom.setText(_("Nom"))
         self.nom.setStyleSheet("color: #446069; font-weight: bold; font-size: 16px")
-        layout_grille.addWidget(self.nom, 1, 1)
-        layout_grille.addWidget(QLabel(_("Nom :")), 1, 0, alignment=Qt.AlignRight)
+        self.layout_grille.addWidget(self.nom, 1, 1)
+        self.layout_grille.addWidget(QLabel(_("Nom :")), 1, 0, alignment=Qt.AlignRight)
         # attachement à layoutGauche
-        layout_gauche.addLayout(layout_grille)
+        self.layout_gauche.addLayout(self.layout_grille)
+
+    def partie_milieu(self)->None:
+        """partie milieu de l'interface"""
         # Layout principal vertical
         layout_milieu = QVBoxLayout()
         # Création du QLabel de l'image
@@ -90,7 +102,6 @@ class ZoneGauche (QWidget):
         self.label_image.setPixmap(pixmapDefaut)
         # Puis ajout dans layout vertical principal
         layout_boutons = QHBoxLayout()
-
         # boutons de défilement
         # icones = ["Gnome-go-first.png", "Gnome-go-previous.png", "Gnome-go-next.png", "Gnome-go-last.png"]
         demandes= [self.demande_debut.emit, self.demande_reculer.emit, self.demande_avancer.emit, self.demande_fin.emit]
@@ -116,7 +127,10 @@ class ZoneGauche (QWidget):
         # Ajoute à layoutMilieu
         layout_milieu.addWidget(photo_milieu)
         # Ajoute à layoutGauche (comme avant)
-        layout_gauche.addLayout(layout_milieu)
+        self.layout_gauche.addLayout(layout_milieu)
+
+    def partie_basse(self)->None:
+        """partie bassse de l'interface"""
 		# layout bas
         # affichage des élèves restants
         layout_bas = QVBoxLayout()
@@ -125,33 +139,32 @@ class ZoneGauche (QWidget):
         layout_bas.addWidget(self.num_Ordre_Pers, alignment=Qt.AlignCenter)
         # affichage de la structure 
         self.structure=QLabel() # label de la structure
-        self.structure.setText(_(libelle(configuration_json["Structure"])))
+        self.structure.setText(_(libelle(self.configuration_json["Structure"])))
         self.structure.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 11pt;")
         layout_bas.addWidget(self.structure, alignment=Qt.AlignCenter)
         # affichage des options
         self.specialites = QLabel() # permet de changer le texte du label
-        self.specialites.setText(_(libelle(configuration_json["Specialite"])))
+        self.specialites.setText(_(libelle(self.configuration_json["Specialite"])))
         self.specialites.setStyleSheet("font-size: 10pt;")
         layout_bas.addWidget(self.specialites, alignment=Qt.AlignCenter)
         # attachement au layout gauche
-        layout_gauche.addLayout(layout_bas)
-
+        self.layout_gauche.addLayout(layout_bas)
         # Espace vertical fixe de 10 pixels
         spacer = QSpacerItem(0, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
-        layout_gauche.addItem(spacer)
+        self.layout_gauche.addItem(spacer)
         # attachement à la fenêtre principale
-        self.setLayout(layout_gauche)
+        self.setLayout(self.layout_gauche)
         #self.maj()
         self.show()
 
     def effacer_affichage(self) -> None:
-        """Effacer les informations affichées en cas de données manquantes"""
+        """Effacer les informations affichées"""
         self.prenom.setText("-")
         self.nom.setText("-")
         self.structure.setText("-")
         self.specialites.setText("-")
         self.num_Ordre_Pers.setText("-")
-        image_par_defaut = dossier_racine / "fichiers" / "images" / "inconnu.jpg"
+        image_par_defaut = dossier_racine / "ressources" / "fichiers" / "images" / "inconnu.jpg"
         self.label_image.setPixmap(QPixmap(image_par_defaut))   
 
     def maj(self) -> None:
@@ -161,7 +174,7 @@ class ZoneGauche (QWidget):
         self.maj_nom_prenom()
         self.maj_classe_options()
         self.maj_Photo()
-        self.maj_num_Ordre_Pers()
+        self.maj_num_ordre_Pers()
             
     def maj_Photo(self) -> None:
         """Mise à jour de la photo"""
@@ -182,17 +195,25 @@ class ZoneGauche (QWidget):
         if chemin_image.exists():
             pixmap = QPixmap(str(chemin_image))
         else:
-            chemin_defaut = dossier_racine / "fichiers" / "images" / "inconnu.jpg"
+            chemin_defaut = dossier_racine / "ressources" / "fichiers" / "images" / "inconnu.jpg"
             pixmap = QPixmap(str(chemin_defaut))
+        # redimesionnemment de l'image
+        pixmap = pixmap.scaled(
+            128, 128,
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation
+            )
         self.label_image.setPixmap(pixmap)
 
 
     def maj_nom_prenom(self):
+        """mise à jour du nom et du prenom"""
         self.prenom.setText(self.liste_personnes[self.rang][0])
         self.nom.setText(self.liste_personnes[self.rang][1])
             
     
     def maj_classe_options(self):
+        """mise a jour de la structure et de la spécialité"""
         # Structure (classe / département / parti)
         structure_interne = self.liste_personnes[self.rang][2]
         self.structure.setText(libelle(structure_interne))
@@ -204,8 +225,8 @@ class ZoneGauche (QWidget):
         self.specialites.setText(texteOptions)
 
 
-    def maj_num_Ordre_Pers(self) -> None:
-        """mettre à jour le numéro d'ordre de l'élève"""
+    def maj_num_ordre_Pers(self) -> None:
+        """mettre à jour le numéro d'ordre de la personne"""
         if self.nbre_pers==len(self.liste_personnes): # apprentissage
             self.num_Ordre_Pers.setText(str(self.rang+1)+"/"+str(self.nbre_pers))
         else: # test mental
@@ -213,9 +234,11 @@ class ZoneGauche (QWidget):
                 
 # ----------------------------------------------------
         
-if __name__ == '__main__':
-    gettext.install("piveo")
-    app = QApplication(sys.argv)
+import sys
+from PySide6.QtWidgets import QApplication
+
+if __name__ == "__main__":
+    qt_app = QApplication(sys.argv)
 
     liste_personnes = [
         ['Sarah', 'Fernandez', '1S1', ['CAM', 'THE'], 'Fernandez_Sarah.jpg'],
@@ -232,9 +255,9 @@ if __name__ == '__main__':
         "CheminPhotos": "eleves"
     }
 
-    fenetre = ZoneGauche(liste_personnes, None, config)
-    application = Application(fenetre)
+    fenetre = ZoneGauche(liste_personnes, config, None)
     fenetre.nbre_pers = len(liste_personnes)
+    fenetre.maj()
     fenetre.show()
 
-    sys.exit(app.exec())
+    sys.exit(qt_app.exec())

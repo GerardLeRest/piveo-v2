@@ -12,9 +12,9 @@ import locale
 import gettext
 from pathlib import Path
 from PySide6.QtWidgets import QApplication
-from app.chargement import init_donnees_utiliisateurs
-from app.gestion_langue import GestionLangue
-from app.choix_chemin_ressources import chemin_ressources
+from modele.chargement import init_donnees_utiliisateurs
+from modele.gestion_langue import GestionLangue
+from modele.choix_chemin_ressources import chemin_ressources
 
 # répertoires
 LOCALE_DIR = chemin_ressources("locales")
@@ -38,11 +38,11 @@ traduction = gettext.translation(
     languages=[langue],
     fallback=True
 )
-import gettext
+
 traduction.install()
 # import de l'interface APRÈS gettext
 
-from app.choix_organisme import ChoixOrganisme
+from vue.choix_organisme import ChoixOrganisme
 # point d'entrée de l'application
 def main():
     app = QApplication(sys.argv)
