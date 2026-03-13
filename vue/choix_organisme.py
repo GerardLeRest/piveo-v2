@@ -16,6 +16,7 @@ import json, sqlite3
 from vue.fenetre_principale import FenetrePrincipale
 from modele.choix_chemin_ressources import chemin_ressources
 from builtins import _
+from controleur.application import Application
 
 class ChoixOrganisme(QWidget):
     """Fenêtre de choix de l'organisme"""
@@ -87,13 +88,14 @@ class ChoixOrganisme(QWidget):
         # chemin des ~/.loval/piveo
         APP_NAME = "piveo"
         USER_BASE = Path.home() / ".local" / APP_NAME
-    
+
         if self.radio_ecole.isChecked():
             fichier_config = "ConfigEcole.json"
         elif self.radio_entreprise.isChecked():
             fichier_config = "ConfigEntreprise.json"
         else:
             fichier_config = "ConfigParlement.json"
+
         # charger la configuration choisie
         try:
             chemin_config = USER_BASE / "configurations_json" / fichier_config
@@ -102,10 +104,13 @@ class ChoixOrganisme(QWidget):
         except Exception as e:
             print(f"Erreur lors du chargement de la configuration : {e}")
             return
+
         # Chemin COMPLET vers la base de données
         chemin_bdd = USER_BASE / "BaseDonnees" / configuration_json["BaseDonnees"]
-        conn = sqlite3.connect(chemin_bdd) # connexion à la BDD
+        conn = sqlite3.connect(chemin_bdd)  # connexion à la BDD
+
         # Lancement de la fenêtre principale
         self.fenetre_principale = FenetrePrincipale(None, configuration_json, conn, None)
+        self.application = Application(self.fenetre_principale)
         self.fenetre_principale.show()
         self.close()

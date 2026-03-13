@@ -9,17 +9,17 @@ Manipulation de la base de données SQLite.
 import sqlite3
 
 
-class GestionnaireBdd:
+class GestionnaireBDDPersonnes:
     """Classe de manipulation des données de la base"""
 
-    def __init__(self, conn: sqlite3.Connection):
+    def __init__(self, connexion_bdd: sqlite3.Connection):
         """
         Initialise la classe avec une connexion SQLite déjà ouverte.
         """
-        self.conn = conn
-        self.curs = self.conn.cursor()
+        self.connexion_bdd = connexion_bdd
+        self.curseur = self.connexion_bdd.cursor()
         # Activer les clés étrangères (important avec SQLite)
-        self.curs.execute("PRAGMA foreign_keys = ON;")
+        self.curseur.execute("PRAGMA foreign_keys = ON;")
         # Liste interne des personnes chargées
         self.liste_personnes = []
         # Chargement initial des données
@@ -31,7 +31,7 @@ class GestionnaireBdd:
         les stocke dans self.liste_personnes.
         """
         self.liste_personnes.clear()
-        self.curs.execute("""
+        self.curseur.execute("""
             SELECT 
                 p.prenom,
                 p.nom,
@@ -43,7 +43,7 @@ class GestionnaireBdd:
             LEFT JOIN specialites s ON s.id = ps.id_specialite
             GROUP BY p.id
         """)
-        for prenom, nom, structure, specialites_str, photo in self.curs.fetchall():
+        for prenom, nom, structure, specialites_str, photo in self.curseur.fetchall():
             # Conversion des spécialités en liste
             liste_specialites = (
                 specialites_str.split(', ')
@@ -81,5 +81,5 @@ class GestionnaireBdd:
         """
         Ferme proprement la connexion à la base de données.
         """
-        self.conn.close()
+        self.connexion_bdd.close()
 

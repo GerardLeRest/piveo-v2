@@ -28,7 +28,7 @@ from PySide6.QtCore import Signal, QSize, Qt
 from PySide6.QtGui import QPixmap, QIcon
 
 from modele.textes_interface import libelle
-
+from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
 from controleur.application import Application
 
 icones = [
@@ -47,18 +47,16 @@ class ZoneGauche (QWidget):
     demande_debut = Signal()
     demande_fin = Signal()
         
-    def __init__(self, liste_personnes, configuration_json, recuperer_BDD, parent = None):
+    def __init__(self, liste_personnes, configuration_json, parent=None):
         """Constructeur de la frame de gauche et de ses éléments"""
-        super().__init__(parent) # constructeur de la classe parente
-        self.configuration_json = configuration_json # configuration de l'interface - json
-        self.layout_gauche = QVBoxLayout()  
-        # poisition de LayoutGauche dans la fenetre principale de la fenêtreself.LayoutPrincipal(row=0,column=0,rowspan=3,padx=10,pady=2)
-        self.modif_bdd = recuperer_BDD
-        self.rang = 0 # rang de la personne dans la liste
-        self.nbre_pers = 0
-        self.liste_personnes=liste_personnes #liste des personnes
-        self.resize(150, 100) # définir une taille fixe pour la fenêtre
-        self.repertoire_racine = "" # repertoire du projet
+        super().__init__(parent)
+        self.configuration_json = configuration_json
+        self.layout_gauche = QVBoxLayout()
+        self.liste_personnes = liste_personnes
+        self.rang = 0
+        self.nbre_pers = len(self.liste_personnes)
+        self.repertoire_racine = ""
+        self.resize(150, 100)
         self.partie_haute()
         self.partie_milieu()
         self.partie_basse()
@@ -255,9 +253,5 @@ if __name__ == "__main__":
         "CheminPhotos": "eleves"
     }
 
-    fenetre = ZoneGauche(liste_personnes, config, None)
-    fenetre.nbre_pers = len(liste_personnes)
-    fenetre.maj()
+    fenetre = ZoneGauche(liste_personnes, config)
     fenetre.show()
-
-    sys.exit(qt_app.exec())

@@ -12,6 +12,7 @@ from vue.zone_droite_haute import ZoneDroiteHaute
 #from vue.zone_droite_basse import ZoneDroiteBasse
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QHBoxLayout,
                                QApplication)
+from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
 import sys
 
 
@@ -21,7 +22,9 @@ class FenetrePrincipale(QWidget):
     def __init__(self, liste_personnes, configuration_json, connecteur_bdd, parent=None):
         super().__init__(parent)
 
-        self.zone_gauche = ZoneGauche(None, configuration_json, connecteur_bdd)
+        self.gestionnaire_bdd = GestionnaireBDDPersonnes(connecteur_bdd)
+        self.liste_personnes = self.gestionnaire_bdd.liste_personnes
+        self.zone_gauche = ZoneGauche(self.liste_personnes, configuration_json)
         self.zone_droite_haute = ZoneDroiteHaute(configuration_json)
         #self.zone_droite_basse = ZoneDroiteBasse()
         # contruction de l'interface
