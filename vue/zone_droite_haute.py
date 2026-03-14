@@ -223,48 +223,48 @@ class ZoneDroiteHaute(QWidget):
     
     # -------------------------------------------    
                 
-    def config_rechercher(self) -> None:
-        """configurer - mode Rechercher"""
-        # changer couleur label
-        self.label_prenom.setStyleSheet("color: black;")
-        self.label_nom.setStyleSheet("color: black;")
-        # Désactiver l'affichage des bonnes réponses
-        self.Des_Affich_Rep()
-        # activer/désactiver boutons 
-        self.bout_valider.setEnabled(True)
-        self.bout_effacer.setEnabled(True)
-        self.bout_suite.setEnabled(False)
+    # def config_rechercher(self) -> None:
+    #     """configurer - mode Rechercher"""
+    #     # changer couleur label
+    #     self.label_prenom.setStyleSheet("color: black;")
+    #     self.label_nom.setStyleSheet("color: black;")
+    #     # Désactiver l'affichage des bonnes réponses
+    #     self.Des_Affich_Rep()
+    #     # activer/désactiver boutons 
+    #     self.bout_valider.setEnabled(True)
+    #     self.bout_effacer.setEnabled(True)
+    #     self.bout_suite.setEnabled(False)
     
-    def Des_Affich_Rep(self) -> None:
-        """ désactiver l'affichage des bonnes réponses"""
-        self.nbre_rep.setStyleSheet("color: grey;font-size: 30px") #nbre bonnes reponses en gris
-        self.nbre_rep_exactes=0  # nbre de réponses exactes
-        # maj nbrebonnes réponses
-        self.nbre_rep.setText(f"{self.nbre_rep_exactes}/0")   
+    # def Des_Affich_Rep(self) -> None:
+    #     """ désactiver l'affichage des bonnes réponses"""
+    #     self.nbre_rep.setStyleSheet("color: grey;font-size: 30px") #nbre bonnes reponses en gris
+    #     self.nbre_rep_exactes=0  # nbre de réponses exactes
+    #     # maj nbrebonnes réponses
+    #     self.nbre_rep.setText(f"{self.nbre_rep_exactes}/0")   
     
-    def des_cadre_Dr_Ha(self) -> None:
-        """désactiver des boutons et les entry de la frameDB"""     
-        self.prenom_entree.setEnabled(False)
-        self.nom_entree.setEnabled(False)
-        self.bout_valider.setEnabled(False)
-        self.bout_effacer.setEnabled(False)
-        self.bout_suite.setEnabled(False)
-        self.nbre_rep.setStyleSheet("color: grey;font-size: 30px")
+    # def des_cadre_Dr_Ha(self) -> None:
+    #     """désactiver des boutons et les entry de la frameDB"""     
+    #     self.prenom_entree.setEnabled(False)
+    #     self.nom_entree.setEnabled(False)
+    #     self.bout_valider.setEnabled(False)
+    #     self.bout_effacer.setEnabled(False)
+    #     self.bout_suite.setEnabled(False)
+    #     self.nbre_rep.setStyleSheet("color: grey;font-size: 30px")
         
         
-    def config_test_ecrit(self) -> None:
-        """ configurer - Test écrit """
-        # changer couleur label
-        self.label_prenom.setStyleSheet("color: black;")
-        self.label_nom.setStyleSheet("color: black;")
-        self.nom_entree.setStyleSheet("color: black") 
-        self.nbre_rep.setStyleSheet("color: back; font-size:30px;") 
-        # effacer réponses
-        self.effacer_reponses()        
-        # activer boutons 
-        self.bout_valider.setEnabled(True)
-        self.bout_effacer.setEnabled(True)
-        self.bout_suite.setEnabled(True)   
+    # def config_test_ecrit(self) -> None:
+    #     """ configurer - Test écrit """
+    #     # changer couleur label
+    #     self.label_prenom.setStyleSheet("color: black;")
+    #     self.label_nom.setStyleSheet("color: black;")
+    #     self.nom_entree.setStyleSheet("color: black") 
+    #     self.nbre_rep.setStyleSheet("color: back; font-size:30px;") 
+    #     # effacer réponses
+    #     self.effacer_reponses()        
+    #     # activer boutons 
+    #     self.bout_valider.setEnabled(True)
+    #     self.bout_effacer.setEnabled(True)
+    #     self.bout_suite.setEnabled(True)   
         
 # ----------------------------------------------------
 if __name__ == "__main__":

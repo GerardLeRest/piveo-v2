@@ -42,3 +42,10 @@ README.md (Anglais) + README-fr.md (français)
 version 1.6.2 (release)
 
 ajout de Tooltips et leurs traductions
+
+version 2.0.0
+
+zone gauche avec la nouvelle interface et une structure MVC
+version 2.1.0
+
+zone haut droite
