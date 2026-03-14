@@ -42,26 +42,3 @@ class FenetrePrincipale(QWidget):
         layout_horizontal.addWidget(self.zone_gauche)
         layout_horizontal.addLayout(layout_vertical)
         self.setLayout(layout_horizontal)
-
-if __name__ == "__main__":
-
-    app = QApplication(sys.argv)
-    liste_personnes = [
-        ['Sarah', 'Fernandez', '1S1', ['CAM', 'THE'], 'Fernandez_Sarah.jpg'],
-        ['Clement', 'Henry', '1S1', ['CAM'], 'Henry_Clement.jpg'],
-        ['Emma', 'Petit', 'PSTI2D1', ['ESP'], 'Petit_Emma.jpg']
-    ]
-    recuperer_bdd = None
-    config = {
-        "Organisme": "Entreprise",
-        "Structure": "Département",
-        "Personne": "Ecole",
-        "Specialite": "Option",
-        "BaseDonnees": "eleves.db",
-        "CheminPhotos": "eleves"
-    }
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    FenetrePrincipale = FenetrePrincipale()    
-    sys.exit(app.exec())

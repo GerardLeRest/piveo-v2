@@ -28,8 +28,7 @@ from PySide6.QtCore import Signal, QSize, Qt
 from PySide6.QtGui import QPixmap, QIcon
 
 from modele.textes_interface import libelle
-from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
-from controleur.application import Application
+
 
 icones = [
     "Gnome-go-first.png",
@@ -232,17 +231,10 @@ class ZoneGauche (QWidget):
                 
 # ----------------------------------------------------
         
-import sys
-from PySide6.QtWidgets import QApplication
-
 if __name__ == "__main__":
-    qt_app = QApplication(sys.argv)
+    app = QApplication(sys.argv)
 
-    liste_personnes = [
-        ['Sarah', 'Fernandez', '1S1', ['CAM', 'THE'], 'Fernandez_Sarah.jpg'],
-        ['Clement', 'Henry', '1S1', ['CAM'], 'Henry_Clement.jpg'],
-        ['Emma', 'Petit', 'PSTI2D1', ['ESP'], 'Petit_Emma.jpg']
-    ]
+    liste_personnes = []
 
     config = {
         "Organisme": "Entreprise",
@@ -255,3 +247,5 @@ if __name__ == "__main__":
 
     fenetre = ZoneGauche(liste_personnes, config)
     fenetre.show()
+
+    sys.exit(app.exec())
