@@ -26,6 +26,8 @@ class ZoneDroiteHaute(QWidget):
     """ Créer la partie droite haute de l'interface """
 
     demande_suite = Signal()
+    demande_etat_prenom = Signal(bool)  
+    demande_etat_nom = Signal(bool)
         
     def __init__(self, configuration_json, fenetre = None):
         """Constructeur de la frame de droite et de ses éléments"""
@@ -196,18 +198,22 @@ class ZoneDroiteHaute(QWidget):
         if self.verification_prenom.isChecked():
             self.label_prenom.setEnabled(True)
             self.prenom_entree.setEnabled(True)
+            self.demande_etat_prenom.emit(True) # voir le controleur
         else:
             self.label_prenom.setEnabled(False)
             self.prenom_entree.setEnabled(False)
-
+            self.demande_etat_prenom.emit(False)
+            
     def etat_widgets_nom(self)->None:
         """activer/désactiver les widgets relatif à nom"""
         if self.verification_nom.isChecked():
             self.label_nom.setEnabled(True)
             self.nom_entree.setEnabled(True)
+            self.demande_etat_nom.emit(True) # voir le controleur
         else:
             self.label_nom.setEnabled(False)
             self.nom_entree.setEnabled(False)
+            self.demande_etat_nom.emit(False)
 
     def effacer_reponses(self) -> None:
         """effacer réponses"""
