@@ -49,3 +49,7 @@ zone gauche avec la nouvelle interface et une structure MVC
 version 2.1.0
 
 zone haut droite
+
+version 2.2.0
+
+zone haut gauche

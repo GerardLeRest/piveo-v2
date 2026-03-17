@@ -56,14 +56,14 @@ class ChoixOrganisme(QWidget):
         bouton.setFixedWidth(80)
         bouton.setStyleSheet("""
             QPushButton {
-                background-color: #4682B4;
+                background-color: #76aeba;
                 color: white;
                 border-radius: 8px;
                 padding: 5px 10px;
                 font-weight: bold;
             }
             QPushButton:hover {
-                background-color: #5A9BD5;
+                background-color: #66a0b0;
             }
         """)
         bouton.clicked.connect(self.lancer_piveo)
@@ -110,7 +110,7 @@ class ChoixOrganisme(QWidget):
         conn = sqlite3.connect(chemin_bdd)  # connexion à la BDD
 
         # Lancement de la fenêtre principale
-        self.fenetre_principale = FenetrePrincipale(None, configuration_json, conn, None)
+        self.fenetre_principale = FenetrePrincipale(configuration_json, conn, None)
         self.application = Application(self.fenetre_principale)
         self.fenetre_principale.show()
         self.close()

@@ -10,12 +10,10 @@ et ses informations
 import sys
 from pathlib import Path
 # ⚠️ IMPORTANT
-import gettext
-# ligne ci-dessous -> fonctionnement NORMAL
-from gettext import gettext as _
-# ligne ci-dessous décommmentée -> test if __name__ == "__name__":
-# _ = gettext.gettext
-
+# fonctionnement global
+from builtins import _
+# python3 -m vue.zone_droite_haute (test de la classe)
+#_ = lambda x: x 
 # Ajoute la racine du projet au chemin Python
 dossier_racine = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(dossier_racine))
@@ -68,15 +66,15 @@ class ZoneGauche (QWidget):
         self.layout_grille = QGridLayout()
         self.prenom = QLabel("-")
         self.prenom.setText(_("Prénom"))
-        self.prenom.setStyleSheet("color: #446069; font-weight: bold; font-size: 16px")
+        self.prenom.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 16px")
         self.layout_grille.addWidget(self.prenom, 0, 1)
-        self.layout_grille.addWidget(QLabel(_("Prénom :")), 0, 0, alignment=Qt.AlignRight)
+        self.layout_grille.addWidget(QLabel(_("Prénom attendu:")), 0, 0, alignment=Qt.AlignLeft)
         # nom
         self.nom = QLabel()
         self.nom.setText(_("Nom"))
-        self.nom.setStyleSheet("color: #446069; font-weight: bold; font-size: 16px")
+        self.nom.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 16px")
         self.layout_grille.addWidget(self.nom, 1, 1)
-        self.layout_grille.addWidget(QLabel(_("Nom :")), 1, 0, alignment=Qt.AlignRight)
+        self.layout_grille.addWidget(QLabel(_("Nom attendu :")), 1, 0, alignment=Qt.AlignLeft)
         # attachement à layoutGauche
         self.layout_gauche.addLayout(self.layout_grille)
 
@@ -168,6 +166,7 @@ class ZoneGauche (QWidget):
         """Mettre à jour l'affichage de l'élève courant si la liste est valide"""
         if not self.liste_personnes or self.rang >= len(self.liste_personnes):
             return  # on ne fait rien si la liste est vide ou le rang est hors limites
+        self.nbre_pers = len(self.liste_personnes)
         self.maj_nom_prenom()
         self.maj_classe_options()
         self.maj_Photo()
