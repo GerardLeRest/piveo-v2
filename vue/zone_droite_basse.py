@@ -12,8 +12,7 @@ from PySide6.QtCore import Qt, Signal
 
 from modele.textes_interface import libelle
 from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
-from controleur.controleur_combobox import ControleurComboBox
-from builtins import _
+from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 
 
 DOSSIER_PROJET = Path(__file__).resolve().parent.parent
@@ -29,7 +28,7 @@ class ZoneDroiteBasse(QWidget):
         self.configuration_json = configuration_json
         self.gestionnaire_bdd_personnes = GestionnaireBDDPersonnes(connecteur_bdd)
         self.layout_principal = QVBoxLayout()
-        self.controleur_combo_box = ControleurComboBox(self.gestionnaire_bdd_personnes)
+        self.controleur_combo_box = ControleurZoneDroiteBasse(self.gestionnaire_bdd_personnes)
         self.liste_personnes = []
         self.liste_specialites = []
         self.specialite_selectionnee = "TOUS"
@@ -117,9 +116,19 @@ class ZoneDroiteBasse(QWidget):
         self.specialite_selectionnee = self.comboBox_droite.currentText()
 
     def valider_choix(self) -> None:
-        """Valider la structure et la spécialité choisies"""
+        """Valider la structure et la spécialité choisies."""
         self.specialite_selectionnee = self.comboBox_droite.currentText()
+
         print("valider_choix lancé")
         print("specialite_selectionnee =", self.specialite_selectionnee)
-        print("liste envoyée =", self.liste_personnes)
-        self.liste_personnes_maj.emit(self.liste_personnes)
+
+        if self.specialite_selectionnee == "TOUS":
+            liste_filtrée = self.liste_personnes
+        else:
+            liste_filtrée = [
+                personne for personne in self.liste_personnes
+                if self.specialite_selectionnee in personne[3]
+            ]
+
+        print("liste envoyée =", liste_filtrée)
+        self.liste_personnes_maj.emit(liste_filtrée)

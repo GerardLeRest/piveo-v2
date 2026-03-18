@@ -8,7 +8,7 @@ l'établissement ou test écrit
 
 
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QGridLayout, QLabel, QLineEdit, QHBoxLayout,
-                               QPushButton, QApplication, QSpacerItem, QSizePolicy, QFrame, QCheckBox)
+                               QPushButton, QApplication, QFrame, QCheckBox)
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Signal
 from PySide6.QtCore import Qt

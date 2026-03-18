@@ -166,7 +166,7 @@ class ZoneGauche (QWidget):
         """Mettre à jour l'affichage de l'élève courant si la liste est valide"""
         if not self.liste_personnes or self.rang >= len(self.liste_personnes):
             return  # on ne fait rien si la liste est vide ou le rang est hors limites
-        self.nbre_pers = len(self.liste_personnes)
+        #self.rang = 0
         self.maj_nom_prenom()
         self.maj_classe_options()
         self.maj_Photo()

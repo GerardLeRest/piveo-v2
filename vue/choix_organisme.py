@@ -16,7 +16,7 @@ import json, sqlite3
 from vue.fenetre_principale import FenetrePrincipale
 from modele.choix_chemin_ressources import chemin_ressources
 from builtins import _
-from controleur.application import Application
+from controleur.controleur_zone_gauche import ControleurZoneGauche
 
 class ChoixOrganisme(QWidget):
     """Fenêtre de choix de l'organisme"""
@@ -111,6 +111,5 @@ class ChoixOrganisme(QWidget):
 
         # Lancement de la fenêtre principale
         self.fenetre_principale = FenetrePrincipale(configuration_json, conn, None)
-        self.application = Application(self.fenetre_principale)
         self.fenetre_principale.show()
         self.close()
