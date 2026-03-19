@@ -11,7 +11,7 @@ from pathlib import Path
 from builtins import _
 
 from PySide6.QtCore import QSize
-from PySide6.QtGui import QIcon, QAction
+from PySide6.QtGui import QIcon, QAction, QActionGroup
 from PySide6.QtWidgets import (
     QMainWindow,
     QVBoxLayout,
@@ -31,9 +31,17 @@ from controleur.controleur_zone_gauche import ControleurZoneGauche
 from controleur.controleur_zone_droite_haute import ControleurZoneDroiteHaute
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 
+from PySide6.QtCore import Signal, Qt
+
 
 class FenetrePrincipale(QMainWindow):
     """Fenêtre principale de l'application."""
+
+    demande_mode_lecture = Signal()
+    demande_mode_reponse_cachee = Signal()
+    demande_mode_test_ecrit = Signal()
+    demande_mode_recherche = Signal()
+    demande_mode_aleatoire = Signal()
 
     def __init__(self, configuration_json, connecteur_bdd, parent=None):
         super().__init__(parent)
@@ -55,6 +63,18 @@ class FenetrePrincipale(QMainWindow):
         self.barre = self.menuBar()
         # construction interface
         self.construire_interface()
+        # definition des actions
+        self.act_lecture = QAction(_("Lecture"), self)
+        self.act_reponse_cachee = QAction(_("Deviner puis réponse"), self)
+        self.act_test_ecrit = QAction(_("Test écrit"), self)
+        self.act_recherche = QAction(_("Recherche"), self)
+        self.act_aleatoire = QAction(_("Mode aléatoire"), self)
+        # connexions
+        self.act_lecture.triggered.connect(self.demande_mode_lecture.emit)
+        self.act_reponse_cachee.triggered.connect(self.demande_mode_reponse_cachee.emit)
+        self.act_test_ecrit.triggered.connect(self.demande_mode_test_ecrit.emit)
+        self.act_recherche.triggered.connect(self.demande_mode_recherche.emit)
+        self.act_aleatoire.triggered.connect(self.demande_mode_aleatoire.emit)
         self.menu_fichiers()
         self.barre_outils()
 
@@ -74,55 +94,66 @@ class FenetrePrincipale(QMainWindow):
         widget_central.setLayout(layout_horizontal)
         self.setCentralWidget(widget_central)
 
-    def menu_fichiers(self) -> None:
-        """Construire le menu."""
-        self.barre.addMenu(_("Fichier"))
-        self.barre.addMenu(_("Aide"))
-
     def barre_outils(self) -> None:
         """Construire la barre d’outils principale."""
         barre_outils = QToolBar("Modes")
         barre_outils.setIconSize(QSize(32, 32))
+        barre_outils.setToolButtonStyle(Qt.ToolButtonIconOnly)
         self.addToolBar(barre_outils)
 
         self.dossier_icones = (
             Path(__file__).resolve().parent.parent / "ressources" / "fichiers" / "icones"
         )
-
-        self.act_lecture = QAction(_("Lecture"), self)
-        self.act_reponse_cachee = QAction(_("Deviner puis réponse"), self)
-        self.act_test_ecrit = QAction(_("Test écrit"), self)
-        self.act_recherche = QAction(_("Recherche"), self)
-        self.act_aleatoire = QAction(_("Mode aléatoire"), self)
-
+        # rendre les 4 icone de gauchle comme des radios
+        self.act_lecture.setCheckable(True)
+        self.act_reponse_cachee.setCheckable(True)
+        self.act_test_ecrit.setCheckable(True)
+        self.act_recherche.setCheckable(True)
+        # definir le groupe des quatre élémnents de gauche
+        self.groupe_modes = QActionGroup(self)
+        self.groupe_modes.setExclusive(True)
+        # ajouter les actions aux quatre éléments
+        self.groupe_modes.addAction(self.act_lecture)
+        self.groupe_modes.addAction(self.act_reponse_cachee)
+        self.groupe_modes.addAction(self.act_test_ecrit)
+        self.groupe_modes.addAction(self.act_recherche)
+        # ajouter les actions dans la toolbar
+        barre_outils.addAction(self.act_lecture)
+        barre_outils.addAction(self.act_reponse_cachee)
+        barre_outils.addAction(self.act_test_ecrit)
+        barre_outils.addAction(self.act_recherche)
+        barre_outils.addSeparator()
+        # icone à part
+        barre_outils.addAction(self.act_aleatoire)
+        # sélectionner l'icone par défaut
+        self.act_lecture.setChecked(True)
+         # bouton à part des quatre autres
+        self.act_aleatoire.setCheckable(True)
+        #création des icones
         self.act_lecture.setIcon(QIcon(str(self.dossier_icones / "oeil.svg")))
         self.act_reponse_cachee.setIcon(QIcon(str(self.dossier_icones / "oeil_cache.svg")))
         self.act_test_ecrit.setIcon(QIcon(str(self.dossier_icones / "crayon.svg")))
         self.act_recherche.setIcon(QIcon(str(self.dossier_icones / "question.svg")))
         self.act_aleatoire.setIcon(QIcon(str(self.dossier_icones / "aleatoire.svg")))
-
-        barre_outils.addAction(self.act_lecture)
-        barre_outils.addAction(self.act_reponse_cachee)
-        barre_outils.addAction(self.act_test_ecrit)
-        barre_outils.addAction(self.act_recherche)
-        barre_outils.addAction(self.act_aleatoire)
-
+        # ajouter les bulles d'information
         self.act_lecture.setToolTip(_("Lire les noms et prénoms"))
         self.act_reponse_cachee.setToolTip(_("Deviner puis afficher la réponse"))
         self.act_test_ecrit.setToolTip(_("Test écrit"))
         self.act_recherche.setToolTip(_("Rechercher une personne"))
         self.act_aleatoire.setToolTip(_("Mode aléatoire"))
 
+    def menu_fichiers(self) -> None:
+        """Construire le menu."""
+        self.barre.addMenu(_("Fichier"))
+        self.barre.addMenu(_("Aide"))
+
     def mettre_a_jour_liste_personnes(self, liste_personnes: list) -> None:
         """Mettre à jour la liste affichée dans la zone gauche."""
-        print("signal reçu dans FenetrePrincipale")
-        print("liste reçue =", liste_personnes)
-
         self.liste_personnes = liste_personnes
         self.zone_gauche.liste_personnes = liste_personnes
         self.zone_gauche.rang = 0
         self.zone_gauche.nbre_pers = len(liste_personnes)
-
+        # gestion de l'avance de de l'arrière
         self.controleur_zone_gauche.defilement_photos = DefilementPhotos(liste_personnes)
-
+        # mise à jour de la partie gauche du logiciel
         self.zone_gauche.maj()

@@ -37,13 +37,6 @@ traduction = gettext.translation(
 )
 traduction.install()
 
-print("langue =", langue)
-print("LOCALE_DIR =", LOCALE_DIR)
-print("traduction =", traduction)
-print("Bonjour ->", traduction.gettext("Bonjour"))
-print("application ->", traduction.gettext("application"))
-print("test inexistant ->", traduction.gettext("ZZZ_TEST_123"))
-
 from vue.choix_organisme import ChoixOrganisme
 
 def main():

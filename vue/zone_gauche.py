@@ -175,9 +175,6 @@ class ZoneGauche (QWidget):
     def maj_Photo(self) -> None:
         """Mise à jour de la photo"""
         nom_image = self.liste_personnes[self.rang][4]
-        print (nom_image)
-        print("dossier_racine =", dossier_racine)
-        print("CheminPhotos =", self.configuration_json["CheminPhotos"])
         chemin_image = (
             dossier_racine
             / "ressources"
@@ -186,7 +183,6 @@ class ZoneGauche (QWidget):
             / self.configuration_json["CheminPhotos"]
             / nom_image
         )
-        print(chemin_image)
         # si l'image existe
         if chemin_image.exists():
             pixmap = QPixmap(str(chemin_image))

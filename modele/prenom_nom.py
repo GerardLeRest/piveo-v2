@@ -8,7 +8,6 @@ Traitement des noms et des prenoms
 PRENOM = "Gérard"
 NOM = "Le Rest"
 
-
 class PrenomNom:
 
     def __init__(self, prenom, nom):
@@ -19,7 +18,6 @@ class PrenomNom:
 
     def comparer_prenom(self, prenom)->bool:
         "tester la validité du prénom"
-        print(f"prénom étudié: {prenom}")
         if PRENOM == prenom:
             return True
         else:
@@ -27,7 +25,6 @@ class PrenomNom:
         
     def comparer_nom(self, nom)->bool:
         "tester la validité du nom"
-        print(f"nom étudié: {nom}")
         if NOM == nom:
             return True
         else:

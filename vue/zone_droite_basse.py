@@ -94,14 +94,11 @@ class ZoneDroiteBasse(QWidget):
     def choisir_structure_specialites(self) -> None:
         """Met à jour les personnes et les spécialités selon la structure choisie."""
         structure_choisie = self.comboBox_Gauche.currentText()
-        print("structure choisie =", structure_choisie)
 
         self.liste_personnes, self.liste_specialites = (
             self.controleur_combo_box.choisir_structure_specialites(structure_choisie)
         )
 
-        print("liste_personnes =", self.liste_personnes)
-        print("liste_specialites =", self.liste_specialites)
 
         self.creer_combo_specialites()
 
@@ -119,16 +116,14 @@ class ZoneDroiteBasse(QWidget):
         """Valider la structure et la spécialité choisies."""
         self.specialite_selectionnee = self.comboBox_droite.currentText()
 
-        print("valider_choix lancé")
-        print("specialite_selectionnee =", self.specialite_selectionnee)
-
+        # si "tous lsute complète"
         if self.specialite_selectionnee == "TOUS":
             liste_filtrée = self.liste_personnes
+        # liste filtrée suivant la spécialité
         else:
             liste_filtrée = [
                 personne for personne in self.liste_personnes
                 if self.specialite_selectionnee in personne[3]
             ]
 
-        print("liste envoyée =", liste_filtrée)
         self.liste_personnes_maj.emit(liste_filtrée)

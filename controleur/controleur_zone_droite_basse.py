@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+"""
+G Le Rest - 2026
+contrôleur de la zone droite basse
+"""
+
 from modele.Modele_ComboBox import (
     creer_specialites,
     lister_structures,
@@ -14,9 +22,6 @@ class ControleurZoneDroiteBasse:
         return construire_liste_structures(structures, configuration_json)
 
     def choisir_structure_specialites(self, structure_choisie: str) -> tuple[list, list]:
-        print("controleur - structure_choisie =", structure_choisie)
         liste_personnes = self.gestionnaire_bdd_personnes.personnes_structure(structure_choisie)
-        print("controleur - personnes trouvées =", liste_personnes)
         liste_specialites = creer_specialites(liste_personnes)
-        print("controleur - specialites =", liste_specialites)
         return liste_personnes, liste_specialites

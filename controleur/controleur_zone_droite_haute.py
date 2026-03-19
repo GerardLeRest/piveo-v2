@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+"""
+G Le Rest - 2026
+contrôleur de la zone droite haute
+"""
+
 from modele.prenom_nom import PrenomNom
 from PySide6.QtCore import Slot
 
@@ -43,7 +48,6 @@ class ControleurZoneDroiteHaute:
     @Slot()
     def recuperation_ecrite(self) -> None:
         """Récupérer le prénom et le nom saisis."""
-        print("recuperation_ecrite")
 
         prenom = self.vue.zone_droite_haute.prenom_entree.text()
         nom = self.vue.zone_droite_haute.nom_entree.text()
