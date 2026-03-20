@@ -197,7 +197,6 @@ class ZoneGauche (QWidget):
             )
         self.label_image.setPixmap(pixmap)
 
-
     def maj_nom_prenom(self):
         """mise à jour du nom et du prenom"""
         self.prenom.setText(self.liste_personnes[self.rang][0])

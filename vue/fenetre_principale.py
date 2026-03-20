@@ -24,12 +24,13 @@ from vue.zone_gauche import ZoneGauche
 from vue.zone_droite_haute import ZoneDroiteHaute
 from vue.zone_droite_basse import ZoneDroiteBasse
 
-from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
-from modele.defilement_photos import DefilementPhotos
+from modele.gestionnaire_bdd_personnes import GestionnaireBDDPersonnes
+from modele.modele_gauche import ModeleGauche
 
 from controleur.controleur_zone_gauche import ControleurZoneGauche
 from controleur.controleur_zone_droite_haute import ControleurZoneDroiteHaute
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
+from controleur.controleur_toolbar import ControleurToolbar
 
 from PySide6.QtCore import Signal, Qt
 
@@ -76,7 +77,14 @@ class FenetrePrincipale(QMainWindow):
         self.act_recherche.triggered.connect(self.demande_mode_recherche.emit)
         self.act_aleatoire.triggered.connect(self.demande_mode_aleatoire.emit)
         self.menu_fichiers()
+        self.act_lecture.setEnabled(False)
+        # désactiver toutes les actions
+        self.act_reponse_cachee.setEnabled(False)
+        self.act_test_ecrit.setEnabled(False)
+        self.act_recherche.setEnabled(False)
+        self.act_aleatoire.setEnabled(False)
         self.barre_outils()
+        self.controleur_toolbar = ControleurToolbar(self)
 
     def construire_interface(self) -> None:
         """Construire l'interface principale."""
@@ -130,11 +138,11 @@ class FenetrePrincipale(QMainWindow):
          # bouton à part des quatre autres
         self.act_aleatoire.setCheckable(True)
         #création des icones
-        self.act_lecture.setIcon(QIcon(str(self.dossier_icones / "oeil.svg")))
-        self.act_reponse_cachee.setIcon(QIcon(str(self.dossier_icones / "oeil_cache.svg")))
-        self.act_test_ecrit.setIcon(QIcon(str(self.dossier_icones / "crayon.svg")))
-        self.act_recherche.setIcon(QIcon(str(self.dossier_icones / "question.svg")))
-        self.act_aleatoire.setIcon(QIcon(str(self.dossier_icones / "aleatoire.svg")))
+        self.act_lecture.setIcon(QIcon(str(self.dossier_icones / "oeil.png")))
+        self.act_reponse_cachee.setIcon(QIcon(str(self.dossier_icones / "oeil_cache.png")))
+        self.act_test_ecrit.setIcon(QIcon(str(self.dossier_icones / "crayon.png")))
+        self.act_recherche.setIcon(QIcon(str(self.dossier_icones / "question.png")))
+        self.act_aleatoire.setIcon(QIcon(str(self.dossier_icones / "aleatoire.png")))
         # ajouter les bulles d'information
         self.act_lecture.setToolTip(_("Lire les noms et prénoms"))
         self.act_reponse_cachee.setToolTip(_("Deviner puis afficher la réponse"))
@@ -149,11 +157,20 @@ class FenetrePrincipale(QMainWindow):
 
     def mettre_a_jour_liste_personnes(self, liste_personnes: list) -> None:
         """Mettre à jour la liste affichée dans la zone gauche."""
-        self.liste_personnes = liste_personnes
-        self.zone_gauche.liste_personnes = liste_personnes
+        self.liste_personnes_courante = liste_personnes.copy()
+        # copie de listes
+        self.zone_gauche.liste_personnes = liste_personnes.copy()
         self.zone_gauche.rang = 0
         self.zone_gauche.nbre_pers = len(liste_personnes)
-        # gestion de l'avance de de l'arrière
-        self.controleur_zone_gauche.defilement_photos = DefilementPhotos(liste_personnes)
-        # mise à jour de la partie gauche du logiciel
+
+        self.controleur_zone_gauche.defilement_photos = ModeleGauche(liste_personnes)
         self.zone_gauche.maj()
+        self.activer_actions()
+
+    def activer_actions(self) -> None:
+        """activer les actions"""
+        self.act_lecture.setEnabled(True)
+        self.act_reponse_cachee.setEnabled(True)
+        self.act_test_ecrit.setEnabled(True)
+        self.act_recherche.setEnabled(True)
+        self.act_aleatoire.setEnabled(True)

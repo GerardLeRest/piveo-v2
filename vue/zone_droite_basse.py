@@ -11,7 +11,7 @@ from PySide6.QtWidgets import QWidget, QComboBox, QGridLayout, QLabel, QVBoxLayo
 from PySide6.QtCore import Qt, Signal
 
 from modele.textes_interface import libelle
-from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
+from modele.gestionnaire_bdd_personnes import GestionnaireBDDPersonnes
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 
 
@@ -30,6 +30,7 @@ class ZoneDroiteBasse(QWidget):
         self.layout_principal = QVBoxLayout()
         self.controleur_combo_box = ControleurZoneDroiteBasse(self.gestionnaire_bdd_personnes)
         self.liste_personnes = []
+        self.liste_filtree = []  # liste final de la liste des personnes
         self.liste_specialites = []
         self.specialite_selectionnee = "TOUS"
         self.initialiser()
@@ -113,17 +114,15 @@ class ZoneDroiteBasse(QWidget):
         self.specialite_selectionnee = self.comboBox_droite.currentText()
 
     def valider_choix(self) -> None:
-        """Valider la structure et la spécialité choisies."""
-        self.specialite_selectionnee = self.comboBox_droite.currentText()
-
-        # si "tous lsute complète"
-        if self.specialite_selectionnee == "TOUS":
-            liste_filtrée = self.liste_personnes
-        # liste filtrée suivant la spécialité
+        """Filtrer la liste des personnes selon le choix utilisateur."""
+        specialite_selectionnee = self.comboBox_droite.currentText()
+        # prendre toutes les personnes
+        if specialite_selectionnee == "TOUS":
+            liste_personnes = self.liste_personnes.copy()
+        # ne prendre que les personnes de la même spcialité
         else:
-            liste_filtrée = [
+            liste_personnes = [
                 personne for personne in self.liste_personnes
-                if self.specialite_selectionnee in personne[3]
+                if specialite_selectionnee in personne[3]
             ]
-
-        self.liste_personnes_maj.emit(liste_filtrée)
+        self.liste_personnes_maj.emit(liste_personnes)

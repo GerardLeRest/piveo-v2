@@ -7,7 +7,7 @@ afficher la photo de l'élève sélecctionné
 et ses informations
 """
 
-class DefilementPhotos:
+class ModeleGauche:
     """Défiler les photos"""
 
     def __init__(self, liste_personnes: list[list]) -> None:

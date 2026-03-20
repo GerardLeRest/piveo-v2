@@ -6,7 +6,7 @@ G Le Rest - 2026
 contrôleur de la zone droite basse
 """
 
-from modele.Modele_ComboBox import (
+from modele.modele_combobox import (
     creer_specialites,
     lister_structures,
     construire_liste_structures
