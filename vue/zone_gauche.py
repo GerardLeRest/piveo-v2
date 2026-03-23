@@ -58,6 +58,7 @@ class ZoneGauche (QWidget):
         self.partie_milieu()
         self.partie_basse()
 
+
     def partie_haute(self)->None:
         """partie haute de l'interface"""
         # Partie haute du layout
@@ -97,19 +98,32 @@ class ZoneGauche (QWidget):
         self.label_image.setPixmap(pixmapDefaut)
         # Puis ajout dans layout vertical principal
         layout_boutons = QHBoxLayout()
-        # boutons de défilement
-        # icones = ["Gnome-go-first.png", "Gnome-go-previous.png", "Gnome-go-next.png", "Gnome-go-last.png"]
-        demandes= [self.demande_debut.emit, self.demande_reculer.emit, self.demande_avancer.emit, self.demande_fin.emit]
-        self.boutons = []
-        for i, icone in enumerate(icones):
-            bouton = QPushButton()
-            bouton.setIcon(QIcon(str(dossier_racine / "ressources"  / "fichiers" / "icones" / icone)))
-            bouton.setIconSize(QSize(24, 24))
-            bouton.clicked.connect(demandes[i])
-            layout_boutons.addWidget(bouton)
-            self.boutons.append(bouton)
-        layout_boutons.setSpacing(6)  # espace horizontal entre flèches
-
+        # Bouton début
+        self.bouton_debut = QPushButton()
+        self.bouton_debut.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / icones[0])))
+        self.bouton_debut.setIconSize(QSize(24, 24))
+        self.bouton_debut.clicked.connect(self.demande_debut.emit)
+        layout_boutons.addWidget(self.bouton_debut)
+        # Bouton reculer
+        self.bouton_reculer = QPushButton()
+        self.bouton_reculer.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / icones[1])))
+        self.bouton_reculer.setIconSize(QSize(24, 24))
+        self.bouton_reculer.clicked.connect(self.demande_reculer.emit)
+        layout_boutons.addWidget(self.bouton_reculer)
+        # Bouton avancer
+        self.bouton_avancer = QPushButton()
+        self.bouton_avancer.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / icones[2])))
+        self.bouton_avancer.setIconSize(QSize(24, 24))
+        self.bouton_avancer.clicked.connect(self.demande_avancer.emit)
+        layout_boutons.addWidget(self.bouton_avancer)
+        # Bouton fin
+        self.bouton_fin = QPushButton()
+        self.bouton_fin.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / icones[3])))
+        self.bouton_fin.setIconSize(QSize(24, 24))
+        self.bouton_fin.clicked.connect(self.demande_fin.emit)
+        layout_boutons.addWidget(self.bouton_fin)
+        # espaces entre les boutons
+        layout_boutons.setSpacing(6)
         # Bloc vertical (photo + boutons), avec marges
         bloc_photo = QVBoxLayout()
         bloc_photo.setContentsMargins(10, 10, 10, 10)  # marges autour du bloc
@@ -123,6 +137,22 @@ class ZoneGauche (QWidget):
         layout_milieu.addWidget(photo_milieu)
         # Ajoute à layoutGauche (comme avant)
         self.layout_gauche.addLayout(layout_milieu)
+        self.desactiver_boutons()
+        
+    def desactiver_boutons(self)->None:
+        """désactiver les quatre boutons au démarrage"""
+        self.bouton_debut.setEnabled(False)
+        self.bouton_avancer.setEnabled(False)
+        self.bouton_reculer.setEnabled(False)
+        self.bouton_fin.setEnabled(False)
+
+    def activer_boutons(self)->None:
+        """désactiver les quatre boutons au démarrage"""
+        self.bouton_debut.setEnabled(True)
+        self.bouton_avancer.setEnabled(True)
+        self.bouton_reculer.setEnabled(True)
+        self.bouton_fin.setEnabled(True)
+        
 
     def partie_basse(self)->None:
         """partie bassse de l'interface"""
@@ -222,6 +252,10 @@ class ZoneGauche (QWidget):
             self.num_Ordre_Pers.setText(str(self.rang+1)+"/"+str(self.nbre_pers))
         else: # test mental
             self.num_Ordre_Pers.setText(str(self.rang//2+1)+"/"+str(self.nbre_pers))  
+
+    def desactivation_icones(self):
+        pass
+
                 
 # ----------------------------------------------------
         

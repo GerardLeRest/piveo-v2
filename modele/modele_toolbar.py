@@ -3,9 +3,9 @@ import random
 
 class ModeleToolbar:
 
-    def melanger(self, liste_personnes: list) -> list:
+    def melanger(self, liste_de_personnes: list) -> list:
         """Retourner une liste mélangée."""
-        liste_aleatoire = liste_personnes.copy()
+        liste_aleatoire = liste_de_personnes.copy()
         random.shuffle(liste_aleatoire)
         return liste_aleatoire
     

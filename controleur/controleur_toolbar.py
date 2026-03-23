@@ -19,15 +19,24 @@ class ControleurToolbar:
 
     def __init__(self, vue):
         self.vue = vue
-        self.vue.demande_mode_lecture.connect(self.lire)
-        self.vue.demande_mode_aleatoire.connect(self.gerer_aleatoire)
-        self.vue.demande_mode_reponse_cachee.connect(self.deviner)
-        self.modele_toolbar = ModeleToolbar()
+        self.vue.act_lecture.triggered.connect(lambda: print("lecture"))
+        self.vue.act_reponse_cachee.triggered.connect(lambda: print("cache"))
+        self.vue.act_test_ecrit.triggered.connect(lambda: print("test"))
+        self.vue.act_recherche.triggered.connect(lambda: print("recherche"))
+        # self.vue.demande_mode_lecture.connect(self.lire)
+        # self.vue.act_aleatoire.toggled.connect(self.gerer_aleatoire)
+        # self.vue.demande_mode_reponse_cachee.connect(self.deviner)
+        # self.modele_toolbar = ModeleToolbar()
 
     def lire(self) -> None:
         """Mode lecture."""
-        self.vue.act_aleatoire.setChecked(False) # mode non aléatoire
-        self.vue.zone_gauche.liste_personnes = self.vue.liste_personnes_courante.copy()
+        # copier véritablement la liste
+        if self.mode_aleatoire:
+            self.vue.zone_gauche.liste_personnes = self.modele_toolbar.melanger(self.vue.zone_droite_basse.liste_personnes.copy())
+            print(self.vue.zone_gauche.liste_personnes)
+        else:
+            self.vue.zone_gauche.liste_personnes = self.vue.zone_droite_basse.liste_personnes.copy()
+        #MAJ
         self.vue.zone_gauche.rang = 0
         self.vue.zone_gauche.nbre_pers = len(self.vue.zone_gauche.liste_personnes)
         self.vue.zone_gauche.maj()
@@ -53,12 +62,7 @@ class ControleurToolbar:
     def gerer_aleatoire(self) -> None:
         """Gérer le mode aléatoire."""
         if self.vue.act_aleatoire.isChecked():
-            self.vue.zone_gauche.liste_personnes = self.modele_toolbar.melanger(
-                self.vue.liste_personnes_courante
-            )
+            self.mode_aleatoire = True
         else:
-            self.vue.zone_gauche.liste_personnes = self.vue.liste_personnes_courante.copy()
-        # MAJ
-        self.vue.zone_gauche.rang = 0
-        self.vue.zone_gauche.nbre_pers = len(self.vue.zone_gauche.liste_personnes)
-        self.vue.zone_gauche.maj()
+            self.mode_aleatoire = False
+        print (self.mode_aleatoire)

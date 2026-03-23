@@ -21,7 +21,7 @@ DOSSIER_PROJET = Path(__file__).resolve().parent.parent
 class ZoneDroiteBasse(QWidget):
 
     # Signal émis lorsque la liste filtrée de personnes est prête.
-    liste_personnes_maj = Signal(list)
+    demande_BP_valider_ZD = Signal(list)
 
     def __init__(self, configuration_json, connecteur_bdd):
         super().__init__()
@@ -30,7 +30,7 @@ class ZoneDroiteBasse(QWidget):
         self.layout_principal = QVBoxLayout()
         self.controleur_combo_box = ControleurZoneDroiteBasse(self.gestionnaire_bdd_personnes)
         self.liste_personnes = []
-        self.liste_filtree = []  # liste final de la liste des personnes
+        self.liste_personnes_filtree = []  # liste final de la liste des personnes
         self.liste_specialites = []
         self.specialite_selectionnee = "TOUS"
         self.initialiser()
@@ -75,6 +75,7 @@ class ZoneDroiteBasse(QWidget):
         self.bouton_valider = QPushButton(_("Valider"))
         self.bouton_valider.setFixedWidth(120)
         self.bouton_valider.setStyleSheet(valider_style)
+        self.bouton_valider.setToolTip(_("Valider la liste choisie"))
         layout_bouton = QHBoxLayout()
         layout_bouton.addWidget(self.bouton_valider)
         self.layout_principal.addSpacing(10)
@@ -88,7 +89,7 @@ class ZoneDroiteBasse(QWidget):
         self.comboBox_droite.currentTextChanged.connect(self.choisir_specialite)
         self.bouton_valider.clicked.connect(self.valider_choix)
         # Émission initiale de la liste courante
-        self.liste_personnes_maj.emit(self.liste_personnes)
+        #self.demande_BP_valider_ZD.emit(self.liste_personnes)
         # Initialisation de la combobox des spécialités
         self.creer_combo_specialites()
 
@@ -99,7 +100,6 @@ class ZoneDroiteBasse(QWidget):
         self.liste_personnes, self.liste_specialites = (
             self.controleur_combo_box.choisir_structure_specialites(structure_choisie)
         )
-
 
         self.creer_combo_specialites()
 
@@ -115,14 +115,21 @@ class ZoneDroiteBasse(QWidget):
 
     def valider_choix(self) -> None:
         """Filtrer la liste des personnes selon le choix utilisateur."""
-        specialite_selectionnee = self.comboBox_droite.currentText()
-        # prendre toutes les personnes
+        specialite_selectionnee = self.comboBox_droite.currentText().strip()
+
         if specialite_selectionnee == "TOUS":
-            liste_personnes = self.liste_personnes.copy()
-        # ne prendre que les personnes de la même spcialité
+            self.liste_personnes_filtree = self.liste_personnes.copy()
         else:
-            liste_personnes = [
+            self.liste_personnes_filtree = [
                 personne for personne in self.liste_personnes
                 if specialite_selectionnee in personne[3]
             ]
-        self.liste_personnes_maj.emit(liste_personnes)
+
+        print("specialite_selectionnee =", specialite_selectionnee)
+        print("---------------------------------")
+        print("nb personnes filtrées =", len(self.liste_personnes_filtree))
+        print("liste_traitée:")
+        print(self.liste_personnes_filtree)
+        self.demande_BP_valider_ZD.emit(self.liste_personnes_filtree)
+        print("nb personnes filtrées =", len(self.liste_personnes_filtree))
+        print("-----------------------")

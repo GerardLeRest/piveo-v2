@@ -143,6 +143,8 @@ class ZoneDroiteHaute(QWidget):
         # bouton valider
         self.bout_valider = QPushButton (_("Valider"), self)
         self.bout_valider.setStyleSheet(valider_style)
+        # bulle d'aide
+        self.bout_valider.setToolTip(_("Valider les choix"))
         layout_boutons.addWidget(self.bout_valider)
         self.bout_valider.clicked.connect(self.demande_valider.emit)
         # bouton effacer
