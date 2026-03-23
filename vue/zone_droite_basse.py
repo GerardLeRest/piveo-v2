@@ -21,7 +21,7 @@ DOSSIER_PROJET = Path(__file__).resolve().parent.parent
 class ZoneDroiteBasse(QWidget):
 
     # Signal émis lorsque la liste filtrée de personnes est prête.
-    demande_BP_valider_ZD = Signal(list)
+    demande_BP_valider_ZDB = Signal(list)
 
     def __init__(self, configuration_json, connecteur_bdd):
         super().__init__()
@@ -130,6 +130,6 @@ class ZoneDroiteBasse(QWidget):
         print("nb personnes filtrées =", len(self.liste_personnes_filtree))
         print("liste_traitée:")
         print(self.liste_personnes_filtree)
-        self.demande_BP_valider_ZD.emit(self.liste_personnes_filtree)
+        self.demande_BP_valider_ZDB.emit(self.liste_personnes_filtree)
         print("nb personnes filtrées =", len(self.liste_personnes_filtree))
         print("-----------------------")
