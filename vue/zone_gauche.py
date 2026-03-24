@@ -44,15 +44,17 @@ class ZoneGauche (QWidget):
     demande_debut = Signal()
     demande_fin = Signal()
         
-    def __init__(self, liste_personnes, configuration_json, parent=None):
+    def __init__(self, liste_personnes, configuration_json, fenetre_principale, parent=None):
         """Constructeur de la frame de gauche et de ses éléments"""
         super().__init__(parent)
+        self.fenetre_principale = fenetre_principale # pour référencé la fenetre pour les widgets 
         self.configuration_json = configuration_json
         self.layout_gauche = QVBoxLayout()
         self.liste_personnes = liste_personnes
         self.rang = 0
         self.nbre_pers = len(self.liste_personnes)
         self.repertoire_racine = ""
+        
         self.resize(150, 100)
         self.partie_haute()
         self.partie_milieu()
@@ -247,11 +249,19 @@ class ZoneGauche (QWidget):
 
 
     def maj_num_ordre_Pers(self) -> None:
-        """mettre à jour le numéro d'ordre de la personne"""
-        if self.nbre_pers==len(self.liste_personnes): # apprentissage
-            self.num_Ordre_Pers.setText(str(self.rang+1)+"/"+str(self.nbre_pers))
-        else: # test mental
-            self.num_Ordre_Pers.setText(str(self.rang//2+1)+"/"+str(self.nbre_pers))  
+        """Mettre à jour le numéro d'ordre de la personne."""
+        # suivant la position du bouton
+        if not self.fenetre_principale.act_reponse_cachee.isChecked():  # mode normal (voir init)
+            position = self.rang + 1
+            total = self.nbre_pers
+        else:  # mode deviner
+            print("cachee")
+            position = self.rang // 2 + 1
+            total = self.nbre_pers // 2
+            print(f"position: {position} - total: {total}")
+        # mise à jour de position/total
+        self.num_Ordre_Pers.setText(f"{position}/{total}") 
+
 
     def desactivation_icones(self):
         pass

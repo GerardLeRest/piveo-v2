@@ -52,15 +52,19 @@ class FenetrePrincipale(QMainWindow):
         self.gestionnaire_bdd = GestionnaireBDDPersonnes(connecteur_bdd)
         self.liste_personnes = self.gestionnaire_bdd.liste_personnes
         # zones
-        self.zone_gauche = ZoneGauche(self.liste_personnes, configuration_json)
+        self.zone_gauche = ZoneGauche(self.liste_personnes, configuration_json, self)
         self.zone_droite_haute = ZoneDroiteHaute(configuration_json)
         self.zone_droite_basse = ZoneDroiteBasse(configuration_json, connecteur_bdd)
         # contrôleurs
         self.controleur_zone_gauche = ControleurZoneGauche(self)
         self.controleur_zone_droite_haute = ControleurZoneDroiteHaute(self)
         self.controleur_zone_droite_basse = ControleurZoneDroiteBasse(self.gestionnaire_bdd)
+        
+        
         # connexion zone droite basse -> mise à jour de la liste
-        self.zone_droite_basse.demande_BP_valider_ZDB.connect(self.mettre_a_jour_liste_personnes)
+        # self.zone_droite_basse.demande_BP_valider_ZDB.connect(self.mettre_a_jour_liste_personnes)
+
+
         # barre de menu
         self.barre = self.menuBar()
         # construction interface

@@ -21,7 +21,7 @@ class ControleurZoneGauche:
         self.vue.zone_gauche.demande_debut.connect(self.debut)
         self.vue.zone_gauche.demande_fin.connect(self.fin)
 
-        self.vue.zone_droite_basse.demande_BP_valider_ZD.connect(self.activer_bp)
+        self.vue.zone_droite_basse.demande_BP_valider_ZDB.connect(self.activer_bp_liste)
         
     @Slot()
     def avancer(self) -> None:
@@ -51,6 +51,8 @@ class ControleurZoneGauche:
         self.vue.zone_gauche.maj()
 
     @Slot()
-    def activer_bp(self):
+    def activer_bp_liste(self):
         """activer ls quatre boutons de la zone"""
+        liste_personnes = self.vue.zone_droite_basse.liste_personnes_filtree
+        self.vue.mettre_a_jour_liste_personnes(liste_personnes)
         self.vue.zone_gauche.activer_boutons()

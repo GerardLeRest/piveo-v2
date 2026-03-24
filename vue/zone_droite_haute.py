@@ -27,8 +27,7 @@ class ZoneDroiteHaute(QWidget):
     """ Créer la partie droite haute de l'interface """
 
     demande_suite = Signal()
-    demande_etat_prenom = Signal(bool)  
-    demande_etat_nom = Signal(bool)
+    demande_effacer = Signal()
     demande_valider = Signal()
         
     def __init__(self, configuration_json, fenetre = None):
@@ -162,10 +161,18 @@ class ZoneDroiteHaute(QWidget):
         self.layout_droit_haut.addLayout(layout_boutons)
         # attacher le layout à l'objet
         self.setLayout(self.layout_droit_haut)
-        # désativer les boutons
-        # self.bout_valider.setEnabled(False)
-        # self.bout_effacer.setEnabled(False)
-        # self.bout_suite.setEnabled(False)
+        self.desactiver_boutons()
+
+    def desactiver_boutons(self)->None:
+        """desactiver les trois bouton"""
+        self.bout_valider.setEnabled(False)
+        self.bout_effacer.setEnabled(False)
+        self.bout_suite.setEnabled(False)
+
+    def activer_boutons(self)->None:
+        self.bout_valider.setEnabled(True)
+        self.bout_effacer.setEnabled(True)
+        self.bout_suite.setEnabled(True)
 
     def partie_icones(self)->None:
         """deux icones ok et nok"""

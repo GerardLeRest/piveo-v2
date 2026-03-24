@@ -11,53 +11,54 @@ from modele.modele_combobox import (
     lister_structures,
     construire_liste_structures
 )
-from modele.modele_toolbar import ModeleToolbar
-from vue.zone_droite_basse import ZoneDroiteBasse
+from modele.modele_deviner import ModeleToolbar
+from modele.modele_gauche import ModeleGauche
 
 
 class ControleurToolbar:
 
     def __init__(self, vue):
         self.vue = vue
-        self.vue.act_lecture.triggered.connect(lambda: print("lecture"))
-        self.vue.act_reponse_cachee.triggered.connect(lambda: print("cache"))
-        self.vue.act_test_ecrit.triggered.connect(lambda: print("test"))
+        # vue
+        self.vue.act_lecture.triggered.connect(self.mode_lire)
+        self.vue.act_reponse_cachee.triggered.connect(self.mode_deviner)
+        self.vue.act_test_ecrit.triggered.connect(self.mode_ecrit)
         self.vue.act_recherche.triggered.connect(lambda: print("recherche"))
-        # self.vue.demande_mode_lecture.connect(self.lire)
+        #modele
+        self.modele_toolbar = ModeleToolbar()
+        #self.vue.demande_mode_lecture.connect(self.lire)
         # self.vue.act_aleatoire.toggled.connect(self.gerer_aleatoire)
         # self.vue.demande_mode_reponse_cachee.connect(self.deviner)
         # self.modele_toolbar = ModeleToolbar()
 
-    def lire(self) -> None:
+    def mode_lire(self) -> None:
         """Mode lecture."""
-        # copier véritablement la liste
-        if self.mode_aleatoire:
-            self.vue.zone_gauche.liste_personnes = self.modele_toolbar.melanger(self.vue.zone_droite_basse.liste_personnes.copy())
-            print(self.vue.zone_gauche.liste_personnes)
-        else:
-            self.vue.zone_gauche.liste_personnes = self.vue.zone_droite_basse.liste_personnes.copy()
-        #MAJ
-        self.vue.zone_gauche.rang = 0
-        self.vue.zone_gauche.nbre_pers = len(self.vue.zone_gauche.liste_personnes)
-        self.vue.zone_gauche.maj()
+        liste_personnes = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
+        self.vue.mettre_a_jour_liste_personnes(liste_personnes)
 
-    def deviner(self) -> None:
+    def mode_deviner(self) -> None:
         """Mode deviner."""
-        self.vue.act_aleatoire.setChecked(False)
-
+        #self.vue.act_aleatoire.setChecked(False)
         masquer_prenom = not self.vue.zone_droite_haute.verification_prenom.isChecked()
         masquer_nom = not self.vue.zone_droite_haute.verification_nom.isChecked()
         # insertion des "????"
         liste_affichage = self.modele_toolbar.ajouter_points_interrogations(
-            self.vue.liste_personnes_courante.copy(),
+            self.vue.zone_droite_basse.liste_personnes_filtree.copy(),
             masquer_prenom,
             masquer_nom
         )
         # Mises à jours
         self.vue.zone_gauche.liste_personnes = liste_affichage
         self.vue.zone_gauche.rang = 0
-        self.vue.zone_gauche.nbre_pers = int (len(liste_affichage) / 2) # /2 à cause de ????
+        self.vue.zone_gauche.nbre_pers = len(liste_affichage)
+        # très important
+        self.vue.controleur_zone_gauche.modele_gauche = ModeleGauche(liste_affichage)
         self.vue.zone_gauche.maj()
+
+    def mode_ecrit(self)->None:
+        """rechercer prenonm/nom """
+        liste_personnes = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
+        self.vue.controleur_zone_droite_haute.valider(liste_personnes)
 
     def gerer_aleatoire(self) -> None:
         """Gérer le mode aléatoire."""
