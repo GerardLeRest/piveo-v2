@@ -123,12 +123,12 @@ class ZoneDroiteBasse(QWidget):
         print("specialite_selectionnee =", self.specialite_selectionnee)
 
         if self.specialite_selectionnee == "TOUS":
-            liste_filtrée = self.liste_personnes
+            self.liste_personnes_filtree = self.liste_personnes
         else:
-            liste_filtrée = [
+            self.liste__personnes_filtree = [
                 personne for personne in self.liste_personnes
                 if self.specialite_selectionnee in personne[3]
             ]
 
-        print("liste envoyée =", liste_filtrée)
-        self.liste_personnes_maj.emit(liste_filtrée)
+        print("liste envoyée =", self.liste_personnes_filtree)
+        self.liste_personnes_maj.emit(self.liste_personnes_filtree)

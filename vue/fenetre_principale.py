@@ -26,9 +26,12 @@ from vue.zone_droite_basse import ZoneDroiteBasse
 
 from modele.gestionnaire_BDD import GestionnaireBDD
 from controleur.controleur_general import ControleurGeneral
+from PySide6.QtCore import Signal
 
 class FenetrePrincipale(QMainWindow):
     """Fenêtre principale de l'application."""
+
+    demande_mode_lecture = Signal()
 
     def __init__(self, configuration_json, connecteur_bdd, parent=None):
         super().__init__(parent)
@@ -47,7 +50,8 @@ class FenetrePrincipale(QMainWindow):
         self.controleur_zone_droite_basse = self.controleur_general.controleur_zone_droite_basse
 
         # connexion zone droite basse -> mise à jour de la liste
-        self.zone_droite_basse.liste_personnes_maj.connect(self.mettre_a_jour_liste_personnes)
+        self.zone_droite_basse.liste_personnes_maj.connect(self.controleur_general.mettre_a_jour_liste_personnes)
+
         # barre de menu
         self.barre = self.menuBar()
         # construction interface
@@ -125,18 +129,5 @@ class FenetrePrincipale(QMainWindow):
 
         # sélectionner l'cone "lecture"
         self.act_lecture.setChecked(True)
-
-
-    def mettre_a_jour_liste_personnes(self, liste_personnes: list) -> None:
-        """Mettre à jour la liste affichée dans la zone gauche."""
-        print("signal reçu dans FenetrePrincipale")
-        print("liste reçue =", liste_personnes)
-
-        self.liste_personnes = liste_personnes
-        self.zone_gauche.liste_personnes = liste_personnes
-        self.zone_gauche.rang = 0
-        self.zone_gauche.nbre_pers = len(liste_personnes)
-
-        self.controleur_zone_gauche.charger_liste_personnes(liste_personnes)
-
-        self.zone_gauche.maj()
+        # connexion mode lecture
+        self.act_lecture.triggered.connect(self.demande_mode_lecture.emit)
