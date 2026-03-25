@@ -9,7 +9,7 @@ PRENOM = "Gérard"
 NOM = "Le Rest"
 
 
-class PrenomNom:
+class ModeleZoneDroiteHaute:
 
     def __init__(self, prenom, nom):
         self.prenom = prenom

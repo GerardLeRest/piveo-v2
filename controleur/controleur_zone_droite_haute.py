@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from modele.prenom_nom import PrenomNom
+from modele.modele_zone_droite_haute import ModeleZoneDroiteHaute
 from PySide6.QtCore import Slot
 
 
@@ -48,7 +48,7 @@ class ControleurZoneDroiteHaute:
         prenom = self.vue.zone_droite_haute.prenom_entree.text()
         nom = self.vue.zone_droite_haute.nom_entree.text()
 
-        self.prenom_nom = PrenomNom(prenom, nom)
+        self.prenom_nom = ModeleZoneDroiteHaute(prenom, nom)
 
         resultat_prenom = self.prenom_nom.comparer_prenom(prenom)
         resultat_nom = self.prenom_nom.comparer_nom(nom)

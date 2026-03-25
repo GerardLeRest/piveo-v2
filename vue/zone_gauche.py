@@ -98,16 +98,32 @@ class ZoneGauche (QWidget):
         # Puis ajout dans layout vertical principal
         layout_boutons = QHBoxLayout()
         # boutons de défilement
-        # icones = ["Gnome-go-first.png", "Gnome-go-previous.png", "Gnome-go-next.png", "Gnome-go-last.png"]
-        demandes= [self.demande_debut.emit, self.demande_reculer.emit, self.demande_avancer.emit, self.demande_fin.emit]
-        self.boutons = []
-        for i, icone in enumerate(icones):
-            bouton = QPushButton()
-            bouton.setIcon(QIcon(str(dossier_racine / "ressources"  / "fichiers" / "icones" / icone)))
-            bouton.setIconSize(QSize(24, 24))
-            bouton.clicked.connect(demandes[i])
-            layout_boutons.addWidget(bouton)
-            self.boutons.append(bouton)
+        # bouton début
+        bouton_debut = QPushButton()
+        bouton_debut.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / "Gnome-go-first.png")))
+        bouton_debut.setIconSize(QSize(24, 24))
+        bouton_debut.clicked.connect(self.demande_debut.emit)
+        layout_boutons.addWidget(bouton_debut)
+        # bouton précédent
+        bouton_reculer = QPushButton()
+        bouton_reculer.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / "Gnome-go-previous.png")))
+        bouton_reculer.setIconSize(QSize(24, 24))
+        bouton_reculer.clicked.connect(self.demande_reculer.emit)
+        layout_boutons.addWidget(bouton_reculer)
+        # bouton suivant
+        bouton_avancer = QPushButton()
+        bouton_avancer.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / "Gnome-go-next.png")))
+        bouton_avancer.setIconSize(QSize(24, 24))
+        bouton_avancer.clicked.connect(self.demande_avancer.emit)
+        layout_boutons.addWidget(bouton_avancer)
+        # bouton fin
+        bouton_fin = QPushButton()
+        bouton_fin.setIcon(QIcon(str(dossier_racine / "ressources" / "fichiers" / "icones" / "Gnome-go-last.png")))
+        bouton_fin.setIconSize(QSize(24, 24))
+        bouton_fin.clicked.connect(self.demande_fin.emit)
+        layout_boutons.addWidget(bouton_fin)
+        # permet de traiter les quatre à la fois (activer/desactiver)
+        self.boutons = [bouton_debut, bouton_reculer, bouton_avancer, bouton_fin]
         layout_boutons.setSpacing(6)  # espace horizontal entre flèches
 
         # Bloc vertical (photo + boutons), avec marges
@@ -151,6 +167,16 @@ class ZoneGauche (QWidget):
         self.setLayout(self.layout_gauche)
         #self.maj()
         self.show()
+
+    def activer_boutons(self) -> None:
+        """activer les boutons"""
+        for bouton in self.boutons:
+            bouton.setEnabled(True)
+
+    def desactiver_boutons(self) -> None:
+        """désaciver les bouton"""
+        for bouton in self.boutons:
+            bouton.setEnabled(False)
 
     def effacer_affichage(self) -> None:
         """Effacer les informations affichées"""

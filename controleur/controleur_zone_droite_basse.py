@@ -1,4 +1,4 @@
-from modele.Modele_ComboBox import (
+from modele.modele_zone_droite_basse import (
     creer_specialites,
     lister_structures,
     construire_liste_structures

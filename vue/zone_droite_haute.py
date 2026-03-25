@@ -154,6 +154,8 @@ class ZoneDroiteHaute(QWidget):
         self.bout_suite = QPushButton (_("Suite"), self)
         self.bout_suite.setStyleSheet(suite_style)
         self.bout_suite.clicked.connect(self.demande_suite.emit)
+        # regrouper les boutons
+        self.boutons = [self.bout_valider, self.bout_effacer, self.bout_suite]
         layout_boutons.addWidget(self.bout_suite)
         # espacement au dessus des boutons
         self.layout_droit_haut.addSpacing(10)
@@ -191,6 +193,16 @@ class ZoneDroiteHaute(QWidget):
         self.layout_droit_haut.addWidget(ligne)
         self.setLayout(self.layout_droit_haut)
         self.show()
+
+    def activer_boutons(self) -> None:
+        """activer les boutons"""
+        for bouton in self.boutons:
+            bouton.setEnabled(True)
+
+    def desactiver_boutons(self) -> None:
+        "désactiver les bouton"
+        for bouton in self.boutons:
+            bouton.setEnabled(False)
 
     def afficher_image_check(self, resultat_prenom, resultat_nom)->None:
         """afficher l'icone de la reponse correspondante"""

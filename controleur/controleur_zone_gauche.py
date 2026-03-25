@@ -6,7 +6,7 @@ G Le Rest - 2026
 contrôleur de la zone gauche
 """
 
-from modele.defilement_photos import DefilementPhotos
+from modele.modele_zone_gauche import ModeleZoneGauche
 from PySide6.QtCore import Slot
 
 
@@ -14,7 +14,7 @@ class ControleurZoneGauche:
     def __init__(self, vue):
         print("controleur zone gauche")
         self.vue = vue
-        self.defilement_photos = DefilementPhotos(self.vue.zone_gauche.liste_personnes)
+        self.defilement_photos = ModeleZoneGauche(self.vue.zone_gauche.liste_personnes)
 
         # zone gauche
         self.vue.zone_gauche.demande_avancer.connect(self.avancer)
@@ -48,4 +48,11 @@ class ControleurZoneGauche:
         """Aller à la fin."""
         self.defilement_photos.acceder_dernier()
         self.vue.zone_gauche.rang = self.defilement_photos.rang
+        self.vue.zone_gauche.maj()
+
+    def charger_liste_personnes(self, liste_personnes) -> None:
+        """"""
+        self.defilement_photos = ModeleZoneGauche(liste_personnes)
+        self.vue.zone_gauche.rang = 0
+        self.vue.zone_gauche.liste_personnes = liste_personnes
         self.vue.zone_gauche.maj()

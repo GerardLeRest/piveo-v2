@@ -9,7 +9,7 @@ Manipulation de la base de données SQLite.
 import sqlite3
 
 
-class GestionnaireBDDPersonnes:
+class GestionnaireBDD:
     """Classe de manipulation des données de la base"""
 
     def __init__(self, connexion_bdd: sqlite3.Connection):

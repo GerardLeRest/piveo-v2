@@ -19,7 +19,7 @@ def creer_specialites(liste_personnes: list) -> list:
             if option not in liste_specialites:
                 liste_specialites.append(option)
 
-    liste_specialites = sorted(liste_specialites)
+    liste_specialites.sort()
     liste_specialites.insert(0, "TOUS")
 
     return liste_specialites
@@ -31,14 +31,11 @@ def lister_structures(gestionnaire_bdd_personnes) -> list:
 
 
 def construire_liste_structures(structures: list, configuration_json: dict) -> list:
-    """Construire la liste affichable des structures"""
+    structure = configuration_json["Structure"]
+
     if configuration_json["Organisme"] == "Ecole":
-        phrase = _("- choisir une %(structure)s -") % {
-            "structure": configuration_json["Structure"]
-        }
+        phrase = _("- choisir une %(structure)s -") % {"structure": structure}
     else:
-        phrase = _("- choisir un %(structure)s -") % {
-            "structure": configuration_json["Structure"]
-        }
+        phrase = _("- choisir un %(structure)s -") % {"structure": structure}
 
     return [phrase] + structures

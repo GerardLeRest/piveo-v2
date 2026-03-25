@@ -11,7 +11,7 @@ from PySide6.QtWidgets import QWidget, QComboBox, QGridLayout, QLabel, QVBoxLayo
 from PySide6.QtCore import Qt, Signal
 
 from modele.textes_interface import libelle
-from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
+from modele.gestionnaire_BDD import GestionnaireBDD
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 
 
@@ -26,7 +26,7 @@ class ZoneDroiteBasse(QWidget):
     def __init__(self, configuration_json, connecteur_bdd):
         super().__init__()
         self.configuration_json = configuration_json
-        self.gestionnaire_bdd_personnes = GestionnaireBDDPersonnes(connecteur_bdd)
+        self.gestionnaire_bdd_personnes = GestionnaireBDD(connecteur_bdd)
         self.layout_principal = QVBoxLayout()
         self.controleur_combo_box = ControleurZoneDroiteBasse(self.gestionnaire_bdd_personnes)
         self.liste_personnes = []

@@ -11,26 +11,21 @@ from pathlib import Path
 from builtins import _
 
 from PySide6.QtCore import QSize
-from PySide6.QtGui import QIcon, QAction
+from PySide6.QtGui import QIcon, QAction, QActionGroup
 from PySide6.QtWidgets import (
     QMainWindow,
     QVBoxLayout,
     QWidget,
     QHBoxLayout,
-    QToolBar
+    QToolBar,
 )
 
 from vue.zone_gauche import ZoneGauche
 from vue.zone_droite_haute import ZoneDroiteHaute
 from vue.zone_droite_basse import ZoneDroiteBasse
 
-from modele.gestionnaire_BDD_personnes import GestionnaireBDDPersonnes
-from modele.defilement_photos import DefilementPhotos
-
-from controleur.controleur_zone_gauche import ControleurZoneGauche
-from controleur.controleur_zone_droite_haute import ControleurZoneDroiteHaute
-from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
-
+from modele.gestionnaire_BDD import GestionnaireBDD
+from controleur.controleur_general import ControleurGeneral
 
 class FenetrePrincipale(QMainWindow):
     """Fenêtre principale de l'application."""
@@ -39,16 +34,18 @@ class FenetrePrincipale(QMainWindow):
         super().__init__(parent)
 
         self.configuration_json = configuration_json
-        self.gestionnaire_bdd = GestionnaireBDDPersonnes(connecteur_bdd)
+        self.gestionnaire_bdd = GestionnaireBDD(connecteur_bdd)
         self.liste_personnes = self.gestionnaire_bdd.liste_personnes
         # zones
         self.zone_gauche = ZoneGauche(self.liste_personnes, configuration_json)
         self.zone_droite_haute = ZoneDroiteHaute(configuration_json)
         self.zone_droite_basse = ZoneDroiteBasse(configuration_json, connecteur_bdd)
         # contrôleurs
-        self.controleur_zone_gauche = ControleurZoneGauche(self)
-        self.controleur_zone_droite_haute = ControleurZoneDroiteHaute(self)
-        self.controleur_zone_droite_basse = ControleurZoneDroiteBasse(self.gestionnaire_bdd)
+        self.controleur_general = ControleurGeneral(self, self.gestionnaire_bdd)
+        self.controleur_zone_gauche = self.controleur_general.controleur_zone_gauche
+        self.controleur_zone_droite_haute = self.controleur_general.controleur_zone_droite_haute
+        self.controleur_zone_droite_basse = self.controleur_general.controleur_zone_droite_basse
+
         # connexion zone droite basse -> mise à jour de la liste
         self.zone_droite_basse.liste_personnes_maj.connect(self.mettre_a_jour_liste_personnes)
         # barre de menu
@@ -95,6 +92,19 @@ class FenetrePrincipale(QMainWindow):
         self.act_recherche = QAction(_("Recherche"), self)
         self.act_aleatoire = QAction(_("Mode aléatoire"), self)
 
+        self.act_lecture.setCheckable(True)
+        self.act_reponse_cachee.setCheckable(True)
+        self.act_test_ecrit.setCheckable(True)
+        self.act_recherche.setCheckable(True)
+        self.act_aleatoire.setCheckable(True)
+
+        self.groupe_modes = QActionGroup(self)
+        self.groupe_modes.setExclusive(True)
+        self.groupe_modes.addAction(self.act_lecture)
+        self.groupe_modes.addAction(self.act_reponse_cachee)
+        self.groupe_modes.addAction(self.act_test_ecrit)
+        self.groupe_modes.addAction(self.act_recherche)
+
         self.act_lecture.setIcon(QIcon(str(self.dossier_icones / "oeil.svg")))
         self.act_reponse_cachee.setIcon(QIcon(str(self.dossier_icones / "oeil_cache.svg")))
         self.act_test_ecrit.setIcon(QIcon(str(self.dossier_icones / "crayon.svg")))
@@ -113,6 +123,10 @@ class FenetrePrincipale(QMainWindow):
         self.act_recherche.setToolTip(_("Rechercher une personne"))
         self.act_aleatoire.setToolTip(_("Mode aléatoire"))
 
+        # sélectionner l'cone "lecture"
+        self.act_lecture.setChecked(True)
+
+
     def mettre_a_jour_liste_personnes(self, liste_personnes: list) -> None:
         """Mettre à jour la liste affichée dans la zone gauche."""
         print("signal reçu dans FenetrePrincipale")
@@ -123,6 +137,6 @@ class FenetrePrincipale(QMainWindow):
         self.zone_gauche.rang = 0
         self.zone_gauche.nbre_pers = len(liste_personnes)
 
-        self.controleur_zone_gauche.defilement_photos = DefilementPhotos(liste_personnes)
+        self.controleur_zone_gauche.charger_liste_personnes(liste_personnes)
 
         self.zone_gauche.maj()
