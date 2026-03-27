@@ -21,7 +21,7 @@ DOSSIER_PROJET = Path(__file__).resolve().parent.parent
 class ZoneDroiteBasse(QWidget):
 
     # Signal émis lorsque la liste filtrée de personnes est prête.
-    liste_personnes_maj = Signal(list)
+    demande_envoi_liste_personnes = Signal(list)
 
     def __init__(self, configuration_json, connecteur_bdd):
         super().__init__()
@@ -30,6 +30,7 @@ class ZoneDroiteBasse(QWidget):
         self.layout_principal = QVBoxLayout()
         self.controleur_combo_box = ControleurZoneDroiteBasse(self.gestionnaire_bdd_personnes)
         self.liste_personnes = []
+        self.liste_personnes_filtree=[]
         self.liste_specialites = []
         self.specialite_selectionnee = "TOUS"
         self.initialiser()
@@ -87,7 +88,7 @@ class ZoneDroiteBasse(QWidget):
         self.comboBox_droite.currentTextChanged.connect(self.choisir_specialite)
         self.bouton_valider.clicked.connect(self.valider_choix)
         # Émission initiale de la liste courante
-        self.liste_personnes_maj.emit(self.liste_personnes)
+        self.demande_envoi_liste_personnes.emit(self.liste_personnes)
         # Initialisation de la combobox des spécialités
         self.creer_combo_specialites()
 
@@ -125,10 +126,10 @@ class ZoneDroiteBasse(QWidget):
         if self.specialite_selectionnee == "TOUS":
             self.liste_personnes_filtree = self.liste_personnes
         else:
-            self.liste__personnes_filtree = [
+            self.liste_personnes_filtree = [
                 personne for personne in self.liste_personnes
                 if self.specialite_selectionnee in personne[3]
             ]
 
         print("liste envoyée =", self.liste_personnes_filtree)
-        self.liste_personnes_maj.emit(self.liste_personnes_filtree)
+        self.demande_envoi_liste_personnes.emit(self.liste_personnes_filtree)

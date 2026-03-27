@@ -249,6 +249,7 @@ class ZoneGauche (QWidget):
 
     def maj_num_ordre_Pers(self) -> None:
         """mettre à jour le numéro d'ordre de la personne"""
+        print(f"nbre_pers: {self.nbre_pers} et len_liste: {len(self.liste_personnes)}")
         if self.nbre_pers==len(self.liste_personnes): # apprentissage
             self.num_Ordre_Pers.setText(str(self.rang+1)+"/"+str(self.nbre_pers))
         else: # test mental

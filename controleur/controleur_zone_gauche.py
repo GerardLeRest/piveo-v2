@@ -50,10 +50,18 @@ class ControleurZoneGauche:
         self.vue.zone_gauche.rang = self.modele_zone_gauche.rang
         self.vue.zone_gauche.maj()
 
-    def charger_liste(self, liste_personnes: list) -> None:
+    def charger_liste(self, liste_personnes: list, mode:str) -> None:
         """Charger la liste des personnes."""
         self.modele_zone_gauche = ModeleZoneGauche(liste_personnes)
         self.vue.zone_gauche.liste_personnes = liste_personnes
         self.vue.zone_gauche.rang = 0
-        self.vue.zone_gauche.nbre_pers = len(liste_personnes)
+        # gestion des ??? qui doublent la logueur de la liste
+        if mode == "deviner":
+            self.vue.zone_gauche.nbre_pers = len(liste_personnes) // 2
+        else:
+            self.vue.zone_gauche.nbre_pers = len(liste_personnes)
         self.vue.zone_gauche.maj()
+
+    def devinner_reponses(self, liste):
+        """mode deviner"""
+        return self.modele_zone_gauche.ajouter_interrogations(liste)

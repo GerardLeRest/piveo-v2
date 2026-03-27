@@ -3,32 +3,21 @@
 
 """
 G Le Rest - 2026
-Traitement des noms et des prenoms
+Traitement des noms et des prénoms
 """
-PRENOM = "Gérard"
-NOM = "Le Rest"
-
 
 class ModeleZoneDroiteHaute:
 
-    def __init__(self, prenom, nom):
-        self.prenom = prenom
-        self.nom = nom
-        self.comparer_prenom(prenom)
-        self.comparer_nom(nom)
+    def __init__(self, prenom_attendu: str, nom_attendu: str) -> None:
+        self.prenom_attendu = prenom_attendu
+        self.nom_attendu = nom_attendu
 
-    def comparer_prenom(self, prenom)->bool:
-        "tester la validité du prénom"
-        print(f"prénom étudié: {prenom}")
-        if PRENOM == prenom:
-            return True
-        else:
-            return False
-        
-    def comparer_nom(self, nom)->bool:
-        "tester la validité du nom"
-        print(f"nom étudié: {nom}")
-        if NOM == nom:
-            return True
-        else:
-            return False
+    def comparer_prenom(self, prenom_saisi: str) -> bool:
+        """Tester la validité du prénom."""
+        print(f"prénom étudié: {prenom_saisi}")
+        return prenom_saisi == self.prenom_attendu
+
+    def comparer_nom(self, nom_saisi: str) -> bool:
+        """Tester la validité du nom."""
+        print(f"nom étudié: {nom_saisi}")
+        return nom_saisi == self.nom_attendu

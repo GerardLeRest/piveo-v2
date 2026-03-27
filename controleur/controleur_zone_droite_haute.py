@@ -1,56 +1,52 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 from modele.modele_zone_droite_haute import ModeleZoneDroiteHaute
+from modele.modele_recherche import ModeleRecherche
 from PySide6.QtCore import Slot
 
-
 class ControleurZoneDroiteHaute:
-    def __init__(self, vue):
+    """Contrôleur de la zone droite haute."""
+
+    def __init__(self, vue, controleur_zone_gauche) -> None:
         self.vue = vue
+        self.controleur_zone_gauche = controleur_zone_gauche
 
-        # zone droite haute
-        self.vue.zone_droite_haute.demande_suite.connect(self.avancer)
-        self.vue.zone_droite_haute.demande_etat_prenom.connect(self.widgets_prenom)
-        self.vue.zone_droite_haute.demande_etat_nom.connect(self.widgets_nom)
-        self.vue.zone_droite_haute.demande_valider.connect(self.recuperation_ecrite)
-
-    @Slot()
-    def avancer(self) -> None:
-        """Passer à la personne suivante."""
-        self.vue.controleur_zone_gauche.avancer()
-
-    @Slot(bool)
-    def widgets_prenom(self, etat: bool) -> None:
-        """Activer ou désactiver le champ prénom."""
-        if etat:
-            self.vue.zone_gauche.prenom.setEnabled(True)
-            self.vue.zone_gauche.prenom.setText("Prénom")
-        else:
-            self.vue.zone_gauche.prenom.setText("")
-            self.vue.zone_gauche.prenom.setEnabled(False)
-
-    @Slot(bool)
-    def widgets_nom(self, etat: bool) -> None:
-        """Activer ou désactiver le champ nom."""
-        if etat:
-            self.vue.zone_gauche.nom.setEnabled(True)
-            self.vue.zone_gauche.nom.setText("Nom")
-        else:
-            self.vue.zone_gauche.nom.setText("")
-            self.vue.zone_gauche.nom.setEnabled(False)
+        self.vue.zone_droite_haute.demande_valider.connect(self.action_valider)
+        self.vue.zone_droite_haute.demande_effacer.connect(self.effacer)
+        self.vue.zone_droite_haute.demande_suite.connect(self.suite)
 
     @Slot()
-    def recuperation_ecrite(self) -> None:
-        """Récupérer le prénom et le nom saisis."""
-        print("recuperation_ecrite")
+    def action_valider(self) -> None:
+        """Choisir entre validation ou recherche selon le mode actif."""
+        if self.vue.act_ecrit.isChecked():
+            self.valider()
+        elif self.vue.act_recherche.isChecked():
+            liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
+            liste_personnes = self.rechercher_personnes(liste)
+            self.controleur_zone_gauche.charger_liste(liste_personnes, None)
 
-        prenom = self.vue.zone_droite_haute.prenom_entree.text()
-        nom = self.vue.zone_droite_haute.nom_entree.text()
+    @Slot()
+    def valider(self) -> None:
+        prenom_saisi, nom_saisi = self.vue.zone_droite_haute.recuperer_saisie()
+        personne = self.vue.zone_gauche.liste_personnes[self.vue.zone_gauche.rang]
+        prenom_attendu = personne[0]
+        nom_attendu = personne[1]
 
-        self.prenom_nom = ModeleZoneDroiteHaute(prenom, nom)
+        modele = ModeleZoneDroiteHaute(prenom_attendu, nom_attendu)
 
-        resultat_prenom = self.prenom_nom.comparer_prenom(prenom)
-        resultat_nom = self.prenom_nom.comparer_nom(nom)
+        resultat_prenom = modele.comparer_prenom(prenom_saisi)
+        resultat_nom = modele.comparer_nom(nom_saisi)
 
         self.vue.zone_droite_haute.afficher_image_check(resultat_prenom, resultat_nom)
+
+    @Slot()
+    def effacer(self) -> None:
+        self.vue.zone_droite_haute.prenom_entree.clear()
+        self.vue.zone_droite_haute.nom_entree.clear()
+
+    @Slot()
+    def suite(self) -> None:
+        self.controleur_zone_gauche.avancer()
+
+    def rechercher_personnes(self, liste: list) -> list:
+        """rechercher suivant les prenoms/noms"""
+        modele_recherche = ModeleRecherche(self.vue, liste)
+        return modele_recherche.trouver()

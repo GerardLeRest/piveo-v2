@@ -1,54 +1,73 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
 
 """
-rechercher une ou plusieurs personnes dans 
-l'établissement ou test écrit
+Rechercher une ou plusieurs personnes dans
+l'établissement ou effectuer un test écrit.
 """
 
-
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QGridLayout, QLabel, QLineEdit, QHBoxLayout,
-                               QPushButton, QApplication, QFrame, QCheckBox)
+from PySide6.QtWidgets import (
+    QWidget, QVBoxLayout, QGridLayout, QLabel, QLineEdit, QHBoxLayout,
+    QPushButton, QApplication, QFrame, QCheckBox
+)
 from PySide6.QtGui import QPixmap
-from PySide6.QtCore import Signal
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Signal, Qt
+
 # ⚠️ IMPORTANT
 # fonctionnement global
 from builtins import _
+
 # python3 -m vue.zone_droite_haute (test de la classe)
-#_ = lambda x: x 
-import os, sys
+# _ = lambda x: x
+
+import os
+import sys
 
 
+REPERTOIRE_RACINE = os.path.dirname(os.path.abspath(__file__))  # répertoire du fichier py
 
-REPERTOIRE_RACINE=os.path.dirname(os.path.abspath(__file__)) # répetoire du fichier pyw
 
 class ZoneDroiteHaute(QWidget):
-    """ Créer la partie droite haute de l'interface """
+    """Créer la partie droite haute de l'interface."""
 
-    demande_suite = Signal()
-    demande_etat_prenom = Signal(bool)  
-    demande_etat_nom = Signal(bool)
+    # Signaux utiles vers le contrôleur
     demande_valider = Signal()
-        
-    def __init__(self, configuration_json, fenetre = None):
-        """Constructeur de la frame de droite et de ses éléments"""
-        super().__init__(fenetre)  # ← Important 
-        self.configuration_json = configuration_json # configuration de l'interface - json
-        self.layout_droit_haut = QVBoxLayout() 
+    demande_effacer = Signal ()
+    demande_suite = Signal()
+
+    def __init__(self, configuration_json, fenetre=None) -> None:
+        """Constructeur de la zone droite haute."""
+        super().__init__(fenetre)
+
+        # configuration générale de l'interface (json)
+        self.configuration_json = configuration_json
+
+        # layout principal de la zone droite haute
+        self.layout_droit_haut = QVBoxLayout()
+
+        # création des différentes parties
         self.partie_prenom()
         self.partie_nom()
         self.partie_boutons()
         self.partie_icones()
+
+        # état initial des widgets
         self.etat_initial()
 
-    def partie_prenom(self)->None:
-        """zone du prenom"""
-        # prenom
+        # attacher le layout principal au widget
+        self.setLayout(self.layout_droit_haut)
+
+    def partie_prenom(self) -> None:
+        """Créer la zone du prénom."""
+        # grille contenant prénom + nom
         self.layout_grille = QGridLayout()
+
+        # label prénom
         self.label_prenom = QLabel(_("Prénom"))
-        self.layout_grille.addWidget(self.label_prenom,0,0)
-        self.prenom_entree = QLineEdit()  
+        self.layout_grille.addWidget(self.label_prenom, 0, 0)
+
+        # champ de saisie prénom
+        self.prenom_entree = QLineEdit()
         self.prenom_entree.setStyleSheet("""
             QLineEdit {
                 background-color: white;
@@ -58,18 +77,23 @@ class ZoneDroiteHaute(QWidget):
             }
         """)
         self.prenom_entree.setPlaceholderText(_("Indiquez votre prénom"))
-        self.layout_grille.addWidget(self.prenom_entree,0, 1)
-        # checkBox "prenom"
+        self.layout_grille.addWidget(self.prenom_entree, 0, 1)
+
+        # case à cocher pour activer/désactiver le prénom
         self.verification_prenom = QCheckBox()
-        self.layout_grille.addWidget(self.verification_prenom,0, 2)
+        self.layout_grille.addWidget(self.verification_prenom, 0, 2)
+
+        # changement d'état de la case
         self.verification_prenom.stateChanged.connect(self.etat_widgets_prenom)
 
-    def partie_nom(self)->None:
-        "zone du nom"
-        # nom
+    def partie_nom(self) -> None:
+        """Créer la zone du nom."""
+        # label nom
         self.label_nom = QLabel(_("Nom"))
-        self.layout_grille.addWidget(self.label_nom,1,0)
-        self.nom_entree = QLineEdit()  
+        self.layout_grille.addWidget(self.label_nom, 1, 0)
+
+        # champ de saisie nom
+        self.nom_entree = QLineEdit()
         self.nom_entree.setStyleSheet("""
             QLineEdit {
                 background-color: white;
@@ -79,16 +103,24 @@ class ZoneDroiteHaute(QWidget):
             }
         """)
         self.nom_entree.setPlaceholderText(_("Indiquez votre nom"))
-        self.layout_grille.addWidget(self.nom_entree,1, 1)
-        # checkBox "prenom"
+        self.layout_grille.addWidget(self.nom_entree, 1, 1)
+
+        # case à cocher pour activer/désactiver le nom
         self.verification_nom = QCheckBox()
-        self.layout_grille.addWidget(self.verification_nom,1, 2)
+        self.layout_grille.addWidget(self.verification_nom, 1, 2)
+
+        # changement d'état de la case
         self.verification_nom.stateChanged.connect(self.etat_widgets_nom)
+
+        # ajout de la grille au layout principal
         self.layout_droit_haut.addLayout(self.layout_grille)
         self.layout_droit_haut.addSpacing(5)
 
-    def partie_boutons(self)->None:
-        """zone boutons - QHBoxLayout"""
+    
+
+    def partie_boutons(self) -> None:
+        """Créer la zone des boutons."""
+        # style du bouton valider
         valider_style = """
             QPushButton {
                 background-color: #76aeba;
@@ -106,6 +138,7 @@ class ZoneDroiteHaute(QWidget):
             }
         """
 
+        # style du bouton effacer
         effacer_style = """
             QPushButton {
                 background-color: #cfd8dc;
@@ -122,6 +155,7 @@ class ZoneDroiteHaute(QWidget):
             }
         """
 
+        # style du bouton suite
         suite_style = """
             QPushButton {
                 background-color: #7aaeb1;
@@ -136,193 +170,183 @@ class ZoneDroiteHaute(QWidget):
             QPushButton:pressed {
                 background-color: #5c8c8f;
             }
-            """
-        
-        # boutons
+        """
+
+        # layout horizontal des boutons
         layout_boutons = QHBoxLayout()
+
         # bouton valider
-        self.bout_valider = QPushButton (_("Valider"), self)
+        self.bout_valider = QPushButton(_("Valider"), self)
         self.bout_valider.setStyleSheet(valider_style)
-        layout_boutons.addWidget(self.bout_valider)
         self.bout_valider.clicked.connect(self.demande_valider.emit)
+        layout_boutons.addWidget(self.bout_valider)
+
         # bouton effacer
-        self.bout_effacer = QPushButton (_("Effacer"), self)
+        self.bout_effacer = QPushButton(_("Effacer"), self)
         self.bout_effacer.setStyleSheet(effacer_style)
-        layout_boutons.addWidget(self.bout_effacer)
         self.bout_effacer.clicked.connect(self.effacer_reponses)
-        # bouton Suite
-        self.bout_suite = QPushButton (_("Suite"), self)
+        layout_boutons.addWidget(self.bout_effacer)
+
+        # bouton suite
+        self.bout_suite = QPushButton(_("Suite"), self)
         self.bout_suite.setStyleSheet(suite_style)
         self.bout_suite.clicked.connect(self.demande_suite.emit)
-        # regrouper les boutons
-        self.boutons = [self.bout_valider, self.bout_effacer, self.bout_suite]
         layout_boutons.addWidget(self.bout_suite)
-        # espacement au dessus des boutons
+
+        # liste pratique pour activer/désactiver les boutons en bloc
+        self.boutons = [self.bout_valider, self.bout_effacer, self.bout_suite]
+
+        # ajout au layout principal
         self.layout_droit_haut.addSpacing(10)
         self.layout_droit_haut.addLayout(layout_boutons)
-        # attacher le layout à l'objet
-        self.setLayout(self.layout_droit_haut)
-        # désativer les boutons
-        # self.bout_valider.setEnabled(False)
-        # self.bout_effacer.setEnabled(False)
-        # self.bout_suite.setEnabled(False)
 
-    def partie_icones(self)->None:
-        """deux icones ok et nok"""
-        # partie du bas - 2 images (réusssite à gauhe et score à droite)
+    def partie_icones(self) -> None:
+        """Créer la zone d'affichage de l'icône et du score."""
+        # layout horizontal du bas
         layout_images = QHBoxLayout()
-        # image de validation check ou cross) -Image vide au départ
+
+        # image de validation (check ou cross)
         self.label_image_gauche = QLabel()
         self.label_image_gauche.setFixedSize(32, 32)
         layout_images.addWidget(self.label_image_gauche)
-        # espace entre l'image et le compteur de bonnes réponses
-        layout_images.addStretch()  # ← ajoute un espace flexible
-        # affichage des bonnes réponses
-        self.nbre_rep = QLabel(_("0/0")) 
-        self.nbre_rep.setStyleSheet("color: #6c7a80;font-size: 30px;")
-        self.nbre_rep_exactes=0 
+
+        # espace flexible entre image et score
+        layout_images.addStretch()
+
+        # affichage du nombre de bonnes réponses
+        self.nbre_rep = QLabel(_("0/0"))
+        self.nbre_rep.setStyleSheet("color: #6c7a80; font-size: 30px;")
+        self.nbre_rep_exactes = 0
         layout_images.addWidget(self.nbre_rep)
+
+        # ajout au layout principal
         self.layout_droit_haut.addLayout(layout_images)
         self.layout_droit_haut.addSpacing(10)
-        # Ligne horizontale continue
+
+        # ligne horizontale de séparation
         ligne = QFrame()
         ligne.setFrameShape(QFrame.HLine)
         ligne.setFrameShadow(QFrame.Plain)
         ligne.setLineWidth(1)
         ligne.setStyleSheet("color: black;")
         self.layout_droit_haut.addWidget(ligne)
-        self.setLayout(self.layout_droit_haut)
-        self.show()
 
     def activer_boutons(self) -> None:
-        """activer les boutons"""
+        """Activer les boutons."""
         for bouton in self.boutons:
             bouton.setEnabled(True)
 
     def desactiver_boutons(self) -> None:
-        "désactiver les bouton"
+        """Désactiver les boutons."""
         for bouton in self.boutons:
             bouton.setEnabled(False)
 
-    def afficher_image_check(self, resultat_prenom, resultat_nom)->None:
-        """afficher l'icone de la reponse correspondante"""
+    def afficher_image_check(self, resultat_prenom: bool, resultat_nom: bool) -> None:
+        """Afficher l'icône correspondant au résultat."""
         self.label_image_gauche.show()
+
         resultat = False
-        # vérications bonnes, nom et prenoms selectionnés
-        if (self.verification_prenom.isChecked()
+
+        # vérification correcte si prénom et nom sont demandés
+        if (
+            self.verification_prenom.isChecked()
             and self.verification_nom.isChecked()
             and resultat_prenom
-            and resultat_nom):
+            and resultat_nom
+        ):
             resultat = True
-        # vérication bonne, prenom selectionné
-        elif (self.verification_prenom.isChecked()
+
+        # vérification correcte si seul le prénom est demandé
+        elif (
+            self.verification_prenom.isChecked()
             and not self.verification_nom.isChecked()
-            and resultat_prenom):
+            and resultat_prenom
+        ):
             resultat = True
-        # vérication bonne, nom selectionné
-        elif (not self.verification_prenom.isChecked()
+
+        # vérification correcte si seul le nom est demandé
+        elif (
+            not self.verification_prenom.isChecked()
             and self.verification_nom.isChecked()
-            and resultat_nom):
+            and resultat_nom
+        ):
             resultat = True
+
         else:
             resultat = False
+
         # sélection de l'image à afficher
         if resultat:
             pixmap = QPixmap("ressources/fichiers/icones/check.png")
         else:
             pixmap = QPixmap("ressources/fichiers/icones/cross.png")
+
         self.label_image_gauche.setPixmap(
-            pixmap.scaled(40, 40, Qt.KeepAspectRatio, Qt.SmoothTransformation))
-    
-    def cacher_image_check(self)->None:
+            pixmap.scaled(40, 40, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        )
+
+    def cacher_image_check(self) -> None:
+        """Cacher l'image de résultat."""
         self.label_image_gauche.hide()
 
-    def etat_initial(self)->None:
-        """initialiser les widgets au démarrage"""
+    def etat_initial(self) -> None:
+        """Initialiser les widgets au démarrage."""
+        # cases décochées au départ
+        self.verification_prenom.setChecked(False)
+        self.verification_nom.setChecked(False)
+
+        # widgets prénom désactivés
         self.label_prenom.setEnabled(False)
         self.prenom_entree.setEnabled(False)
+
+        # widgets nom désactivés
         self.label_nom.setEnabled(False)
         self.nom_entree.setEnabled(False)
 
-    def etat_widgets_prenom(self)->None:
-        """activer/désactiver widgets relatif au prénom"""
+        # image cachée au départ
+        self.label_image_gauche.hide()
+
+    def etat_widgets_prenom(self) -> None:
+        """Activer/désactiver les widgets relatifs au prénom."""
         if self.verification_prenom.isChecked():
             self.label_prenom.setEnabled(True)
             self.prenom_entree.setEnabled(True)
-            self.demande_etat_prenom.emit(True) # voir le controleur
         else:
             self.label_prenom.setEnabled(False)
             self.prenom_entree.setEnabled(False)
-            self.demande_etat_prenom.emit(False)
-            
-    def etat_widgets_nom(self)->None:
-        """activer/désactiver les widgets relatif à nom"""
+            self.prenom_entree.clear()
+
+    def etat_widgets_nom(self) -> None:
+        """Activer/désactiver les widgets relatifs au nom."""
         if self.verification_nom.isChecked():
             self.label_nom.setEnabled(True)
             self.nom_entree.setEnabled(True)
-            self.demande_etat_nom.emit(True) # voir le controleur
         else:
             self.label_nom.setEnabled(False)
             self.nom_entree.setEnabled(False)
-            self.demande_etat_nom.emit(False)
+            self.nom_entree.clear()
 
     def effacer_reponses(self) -> None:
-        """effacer réponses"""
-        # effacer champs des noms et prénom
-        self.prenom_entree.setEnabled(True)
+        """Effacer les réponses saisies et l'icône de résultat."""
+        # effacer les champs de saisie
         self.prenom_entree.clear()
-        self.nom_entree.setEnabled(True)
         self.nom_entree.clear()
-        # effacer icone
-        self.label_image_gauche.clear() 
-        # désactiver - Nbres bonne réponse  
-        self.nbre_rep.setEnabled(False) 
-    
-    # -------------------------------------------    
-                
-    # def config_rechercher(self) -> None:
-    #     """configurer - mode Rechercher"""
-    #     # changer couleur label
-    #     self.label_prenom.setStyleSheet("color: black;")
-    #     self.label_nom.setStyleSheet("color: black;")
-    #     # Désactiver l'affichage des bonnes réponses
-    #     self.Des_Affich_Rep()
-    #     # activer/désactiver boutons 
-    #     self.bout_valider.setEnabled(True)
-    #     self.bout_effacer.setEnabled(True)
-    #     self.bout_suite.setEnabled(False)
-    
-    # def Des_Affich_Rep(self) -> None:
-    #     """ désactiver l'affichage des bonnes réponses"""
-    #     self.nbre_rep.setStyleSheet("color: grey;font-size: 30px") #nbre bonnes reponses en gris
-    #     self.nbre_rep_exactes=0  # nbre de réponses exactes
-    #     # maj nbrebonnes réponses
-    #     self.nbre_rep.setText(f"{self.nbre_rep_exactes}/0")   
-    
-    # def des_cadre_Dr_Ha(self) -> None:
-    #     """désactiver des boutons et les entry de la frameDB"""     
-    #     self.prenom_entree.setEnabled(False)
-    #     self.nom_entree.setEnabled(False)
-    #     self.bout_valider.setEnabled(False)
-    #     self.bout_effacer.setEnabled(False)
-    #     self.bout_suite.setEnabled(False)
-    #     self.nbre_rep.setStyleSheet("color: grey;font-size: 30px")
-        
-        
-    # def config_test_ecrit(self) -> None:
-    #     """ configurer - Test écrit """
-    #     # changer couleur label
-    #     self.label_prenom.setStyleSheet("color: black;")
-    #     self.label_nom.setStyleSheet("color: black;")
-    #     self.nom_entree.setStyleSheet("color: black") 
-    #     self.nbre_rep.setStyleSheet("color: back; font-size:30px;") 
-    #     # effacer réponses
-    #     self.effacer_reponses()        
-    #     # activer boutons 
-    #     self.bout_valider.setEnabled(True)
-    #     self.bout_effacer.setEnabled(True)
-    #     self.bout_suite.setEnabled(True)   
-        
+
+        # effacer puis cacher l'icône
+        self.label_image_gauche.clear()
+        self.label_image_gauche.hide()
+
+    def recuperer_saisie(self) -> tuple[str, str]:
+        """Récupérer le prénom et le nom saisis."""
+        prenom_saisi = self.prenom_entree.text().strip()
+        nom_saisi = self.nom_entree.text().strip()
+        return prenom_saisi, nom_saisi
+
+    def champs_actifs(self) -> tuple[bool, bool]:
+        """Indiquer si les champs prénom et nom sont demandés."""
+        return self.verification_prenom.isChecked(), self.verification_nom.isChecked()
+
+
 # ----------------------------------------------------
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -37,4 +37,16 @@ class ModeleZoneGauche:
         if self.liste_personnes:
             self.rang = len(self.liste_personnes) - 1
         int(self.rang)
+
+    def ajouter_interrogations(self, liste_personnes):
+        """ajouter des blancs ou des ??? dans la liste"""
+        i = 0
+        while i < len(liste_personnes):
+            tab = liste_personnes[i].copy()
+            tab[0] = "???"
+            tab[1] = "???"
+            liste_personnes.insert(i, tab)
+            i = i + 2
+        print("liste: ", liste_personnes)
+        return liste_personnes
         
