@@ -2,11 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug zone_gauche",
+            "name": "Piveo Debug",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/vues/zone_gauche.py",
-            "cwd": "${workspaceFolder}",
+            "program": "/home/gerard/Bureau/piveo-v2/piveo.pyw",
             "console": "integratedTerminal"
         }
     ]

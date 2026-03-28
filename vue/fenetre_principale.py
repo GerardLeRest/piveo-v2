@@ -35,6 +35,7 @@ class FenetrePrincipale(QMainWindow):
     demande_mode_deviner = Signal()
     demande_mode_ecrit = Signal()
     demande_mode_recherche = Signal()
+    demande_mode_aleatoire = Signal(bool)
 
     def __init__(self, configuration_json, connecteur_bdd, parent=None):
         super().__init__(parent)
@@ -132,9 +133,13 @@ class FenetrePrincipale(QMainWindow):
 
         # sélectionner l'cone "lecture"
         self.act_lecture.setChecked(True)
+        # rendre état checkable (niveau 0 ou 1)
+        self.act_aleatoire.setCheckable(True)
+
         # connexion 
         self.act_lecture.triggered.connect(self.demande_mode_lecture.emit)
         self.act_deviner.triggered.connect(self.demande_mode_deviner.emit)
         self.act_ecrit.triggered.connect(self.demande_mode_ecrit.emit)
         self.act_recherche.triggered.connect(self.demande_mode_recherche.emit)
+        self.act_aleatoire.toggled.connect(self.demande_mode_aleatoire.emit)
 

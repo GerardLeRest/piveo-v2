@@ -57,6 +57,7 @@ class GestionnaireBDD:
                 photo
             ]
             self.liste_personnes.append(personne)
+        return self.liste_personnes
 
     def lister_structures(self):
         """

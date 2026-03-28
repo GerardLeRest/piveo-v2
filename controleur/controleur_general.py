@@ -5,12 +5,16 @@ from controleur.controleur_zone_gauche import ControleurZoneGauche
 from controleur.controleur_zone_droite_haute import ControleurZoneDroiteHaute
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 from PySide6.QtCore import Slot
+import random
 
 
 class ControleurGeneral:
     def __init__(self, vue, gestionnaire_bdd):
         self.vue = vue
         self.gestionnaire_bdd = gestionnaire_bdd
+        self.mode = ""
+        self.aleatoire=""
+        
 
         # Construction des trois contrôleurs locaux
         self.controleur_zone_gauche = ControleurZoneGauche(self.vue)
@@ -33,36 +37,47 @@ class ControleurGeneral:
         self.vue.demande_mode_deviner.connect(self.mode_deviner)
         self.vue.demande_mode_ecrit.connect(self.mode_ecrit)
         self.vue.demande_mode_recherche.connect(self.mode_recherche)
+        self.vue.demande_mode_aleatoire.connect(self.mode_aleatoire)
 
-        # bouton valider : rediriger vers écrit ou recherche selon le mode
+        # bouton valider
         self.vue.zone_droite_haute.demande_valider.connect(self.action_valider)
 
     @Slot()
     def action_valider(self) -> None:
-        """Choisir entre validation écrite et recherche."""
-        if self.vue.act_ecrit.isChecked():
+        """Traiter le bouton Valider selon le mode courant."""
+        if self.mode == "ecrit":
             self.controleur_zone_droite_haute.valider()
 
-        elif self.vue.act_recherche.isChecked():
-            liste = self.vue.zone_droite_basse.liste_personnes.copy()
+        elif self.mode == "recherche":
+            liste = self.gestionnaire_bdd.charger_personnes()
             liste_personnes = self.controleur_zone_droite_haute.rechercher_personnes(liste)
             self.controleur_zone_gauche.charger_liste(liste_personnes, "recherche")
 
     def mode_lecture(self) -> None:
         """Activer le mode lecture."""
+        self.mode = "lecture"
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
-        self.controleur_zone_gauche.charger_liste(liste, "mode")
+        if self.mode_aleatoire:
+            random.shuffle(liste)
+        print(type(self.gestionnaire_bdd))
+        self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
     def mode_deviner(self) -> None:
         """Activer le mode deviner."""
+        self.mode = "deviner"
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
+        if self.mode_aleatoire:
+            random.shuffle(liste)
         liste = self.controleur_zone_gauche.devinner_reponses(liste)
-        self.controleur_zone_gauche.charger_liste(liste, "deviner")
+        self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
     def mode_ecrit(self) -> None:
         """Activer le mode écrit."""
+        self.mode = "ecrit"
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
-        self.controleur_zone_gauche.charger_liste(liste, "ecrit")
+        if self.mode_aleatoire:
+            random.shuffle(liste)
+        self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
         # activer les cases de vérification
         self.vue.zone_droite_haute.verification_prenom.setEnabled(True)
@@ -79,14 +94,18 @@ class ControleurGeneral:
 
     def mode_recherche(self) -> None:
         """Activer le mode recherche."""
-        # nettoyage de la zone de saisie
+        self.mode = "recherche"
         self.vue.zone_droite_haute.effacer_reponses()
         self.vue.zone_droite_haute.cacher_image_check()
 
-        # charger la liste de départ
-        liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
-        self.controleur_zone_gauche.charger_liste(liste, "recherche")
+        liste = self.gestionnaire_bdd.charger_personnes() # récupération de toutes les pesrsonnes (BDD)
+        self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
     def mettre_a_jour_liste_personnes(self, liste_personnes: list) -> None:
         """Transmettre la liste au contrôleur de zone gauche."""
         self.controleur_zone_gauche.charger_liste(liste_personnes, None)
+
+    def mode_aleatoire(self, etat: bool) -> None:
+        """indiquer l'état aléatoire"""
+        self.aleatoire = etat
+        print(self.aleatoire)
