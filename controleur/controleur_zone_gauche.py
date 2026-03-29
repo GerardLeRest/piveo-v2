@@ -62,6 +62,6 @@ class ControleurZoneGauche:
             self.vue.zone_gauche.nbre_pers = len(liste_personnes)
         self.vue.zone_gauche.maj()
 
-    def devinner_reponses(self, liste):
+    def deviner_reponses(self, liste):
         """mode deviner"""
         return self.modele_zone_gauche.ajouter_interrogations(liste)

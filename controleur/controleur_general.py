@@ -7,13 +7,12 @@ from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 from PySide6.QtCore import Slot
 import random
 
-
 class ControleurGeneral:
     def __init__(self, vue, gestionnaire_bdd):
         self.vue = vue
         self.gestionnaire_bdd = gestionnaire_bdd
         self.mode = ""
-        self.aleatoire=""
+        self.aleatoire : bool=False
         
 
         # Construction des trois contrôleurs locaux
@@ -42,6 +41,9 @@ class ControleurGeneral:
         # bouton valider
         self.vue.zone_droite_haute.demande_valider.connect(self.action_valider)
 
+        # bien spécifier que lecture a été sélectionné
+        self.mode_lecture()
+
     @Slot()
     def action_valider(self) -> None:
         """Traiter le bouton Valider selon le mode courant."""
@@ -57,25 +59,24 @@ class ControleurGeneral:
         """Activer le mode lecture."""
         self.mode = "lecture"
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
-        if self.mode_aleatoire:
+        if self.aleatoire:
             random.shuffle(liste)
-        print(type(self.gestionnaire_bdd))
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
     def mode_deviner(self) -> None:
         """Activer le mode deviner."""
         self.mode = "deviner"
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
-        if self.mode_aleatoire:
+        if self.aleatoire:
             random.shuffle(liste)
-        liste = self.controleur_zone_gauche.devinner_reponses(liste)
+        liste = self.controleur_zone_gauche.deviner_reponses(liste)
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
     def mode_ecrit(self) -> None:
         """Activer le mode écrit."""
         self.mode = "ecrit"
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
-        if self.mode_aleatoire:
+        if self.aleatoire:
             random.shuffle(liste)
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
@@ -108,4 +109,9 @@ class ControleurGeneral:
     def mode_aleatoire(self, etat: bool) -> None:
         """indiquer l'état aléatoire"""
         self.aleatoire = etat
-        print(self.aleatoire)
+        if self.mode == "lecture":
+            self.mode_lecture()
+        elif self.mode =="deviner":
+            self.mode_deviner()
+        elif self.mode == "ecrit":
+            self.mode_ecrit()
