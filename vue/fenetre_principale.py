@@ -66,16 +66,18 @@ class FenetrePrincipale(QMainWindow):
     def construire_interface(self) -> None:
         """Construire l'interface principale."""
         widget_central = QWidget()
-
         layout_horizontal = QHBoxLayout()
         layout_vertical = QVBoxLayout()
-
+        # aération générale
+        layout_horizontal.setContentsMargins(20, 20, 20, 20)
+        layout_horizontal.setSpacing(25)
+        # aération entre les deux zones de droite
+        layout_vertical.setContentsMargins(0, 0, 0, 0)
+        layout_vertical.setSpacing(25)
         layout_vertical.addWidget(self.zone_droite_haute)
         layout_vertical.addWidget(self.zone_droite_basse)
-
         layout_horizontal.addWidget(self.zone_gauche)
         layout_horizontal.addLayout(layout_vertical)
-
         widget_central.setLayout(layout_horizontal)
         self.setCentralWidget(widget_central)
 

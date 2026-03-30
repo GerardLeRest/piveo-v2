@@ -125,7 +125,7 @@ class ZoneDroiteHaute(QWidget):
             QPushButton {
                 background-color: #76aeba;
                 border: 1px solid #558b9e;
-                border-radius: 6px;
+                border-radius: 12px;
                 padding: 6px 14px;
                 color: white;
                 font-weight: bold;
@@ -143,7 +143,7 @@ class ZoneDroiteHaute(QWidget):
             QPushButton {
                 background-color: #cfd8dc;
                 border: 1px solid #b0bec5;
-                border-radius: 6px;
+                border-radius: 12px;
                 padding: 6px 14px;
                 color: #1f2f2f;
             }
@@ -160,7 +160,7 @@ class ZoneDroiteHaute(QWidget):
             QPushButton {
                 background-color: #7aaeb1;
                 border: 1px solid #5f9ea0;
-                border-radius: 6px;
+                border-radius: 12px;
                 padding: 6px 14px;
                 color: #1f2f2f;
             }

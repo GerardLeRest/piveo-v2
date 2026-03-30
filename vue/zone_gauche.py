@@ -49,6 +49,7 @@ class ZoneGauche (QWidget):
         super().__init__(parent)
         self.configuration_json = configuration_json
         self.layout_gauche = QVBoxLayout()
+        self.layout_gauche.addSpacing(2)
         self.liste_personnes = liste_personnes
         self.rang = 0
         self.nbre_pers = len(self.liste_personnes)

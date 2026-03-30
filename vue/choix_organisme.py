@@ -58,7 +58,7 @@ class ChoixOrganisme(QWidget):
             QPushButton {
                 background-color: #76aeba;
                 color: white;
-                border-radius: 8px;
+                border-radius: 12px;
                 padding: 5px 10px;
                 font-weight: bold;
             }

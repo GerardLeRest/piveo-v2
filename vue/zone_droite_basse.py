@@ -7,7 +7,8 @@ Choix de la structure et de la spécialité.
 
 from pathlib import Path
 
-from PySide6.QtWidgets import QWidget, QComboBox, QGridLayout, QLabel, QVBoxLayout, QHBoxLayout, QPushButton
+from PySide6.QtWidgets import ( QWidget, QComboBox, QGridLayout, QLabel, QVBoxLayout, QHBoxLayout,
+                                QPushButton, QSizePolicy, QFrame)
 from PySide6.QtCore import Qt, Signal
 
 from modele.textes_interface import libelle
@@ -37,49 +38,40 @@ class ZoneDroiteBasse(QWidget):
 
     def initialiser(self):
         """Initialisation des widgets et des connexions."""
-        # Grille principale : structure / spécialité
-        layout_grille = QGridLayout()
-        layout_grille.setHorizontalSpacing(12)
-        layout_grille.setVerticalSpacing(3)
-        layout_grille.setContentsMargins(0, 0, 0, 0)
-        layout_grille.setAlignment(Qt.AlignTop)
+        # Layout principal de la zone droite basse
+        layout_bas_droit = QVBoxLayout()
+        layout_bas_droit.setContentsMargins(0, 0, 0, 0)
         # Labels
-        label_structure = QLabel(_(libelle(self.configuration_json["Structure"])))
-        label_specialite = QLabel(_(libelle(self.configuration_json["Specialite"])))
+        label_classe = QLabel("Classe")
+        label_options = QLabel("Options")
         # Combobox
         self.comboBox_Gauche = QComboBox()
         self.comboBox_droite = QComboBox()
-        # Placement dans la grille
-        layout_grille.addWidget(label_structure, 0, 0, alignment=Qt.AlignLeft | Qt.AlignTop)
-        layout_grille.addWidget(label_specialite, 0, 1, alignment=Qt.AlignLeft | Qt.AlignTop)
-        layout_grille.addWidget(self.comboBox_Gauche, 1, 0, alignment=Qt.AlignLeft | Qt.AlignTop)
-        layout_grille.addWidget(self.comboBox_droite, 1, 1, alignment=Qt.AlignLeft | Qt.AlignTop)
-        self.layout_principal.addLayout(layout_grille)
-        # Bouton de validation
-        valider_style = """
-            QPushButton {
-                background-color: #76aeba;
-                border: 1px solid #558b9e;
-                border-radius: 6px;
-                padding: 6px 14px;
-                color: white;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #66a0b0;
-            }
-            QPushButton:pressed {
-                background-color: #5c8c9c;
-            }
-        """
-        self.bouton_valider = QPushButton(_("Valider"))
-        self.bouton_valider.setFixedWidth(120)
-        self.bouton_valider.setStyleSheet(valider_style)
-        layout_bouton = QHBoxLayout()
-        layout_bouton.addWidget(self.bouton_valider)
-        self.layout_principal.addSpacing(10)
-        self.layout_principal.addLayout(layout_bouton)
-        self.setLayout(self.layout_principal)
+        self.comboBox_Gauche.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.comboBox_droite.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.comboBox_Gauche.setMinimumHeight(32)
+        self.comboBox_droite.setMinimumHeight(32)
+        # Bouton
+        self.bouton_valider = QPushButton("Confirm")
+        self.bouton_valider.setFixedWidth(140)
+        self.bouton_valider.setMinimumHeight(32)
+        self.bouton_valider.setFixedWidth(180)
+        self.bouton_valider.setObjectName("bouton_action")
+        # Grille
+        grille_choix = QGridLayout()
+        grille_choix.setContentsMargins(0, 0, 0, 0)
+        grille_choix.setHorizontalSpacing(12)
+        grille_choix.setVerticalSpacing(15)
+        grille_choix.addWidget(label_classe, 0, 0)
+        grille_choix.addWidget(label_options, 0, 1)
+        grille_choix.addWidget(self.comboBox_Gauche, 1, 0)
+        grille_choix.addWidget(self.comboBox_droite, 1, 1)
+        grille_choix.addWidget(self.bouton_valider, 2, 0, 1, 2, alignment=Qt.AlignCenter)
+        grille_choix.setColumnStretch(0, 1)
+        grille_choix.setColumnStretch(1, 1)
+        layout_bas_droit.addLayout(grille_choix)
+        layout_bas_droit.addStretch()
+        self.setLayout(layout_bas_droit)
         # Chargement des structures disponibles pour l'interface
         structures_ui = self.controleur_combo_box.recuperer_structures_ui(self.configuration_json)
         self.comboBox_Gauche.addItems(structures_ui)
@@ -91,10 +83,29 @@ class ZoneDroiteBasse(QWidget):
         self.demande_envoi_liste_personnes.emit(self.liste_personnes)
         # Initialisation de la combobox des spécialités
         self.creer_combo_specialites()
+        # Style du bouton
+        self.setStyleSheet("""
+        QPushButton#bouton_action {
+            background-color: #7daeb8;
+            color: white;
+            border: 1px solid #6b9aa3;
+            border-radius: 12px;
+            font-weight: bold;
+            padding: 6px 12px;
+        }
 
-    def choisir_structure_specialites(self) -> None:
+        QPushButton#bouton_action:hover {
+            background-color: #8bbbc4;
+        }
+
+        QPushButton#bouton_action:pressed {
+            background-color: #6d9ea8;
+        }
+        """)
+
+    def choisir_structure_specialites(self, texte: str) -> None:
         """Met à jour les personnes et les spécialités selon la structure choisie."""
-        structure_choisie = self.comboBox_Gauche.currentText()
+        structure_choisie = texte
         print("structure choisie =", structure_choisie)
 
         self.liste_personnes, self.liste_specialites = (
@@ -112,9 +123,9 @@ class ZoneDroiteBasse(QWidget):
         self.comboBox_droite.addItems(self.liste_specialites)
         self.comboBox_droite.setCurrentIndex(0)
 
-    def choisir_specialite(self) -> None:
+    def choisir_specialite(self, texte: str) -> None:
         """Met à jour la spécialité sélectionnée."""
-        self.specialite_selectionnee = self.comboBox_droite.currentText()
+        self.specialite_selectionnee = texte
 
     def valider_choix(self) -> None:
         """Valider la structure et la spécialité choisies."""
