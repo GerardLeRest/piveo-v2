@@ -60,6 +60,9 @@ class FenetrePrincipale(QMainWindow):
         self.barre = self.menuBar()
         # construction interface
         self.construire_interface()
+        # désactiver les boutons - pas les icônes
+        self.zone_gauche.desactiver_boutons()
+        self.zone_droite_haute.desactiver_boutons()
         self.menu_fichiers()
         self.barre_outils()
 

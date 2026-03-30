@@ -31,7 +31,7 @@ class ZoneDroiteBasse(QWidget):
         self.layout_principal = QVBoxLayout()
         self.controleur_combo_box = ControleurZoneDroiteBasse(self.gestionnaire_bdd_personnes)
         self.liste_personnes = []
-        self.liste_personnes_filtree=[]
+        self.liste_personnes_filtree = []
         self.liste_specialites = []
         self.specialite_selectionnee = "TOUS"
         self.initialiser()
@@ -61,12 +61,15 @@ class ZoneDroiteBasse(QWidget):
         grille_choix = QGridLayout()
         grille_choix.setContentsMargins(0, 0, 0, 0)
         grille_choix.setHorizontalSpacing(12)
-        grille_choix.setVerticalSpacing(15)
+        grille_choix.setVerticalSpacing(13)
+        grille_choix.setRowMinimumHeight(2, 35)
+
         grille_choix.addWidget(label_classe, 0, 0)
         grille_choix.addWidget(label_options, 0, 1)
         grille_choix.addWidget(self.comboBox_Gauche, 1, 0)
         grille_choix.addWidget(self.comboBox_droite, 1, 1)
-        grille_choix.addWidget(self.bouton_valider, 2, 0, 1, 2, alignment=Qt.AlignCenter)
+        grille_choix.addWidget(self.bouton_valider, 2, 0, 1, 2, alignment=Qt.AlignHCenter | Qt.AlignBottom)
+
         grille_choix.setColumnStretch(0, 1)
         grille_choix.setColumnStretch(1, 1)
         layout_bas_droit.addLayout(grille_choix)
