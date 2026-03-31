@@ -26,9 +26,9 @@ class ControleurZoneDroiteHaute:
     @Slot()
     def valider(self) -> None:
         prenom_saisi, nom_saisi = self.vue.zone_droite_haute.recuperer_saisie()
-        personne = self.vue.zone_gauche.liste_personnes[self.vue.zone_gauche.rang]
-        prenom_attendu = personne[0]
-        nom_attendu = personne[1]
+        personne = self.vue.zone_gauche.liste_personnes[self.vue.zone_gauche.rang+1]
+        prenom_attendu = personne[0].lower()
+        nom_attendu = personne[1].lower()
 
         modele = ModeleZoneDroiteHaute(prenom_attendu, nom_attendu)
 

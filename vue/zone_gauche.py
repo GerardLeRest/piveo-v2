@@ -59,25 +59,30 @@ class ZoneGauche (QWidget):
         self.partie_milieu()
         self.partie_basse()
 
-    def partie_haute(self)->None:
-        """partie haute de l'interface"""
-        # Partie haute du layout
-        # QGridLayout
-        # prenom
+    def partie_haute(self) -> None:
+        """Partie haute de l'interface."""
         self.layout_grille = QGridLayout()
+
+        # prénom
+        self.label_prenom = QLabel(_("Prénom attendu:"))
+        self.layout_grille.addWidget(self.label_prenom, 0, 0, alignment=Qt.AlignLeft)
+
         self.prenom = QLabel("-")
         self.prenom.setText(_("Prénom"))
         self.prenom.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 16px")
         self.layout_grille.addWidget(self.prenom, 0, 1)
-        self.layout_grille.addWidget(QLabel(_("Prénom attendu:")), 0, 0, alignment=Qt.AlignLeft)
+
         # nom
-        self.nom = QLabel()
+        self.label_nom = QLabel(_("Nom attendu:"))
+        self.layout_grille.addWidget(self.label_nom, 1, 0, alignment=Qt.AlignLeft)
+
+        self.nom = QLabel("-")
         self.nom.setText(_("Nom"))
         self.nom.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 16px")
         self.layout_grille.addWidget(self.nom, 1, 1)
-        self.layout_grille.addWidget(QLabel(_("Nom attendu :")), 1, 0, alignment=Qt.AlignLeft)
-        # attachement à layoutGauche
+
         self.layout_gauche.addLayout(self.layout_grille)
+
 
     def partie_milieu(self)->None:
         """partie milieu de l'interface"""
@@ -255,6 +260,14 @@ class ZoneGauche (QWidget):
             self.num_Ordre_Pers.setText(str(self.rang+1)+"/"+str(self.nbre_pers))
         else: # test mental
             self.num_Ordre_Pers.setText(str(self.rang//2+1)+"/"+str(self.nbre_pers))  
+
+    def activer_prenom(self, etat: bool) -> None:
+        self.label_prenom.setVisible(etat)
+        self.prenom.setVisible(etat)
+
+    def activer_nom(self, etat: bool) -> None:
+        self.label_nom.setVisible(etat)
+        self.nom.setVisible(etat)
                 
 # ----------------------------------------------------
         

@@ -50,3 +50,11 @@ class ModeleZoneGauche:
         print("liste: ", liste_personnes)
         return liste_personnes
         
+    def activer_prenom(self, etat: bool) -> None:
+        """sélection/déselection bouton et chalps"""
+        self.label_prenom.setEnabled(etat)
+        self.prenom_entree.setEnabled(etat)
+        if not etat:
+            self.prenom_entree.clear()
+
+   

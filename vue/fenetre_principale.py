@@ -45,8 +45,15 @@ class FenetrePrincipale(QMainWindow):
         self.liste_personnes = self.gestionnaire_bdd.liste_personnes
         # zones
         self.zone_gauche = ZoneGauche(self.liste_personnes, configuration_json)
-        self.zone_droite_haute = ZoneDroiteHaute(configuration_json)
+        self.zone_droite_haute = ZoneDroiteHaute(configuration_json, self)
         self.zone_droite_basse = ZoneDroiteBasse(configuration_json, connecteur_bdd)
+        # connexion
+        self.zone_droite_haute.demande_activation_nom.connect(
+            self.zone_gauche.activer_nom
+        )
+        self.zone_droite_haute.demande_activation_prenom.connect(
+            self.zone_gauche.activer_prenom 
+        )
         # contrôleurs
         self.controleur_general = ControleurGeneral(self, self.gestionnaire_bdd)
         self.controleur_zone_gauche = self.controleur_general.controleur_zone_gauche
@@ -62,9 +69,10 @@ class FenetrePrincipale(QMainWindow):
         self.construire_interface()
         # désactiver les boutons - pas les icônes
         self.zone_gauche.desactiver_boutons()
-        self.zone_droite_haute.desactiver_boutons()
+        self.zone_droite_haute.desactiver_boutons_champs()
         self.menu_fichiers()
         self.barre_outils()
+        
 
     def construire_interface(self) -> None:
         """Construire l'interface principale."""
