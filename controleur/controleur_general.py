@@ -34,17 +34,13 @@ class ControleurGeneral:
         self.vue.zone_gauche.activer_boutons()
         self.vue.zone_droite_haute.desactiver_boutons_champs()
 
-
-
+        
         # connexions des modes (boutons/menus)
         self.vue.demande_mode_lecture.connect(self.mode_lecture)
         self.vue.demande_mode_deviner.connect(self.mode_deviner)
         self.vue.demande_mode_ecrit.connect(self.mode_ecrit)
         self.vue.demande_mode_recherche.connect(self.mode_recherche)
         self.vue.demande_mode_aleatoire.connect(self.mode_aleatoire)
-
-        # bouton valider
-        self.vue.zone_droite_haute.demande_valider.connect(self.action_valider)
 
         
     @Slot()
@@ -67,6 +63,10 @@ class ControleurGeneral:
         # act/désac des boutons
         self.vue.zone_gauche.activer_boutons()
         self.vue.zone_droite_haute.desactiver_boutons_champs()
+        # activer boutons de la toolbar
+        for action in self.vue.groupe_modes.actions():
+            action.setEnabled(True)
+        self.vue.act_aleatoire.setEnabled(True)
         if self.aleatoire:
             random.shuffle(liste)
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
@@ -86,7 +86,7 @@ class ControleurGeneral:
     def mode_ecrit(self) -> None:
         """Activer le mode écrit."""
         self.mode = "ecrit"
-       
+        self.controleur_zone_droite_haute.nbre_bonnes_rep = 0
         # act/désac des boutons
         self.vue.zone_gauche.desactiver_boutons()
         self.vue.zone_droite_haute.activer_boutons_champs()
@@ -117,6 +117,7 @@ class ControleurGeneral:
         self.mode = "recherche"
         # act/désac des boutons
         self.vue.zone_droite_haute.activer_boutons_champs()
+        self.vue.zone_gauche.activer_boutons()
         self.vue.zone_droite_haute.bout_effacer.setEnabled(False) 
         self.vue.zone_droite_haute.bout_suite.setEnabled(False)
         # champs et image
@@ -142,3 +143,8 @@ class ControleurGeneral:
             self.mode_deviner()
         elif self.mode == "ecrit":
             self.mode_ecrit()
+
+    @Slot()
+    def suite(self) -> None:
+        """Traiter le bouton Suite."""
+        self.controleur_zone_droite_haute.suite()

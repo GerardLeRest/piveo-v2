@@ -144,7 +144,13 @@ class FenetrePrincipale(QMainWindow):
         self.act_recherche.setToolTip(_("Rechercher une personne"))
         self.act_aleatoire.setToolTip(_("Mode aléatoire"))
 
-        # sélectionner l'cone "lecture"
+        # désactiver les boutons de la toolbar 
+        for action in self.groupe_modes.actions():
+            action.setEnabled(False)
+        self.act_aleatoire.setEnabled(False)
+        self.act_lecture.setEnabled(True)
+
+        # sélectionner l'icone "lecture"
         self.act_lecture.setChecked(True)
         # rendre état checkable (niveau 0 ou 1)
         self.act_aleatoire.setCheckable(True)

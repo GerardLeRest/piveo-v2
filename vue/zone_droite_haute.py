@@ -252,19 +252,19 @@ class ZoneDroiteHaute(QWidget):
         self.label_prenom.setEnabled(False)
         self.label_nom.setEnabled(False)
 
+    def entree_sur_prenom(self) -> None:
+        if self.verification_nom.isChecked() and self.nom_entree.isEnabled():
+            self.nom_entree.setFocus()
+        else:
+            self.demande_valider.emit()
+
     def gestion_champs(self) -> None:
         """Gérer le focus des champs et la touche Entrée."""
-        print("gestion_champs appelée")
-        if self.verification_prenom.isChecked() and self.verification_nom.isChecked():
-            self.nom_entree.setFocus()
-            print("focus sur nom")
-        elif self.verification_prenom.isChecked():
+        if self.verification_prenom.isChecked():
             self.prenom_entree.setFocus()
-            print("focus sur prénom")
         elif self.verification_nom.isChecked():
             self.nom_entree.setFocus()
-            print("focus sur nom seul")
-
+        
     def etat_widgets_nom(self) -> None:
         """Activer/désactiver les widgets relatifs au nom."""
         etat: bool = self.verification_nom.isChecked()
@@ -319,15 +319,18 @@ class ZoneDroiteHaute(QWidget):
         ligne.setStyleSheet("color: black;")
         self.layout_droit_haut.addWidget(ligne)
 
+    def affichage_score(self, nbre_bonnes_reponses: int, rang: int) -> None:
+        self.nbre_rep.setText(f"{nbre_bonnes_reponses} / {rang}")
 
-    def afficher_image_check(self, resultat_prenom: bool, resultat_nom: bool) -> None:
+    def afficher_image_check(self, resultat_prenom: bool, resultat_nom: bool) -> bool:
+        """affichage de l'icone de validation"""
         self.label_image_gauche.show()
         # validation des deux champs
         if self.verification_prenom.isChecked() and self.verification_nom.isChecked():
             # si le champ "nom" est vide, on fait un focus sur le nom
             if not self.nom_entree.text().strip():
                 self.nom_entree.setFocus()
-                return
+                return False
 
             resultat = resultat_prenom and resultat_nom
         # validation du prenom
@@ -338,7 +341,7 @@ class ZoneDroiteHaute(QWidget):
             resultat = resultat_nom
         # autres cas
         else:
-            return
+            return False
 
         if resultat:
             pixmap = QPixmap("ressources/fichiers/icones/check.png")
@@ -348,6 +351,7 @@ class ZoneDroiteHaute(QWidget):
         self.label_image_gauche.setPixmap(
             pixmap.scaled(30, 30, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         )
+        return resultat
 
     def cacher_image_check(self) -> None:
         """Cacher l'image de résultat."""
@@ -368,16 +372,13 @@ class ZoneDroiteHaute(QWidget):
         # image cachée au départ
         self.cacher_image_check()
 
-    
-
     def effacer_reponses(self) -> None:
         """Effacer les réponses saisies et l'icône de résultat."""
-        # effacer les champs de saisie
         self.prenom_entree.clear()
         self.nom_entree.clear()
-        # effacer puis cacher l'icône
         self.label_image_gauche.clear()
         self.label_image_gauche.hide()
+        self.gestion_champs()
 
     def recuperer_saisie(self) -> tuple[str, str]:
         """Récupérer le prénom et le nom saisis."""

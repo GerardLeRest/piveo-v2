@@ -56,7 +56,7 @@ class ControleurZoneGauche:
         self.vue.zone_gauche.liste_personnes = liste_personnes
         self.vue.zone_gauche.rang = 0
         # gestion des ??? qui doublent la logueur de la liste
-        if mode == "deviner":
+        if mode == "deviner" or mode == "ecrit":
             self.vue.zone_gauche.nbre_pers = len(liste_personnes) // 2
         else:
             self.vue.zone_gauche.nbre_pers = len(liste_personnes)
