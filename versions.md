@@ -48,8 +48,14 @@ version 2.0.0
 zone gauche avec la nouvelle interface et une structure MVC
 version 2.1.0
 
-zone haut droite
+zone haut droite basse
 
 version 2.2.0
 
-zone haut gauche
+zone haut droite haute
+
+version 2.3.0
+
+gestion des différents controleurs
+
+

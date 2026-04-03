@@ -72,9 +72,6 @@ class GestionnaireBDD:
         """
         Retourne la liste des personnes appartenant à une structure donnée.
         """
-        print("BDD - structure demandée =", structure_nom)
-        print("BDD - structures disponibles =", [personne[2] for personne in self.liste_personnes])
-
         return [
             personne
             for personne in self.liste_personnes

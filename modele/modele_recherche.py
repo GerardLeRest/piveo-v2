@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+"""
+G Le Rest - 2026
+Modele de la recherche
+"""
+
 class ModeleRecherche:
     def __init__(self, vue, liste):
         self.vue = vue
@@ -28,5 +36,4 @@ class ModeleRecherche:
 
             if condition:
                 self.liste_finale.append(eleve)
-
         return self.liste_finale

@@ -1,6 +1,10 @@
 from pathlib import Path
 import json
 
+"""
+G Le Rest - 2026
+Gestion de la langue
+"""
 
 class GestionLangue:
     """Gestion de la langue de l'application (lecture / écriture)."""
@@ -9,16 +13,17 @@ class GestionLangue:
         self.fichier_config = fichier_config
 
     def lire(self) -> str:
+        """retourne la lange"""
         if not self.fichier_config.exists():
             self.ecrire("fr")
             return "fr"
-
         with open(self.fichier_config, "r", encoding="utf-8") as f:
             config_json = json.load(f)
             return config_json. get("langueSelectionnee", "fr") # plus sur
             # ou return config_json["langueSelectionnee"]
         
     def ecrire(self, code_langue: str) -> None:
+        """sauvegarder la langue"""
         with open(self.fichier_config, "w", encoding="utf-8") as f:
             json.dump(
                 {"langueSelectionnee": code_langue},

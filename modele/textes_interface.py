@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*
+
+"""
+G Le Rest - 2026
+Libelles interface
+"""
+
 # ⚠️ IMPORTANT
 import gettext
 # ligne ci-dessous -> fonctionnement NORMAL

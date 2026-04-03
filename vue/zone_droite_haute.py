@@ -16,7 +16,7 @@ from PySide6.QtCore import Signal, Qt
 # ⚠️ IMPORTANT
 # fonctionnement global
 from builtins import _
-
+# tester la classe
 # python3 -m vue.zone_droite_haute (test de la classe)
 # _ = lambda x: x
 
@@ -56,17 +56,14 @@ class ZoneDroiteHaute(QWidget):
         self.setLayout(self.layout_droit_haut)
         self.desactiver_boutons_champs()
 
-
     def partie_prenom(self) -> None:
         """Créer la zone du prénom."""
-        # grille contenant prénom + nom
+        # céation de la grille
         self.layout_grille = QGridLayout()
-
-        # label prénom
+        # label nom
         self.label_prenom = QLabel(_("Prénom"))
         self.layout_grille.addWidget(self.label_prenom, 0, 0)
-
-        # champ de saisie prénom
+        # champs prenom_entree
         self.prenom_entree = QLineEdit()
         self.prenom_entree.setStyleSheet("""
             QLineEdit {
@@ -78,14 +75,10 @@ class ZoneDroiteHaute(QWidget):
         """)
         self.prenom_entree.setPlaceholderText(_("Indiquez votre prénom"))
         self.layout_grille.addWidget(self.prenom_entree, 0, 1)
-        # connexion Entrée → valider
-        self.prenom_entree.returnPressed.connect(self.demande_valider.emit)
-
-        # case à cocher pour activer/désactiver le prénom
+        self.prenom_entree.returnPressed.connect(self.action_retour_prenom)
+        # checkbox prenom
         self.verification_prenom = QCheckBox()
         self.layout_grille.addWidget(self.verification_prenom, 0, 2)
-
-        # changement d'état de la case
         self.verification_prenom.stateChanged.connect(self.etat_widgets_prenom)
 
     def partie_nom(self) -> None:
@@ -93,8 +86,7 @@ class ZoneDroiteHaute(QWidget):
         # label nom
         self.label_nom = QLabel(_("Nom"))
         self.layout_grille.addWidget(self.label_nom, 1, 0)
-
-        # champ de saisie nom
+        # champs nom_entree
         self.nom_entree = QLineEdit()
         self.nom_entree.setStyleSheet("""
             QLineEdit {
@@ -104,21 +96,25 @@ class ZoneDroiteHaute(QWidget):
                 padding: 4px 8px;
             }
         """)
+        # champs
         self.nom_entree.setPlaceholderText(_("Indiquez votre nom"))
         self.layout_grille.addWidget(self.nom_entree, 1, 1)
-        # connexion Entrée → valider
         self.nom_entree.returnPressed.connect(self.demande_valider.emit)
-
-        # case à cocher pour activer/désactiver le nom
+        # checkbox
         self.verification_nom = QCheckBox()
         self.layout_grille.addWidget(self.verification_nom, 1, 2)
-
-        # changement d'état de la case
         self.verification_nom.stateChanged.connect(self.etat_widgets_nom)
-
-        # ajout de la grille au layout principal
+        # ajout du layout self.layout_grille
         self.layout_droit_haut.addLayout(self.layout_grille)
         self.layout_droit_haut.addSpacing(5)
+
+
+    def action_retour_prenom(self) -> None:
+        """Gérer la touche Entrée dans le champ prénom."""
+        if self.nom_entree.isEnabled():
+            self.nom_entree.setFocus()
+        else:
+            self.demande_valider.emit()
 
     def partie_boutons(self) -> None:
         """Créer la zone des boutons."""
@@ -139,7 +135,6 @@ class ZoneDroiteHaute(QWidget):
                 background-color: #5c8c9c;
             }
         """
-
         # style du bouton effacer
         effacer_style = """
             QPushButton {
@@ -156,7 +151,6 @@ class ZoneDroiteHaute(QWidget):
                 background-color: #b0bec5;
             }
         """
-
         # style du bouton suite
         suite_style = """
             QPushButton {
@@ -173,31 +167,25 @@ class ZoneDroiteHaute(QWidget):
                 background-color: #5c8c8f;
             }
         """
-
         # layout horizontal des boutons
         layout_boutons = QHBoxLayout()
-
         # bouton valider
         self.bout_valider = QPushButton(_("Valider"), self)
         self.bout_valider.setStyleSheet(valider_style)
         self.bout_valider.clicked.connect(self.demande_valider.emit)
         layout_boutons.addWidget(self.bout_valider)
-
         # bouton effacer
         self.bout_effacer = QPushButton(_("Effacer"), self)
         self.bout_effacer.setStyleSheet(effacer_style)
         self.bout_effacer.clicked.connect(self.effacer_reponses)
         layout_boutons.addWidget(self.bout_effacer)
-
         # bouton suite
         self.bout_suite = QPushButton(_("Suite"), self)
         self.bout_suite.setStyleSheet(suite_style)
         self.bout_suite.clicked.connect(self.demande_suite.emit)
         layout_boutons.addWidget(self.bout_suite)
-
         # liste pratique pour activer/désactiver les boutons en bloc
         self.boutons = [self.bout_valider, self.bout_effacer, self.bout_suite]
-
         # ajout au layout principal
         self.layout_droit_haut.addSpacing(10)
         self.layout_droit_haut.addLayout(layout_boutons)
@@ -207,25 +195,20 @@ class ZoneDroiteHaute(QWidget):
         """Créer la zone d'affichage de l'icône et du score."""
         # layout horizontal du bas
         layout_images = QHBoxLayout()
-
         # image de validation (check ou cross)
         self.label_image_gauche = QLabel()
         self.label_image_gauche.setFixedSize(40, 40)
         layout_images.addWidget(self.label_image_gauche)
-
         # espace flexible entre image et score
         layout_images.addStretch()
-
         # affichage du nombre de bonnes réponses
         self.nbre_rep = QLabel(_("0/0"))
         self.nbre_rep.setStyleSheet("color: #6c7a80; font-size: 30px;")
         self.nbre_rep_exactes = 0
         layout_images.addWidget(self.nbre_rep)
-
         # ajout au layout principal
         self.layout_droit_haut.addLayout(layout_images)
         self.layout_droit_haut.addSpacing(10)
-
         # ligne horizontale de séparation
         ligne = QFrame()
         ligne.setFrameShape(QFrame.HLine)
@@ -258,7 +241,7 @@ class ZoneDroiteHaute(QWidget):
         else:
             self.demande_valider.emit()
 
-    def gestion_champs(self) -> None:
+    def gestion_focus(self) -> None:
         """Gérer le focus des champs et la touche Entrée."""
         if self.verification_prenom.isChecked():
             self.prenom_entree.setFocus()
@@ -268,26 +251,19 @@ class ZoneDroiteHaute(QWidget):
     def etat_widgets_nom(self) -> None:
         """Activer/désactiver les widgets relatifs au nom."""
         etat: bool = self.verification_nom.isChecked()
-
         self.label_nom.setEnabled(etat)
         self.nom_entree.setEnabled(etat)
-
         if not etat:
             self.nom_entree.clear()
-
         self.demande_activation_nom.emit(etat)
-
 
     def etat_widgets_prenom(self) -> None:
         """Activer/désactiver les widgets relatifs au prénom."""
         etat: bool = self.verification_prenom.isChecked()
-
         self.label_prenom.setEnabled(etat)
         self.prenom_entree.setEnabled(etat)
-
         if not etat:
             self.prenom_entree.clear()
-
         self.demande_activation_prenom.emit(etat)
 
 
@@ -331,7 +307,6 @@ class ZoneDroiteHaute(QWidget):
             if not self.nom_entree.text().strip():
                 self.nom_entree.setFocus()
                 return False
-
             resultat = resultat_prenom and resultat_nom
         # validation du prenom
         elif self.verification_prenom.isChecked():
@@ -378,7 +353,7 @@ class ZoneDroiteHaute(QWidget):
         self.nom_entree.clear()
         self.label_image_gauche.clear()
         self.label_image_gauche.hide()
-        self.gestion_champs()
+        self.gestion_focus()
 
     def recuperer_saisie(self) -> tuple[str, str]:
         """Récupérer le prénom et le nom saisis."""

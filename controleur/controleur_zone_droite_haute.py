@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+"""
+G Le Rest - 2026
+contrôleur de la zone droite haute
+"""
+
 from modele.modele_zone_droite_haute import ModeleZoneDroiteHaute
 from modele.modele_recherche import ModeleRecherche
 from PySide6.QtCore import Slot
@@ -5,10 +13,10 @@ from PySide6.QtCore import Slot
 class ControleurZoneDroiteHaute:
     """Contrôleur de la zone droite haute."""
 
-    def __init__(self, vue, controleur_zone_gauche) -> None:
+    def __init__(self, vue, controleur_zone_gauche, gestionnaire_bdd) -> None:
         self.vue = vue
         self.controleur_zone_gauche = controleur_zone_gauche
-
+        self.gestionnaire_bdd = gestionnaire_bdd
         self.vue.zone_droite_haute.demande_valider.connect(self.action_valider)
         self.vue.zone_droite_haute.demande_effacer.connect(self.effacer)
         self.vue.zone_droite_haute.demande_suite.connect(self.suite)
@@ -20,30 +28,34 @@ class ControleurZoneDroiteHaute:
         if self.vue.act_ecrit.isChecked():
             self.valider()
         elif self.vue.act_recherche.isChecked():
-            liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
-            liste_personnes = self.rechercher_personnes(liste)
-            self.controleur_zone_gauche.charger_liste(liste_personnes, None)
+            self.rechercher()
 
     @Slot()
     def valider(self) -> None:
-        print("valider appelée")
+        """Valider la réponse en mode écrit."""
         prenom_saisi, nom_saisi = self.vue.zone_droite_haute.recuperer_saisie()
-        personne = self.vue.zone_gauche.liste_personnes[self.vue.zone_gauche.rang+1]
+        personne = self.vue.zone_gauche.liste_personnes[self.vue.zone_gauche.rang + 1]
         prenom_attendu = personne[0].lower()
         nom_attendu = personne[1].lower()
-
+        #création du modèle ModeleZoneDroiteHaute
         modele = ModeleZoneDroiteHaute(prenom_attendu, nom_attendu)
-
         resultat_prenom = modele.comparer_prenom(prenom_saisi)
         resultat_nom = modele.comparer_nom(nom_saisi)
-
+        # récupération du résultat
         resultat = self.vue.zone_droite_haute.afficher_image_check(resultat_prenom, resultat_nom)
         if resultat:
             self.nbre_bonnes_rep += 1
-        print("nbre_bonnes_rep =", self.nbre_bonnes_rep)
+
+    @Slot()
+    def rechercher(self) -> None:
+        """Lancer la recherche des personnes."""
+        liste = self.gestionnaire_bdd.charger_personnes()
+        liste_personnes = self.rechercher_personnes(liste)
+        self.controleur_zone_gauche.charger_liste(liste_personnes, "recherche")
 
     @Slot()
     def effacer(self) -> None:
+        """préparer les champs"""
         self.vue.zone_droite_haute.effacer_reponses()
         self.vue.zone_droite_haute.gestion_focus()
 
@@ -51,6 +63,7 @@ class ControleurZoneDroiteHaute:
     def suite(self) -> None:
         """Passer à la personne suivante et afficher le score."""
         self.controleur_zone_gauche.avancer()
+        self.vue.zone_droite_haute.cacher_image_check()
         # calcul simple - reste dans le controleur
         rang_affiche = (self.vue.zone_gauche.rang // 2) + 1
         self.vue.zone_droite_haute.affichage_score(self.nbre_bonnes_rep, rang_affiche)

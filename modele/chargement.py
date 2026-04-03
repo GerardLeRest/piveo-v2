@@ -1,3 +1,10 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+"""
+G Le Rest - 2026
+Gestion des données dans le dossier Path.home() / ".local" / piveo
+"""
 import shutil
 from pathlib import Path
 

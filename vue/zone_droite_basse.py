@@ -10,14 +10,11 @@ from pathlib import Path
 from PySide6.QtWidgets import ( QWidget, QComboBox, QGridLayout, QLabel, QVBoxLayout, QHBoxLayout,
                                 QPushButton, QSizePolicy, QFrame)
 from PySide6.QtCore import Qt, Signal
-
 from modele.textes_interface import libelle
 from modele.gestionnaire_BDD import GestionnaireBDD
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 
-
 DOSSIER_PROJET = Path(__file__).resolve().parent.parent
-
 
 class ZoneDroiteBasse(QWidget):
 
@@ -63,13 +60,12 @@ class ZoneDroiteBasse(QWidget):
         grille_choix.setHorizontalSpacing(12)
         grille_choix.setVerticalSpacing(13)
         grille_choix.setRowMinimumHeight(2, 35)
-
+        # ajout des widgets dans ka grille
         grille_choix.addWidget(label_classe, 0, 0)
         grille_choix.addWidget(label_options, 0, 1)
         grille_choix.addWidget(self.comboBox_Gauche, 1, 0)
         grille_choix.addWidget(self.comboBox_droite, 1, 1)
         grille_choix.addWidget(self.bouton_valider, 2, 0, 1, 2, alignment=Qt.AlignHCenter | Qt.AlignBottom)
-
         grille_choix.setColumnStretch(0, 1)
         grille_choix.setColumnStretch(1, 1)
         layout_bas_droit.addLayout(grille_choix)
@@ -96,11 +92,9 @@ class ZoneDroiteBasse(QWidget):
             font-weight: bold;
             padding: 6px 12px;
         }
-
         QPushButton#bouton_action:hover {
             background-color: #8bbbc4;
         }
-
         QPushButton#bouton_action:pressed {
             background-color: #6d9ea8;
         }
@@ -109,15 +103,9 @@ class ZoneDroiteBasse(QWidget):
     def choisir_structure_specialites(self, texte: str) -> None:
         """Met à jour les personnes et les spécialités selon la structure choisie."""
         structure_choisie = texte
-        print("structure choisie =", structure_choisie)
-
         self.liste_personnes, self.liste_specialites = (
             self.controleur_combo_box.choisir_structure_specialites(structure_choisie)
         )
-
-        print("liste_personnes =", self.liste_personnes)
-        print("liste_specialites =", self.liste_specialites)
-
         self.creer_combo_specialites()
 
     def creer_combo_specialites(self) -> None:
@@ -133,10 +121,6 @@ class ZoneDroiteBasse(QWidget):
     def valider_choix(self) -> None:
         """Valider la structure et la spécialité choisies."""
         self.specialite_selectionnee = self.comboBox_droite.currentText()
-
-        print("valider_choix lancé")
-        print("specialite_selectionnee =", self.specialite_selectionnee)
-
         if self.specialite_selectionnee == "TOUS":
             self.liste_personnes_filtree = self.liste_personnes
         else:
@@ -144,6 +128,4 @@ class ZoneDroiteBasse(QWidget):
                 personne for personne in self.liste_personnes
                 if self.specialite_selectionnee in personne[3]
             ]
-
-        print("liste envoyée =", self.liste_personnes_filtree)
         self.demande_envoi_liste_personnes.emit(self.liste_personnes_filtree)

@@ -13,9 +13,7 @@ class ModeleZoneDroiteHaute:
         self.nom_attendu = nom_attendu.lower()
 
     def comparer_prenom(self, prenom_saisi: str) -> bool:
-        print(f"prénom étudié: {prenom_saisi}")
         return prenom_saisi.lower() == self.prenom_attendu
 
     def comparer_nom(self, nom_saisi: str) -> bool:
-        print(f"nom étudié: {nom_saisi}")
         return nom_saisi.lower() == self.nom_attendu

@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+"""
+G Le Rest - 2026
+fichier d"entrée
+"""
+
 import sys
 import locale
 import gettext
@@ -37,13 +45,7 @@ traduction = gettext.translation(
 )
 traduction.install()
 
-print("langue =", langue)
-print("LOCALE_DIR =", LOCALE_DIR)
-print("traduction =", traduction)
-print("Bonjour ->", traduction.gettext("Bonjour"))
-print("application ->", traduction.gettext("application"))
-print("test inexistant ->", traduction.gettext("ZZZ_TEST_123"))
-
+# lancement de la fenêtre "Oranisme"
 from vue.choix_organisme import ChoixOrganisme
 
 def main():

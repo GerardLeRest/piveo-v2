@@ -12,6 +12,7 @@ from pathlib import Path
 # ⚠️ IMPORTANT
 # fonctionnement global
 from builtins import _
+# tester la classe
 # python3 -m vue.zone_droite_haute (test de la classe)
 #_ = lambda x: x 
 # Ajoute la racine du projet au chemin Python
@@ -57,32 +58,29 @@ class ZoneGauche (QWidget):
         self.resize(150, 100)
         self.partie_haute()
         self.partie_milieu()
+        self.desactiver_boutons()
         self.partie_basse()
 
     def partie_haute(self) -> None:
         """Partie haute de l'interface."""
         self.layout_grille = QGridLayout()
-
         # prénom
         self.label_prenom = QLabel(_("Prénom attendu:"))
         self.layout_grille.addWidget(self.label_prenom, 0, 0, alignment=Qt.AlignLeft)
-
+        # Qlabel prenom
         self.prenom = QLabel("-")
         self.prenom.setText(_("Prénom"))
         self.prenom.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 16px")
         self.layout_grille.addWidget(self.prenom, 0, 1)
-
         # nom
         self.label_nom = QLabel(_("Nom attendu:"))
         self.layout_grille.addWidget(self.label_nom, 1, 0, alignment=Qt.AlignLeft)
-
         self.nom = QLabel("-")
         self.nom.setText(_("Nom"))
         self.nom.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 16px")
         self.layout_grille.addWidget(self.nom, 1, 1)
-
+        # ajout de layout_grille dans layout_gauche
         self.layout_gauche.addLayout(self.layout_grille)
-
 
     def partie_milieu(self)->None:
         """partie milieu de l'interface"""
@@ -131,7 +129,6 @@ class ZoneGauche (QWidget):
         # permet de traiter les quatre à la fois (activer/desactiver)
         self.boutons = [bouton_debut, bouton_reculer, bouton_avancer, bouton_fin]
         layout_boutons.setSpacing(6)  # espace horizontal entre flèches
-
         # Bloc vertical (photo + boutons), avec marges
         bloc_photo = QVBoxLayout()
         bloc_photo.setContentsMargins(10, 10, 10, 10)  # marges autour du bloc
@@ -207,9 +204,6 @@ class ZoneGauche (QWidget):
     def maj_Photo(self) -> None:
         """Mise à jour de la photo"""
         nom_image = self.liste_personnes[self.rang][4]
-        print (nom_image)
-        print("dossier_racine =", dossier_racine)
-        print("CheminPhotos =", self.configuration_json["CheminPhotos"])
         chemin_image = (
             dossier_racine
             / "ressources"
@@ -218,7 +212,6 @@ class ZoneGauche (QWidget):
             / self.configuration_json["CheminPhotos"]
             / nom_image
         )
-        print(chemin_image)
         # si l'image existe
         if chemin_image.exists():
             pixmap = QPixmap(str(chemin_image))
@@ -233,29 +226,24 @@ class ZoneGauche (QWidget):
             )
         self.label_image.setPixmap(pixmap)
 
-
     def maj_nom_prenom(self):
         """mise à jour du nom et du prenom"""
         self.prenom.setText(self.liste_personnes[self.rang][0])
         self.nom.setText(self.liste_personnes[self.rang][1])
-            
     
     def maj_classe_options(self):
         """mise a jour de la structure et de la spécialité"""
         # Structure (classe / département / parti)
         structure_interne = self.liste_personnes[self.rang][2]
         self.structure.setText(libelle(structure_interne))
-
         # Options (liste)
         options = self.liste_personnes[self.rang][3]
         options_ui = [libelle(opt) for opt in options] # affichage ui
         texteOptions = " - ".join(options_ui)
         self.specialites.setText(texteOptions)
 
-
     def maj_num_ordre_Pers(self) -> None:
         """mettre à jour le numéro d'ordre de la personne"""
-        print(f"nbre_pers: {self.nbre_pers} et len_liste: {len(self.liste_personnes)}")
         if self.nbre_pers==len(self.liste_personnes): # apprentissage
             self.num_Ordre_Pers.setText(str(self.rang+1)+"/"+str(self.nbre_pers))
         else: # test mental

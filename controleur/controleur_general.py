@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+"""
+G Le Rest - 2026
+contrôleur général
+"""
+
 from controleur.controleur_zone_gauche import ControleurZoneGauche
 from controleur.controleur_zone_droite_haute import ControleurZoneDroiteHaute
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
@@ -17,7 +22,9 @@ class ControleurGeneral:
         # Construction des trois contrôleurs locaux
         self.controleur_zone_gauche = ControleurZoneGauche(self.vue)
         self.controleur_zone_droite_haute = ControleurZoneDroiteHaute(
-            self.vue, self.controleur_zone_gauche
+            self.vue,
+            self.controleur_zone_gauche,
+            self.gestionnaire_bdd
         )
         self.controleur_zone_droite_basse = ControleurZoneDroiteBasse(
             self.gestionnaire_bdd
@@ -58,15 +65,10 @@ class ControleurGeneral:
         """Activer le mode lecture."""
         # activer/désactiver bouton
         self.mode = "lecture"
-        print("mode_lecture")
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
         # act/désac des boutons
         self.vue.zone_gauche.activer_boutons()
         self.vue.zone_droite_haute.desactiver_boutons_champs()
-        # activer boutons de la toolbar
-        for action in self.vue.groupe_modes.actions():
-            action.setEnabled(True)
-        self.vue.act_aleatoire.setEnabled(True)
         if self.aleatoire:
             random.shuffle(liste)
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
@@ -110,7 +112,6 @@ class ControleurGeneral:
         self.vue.zone_droite_haute.activer_boutons_champs()
         self.vue.zone_droite_haute.effacer_reponses()
         self.vue.zone_droite_haute.cacher_image_check()
-        self.vue.zone_droite_haute.gestion_champs()
 
     def mode_recherche(self) -> None:
         """Activer le mode recherche."""
@@ -123,7 +124,7 @@ class ControleurGeneral:
         # champs et image
         self.vue.zone_droite_haute.effacer_reponses()
         self.vue.zone_droite_haute.cacher_image_check()
-
+        self.vue.zone_droite_haute.gestion_focus()
         liste = self.gestionnaire_bdd.charger_personnes() # récupération de toutes les pesrsonnes (BDD)
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
 

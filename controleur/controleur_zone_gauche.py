@@ -12,7 +12,6 @@ from PySide6.QtCore import Slot
 
 class ControleurZoneGauche:
     def __init__(self, vue):
-        print("controleur zone gauche")
         self.vue = vue
         self.modele_zone_gauche = ModeleZoneGauche(self.vue.zone_gauche.liste_personnes)
 
@@ -24,7 +23,7 @@ class ControleurZoneGauche:
 
     @Slot()
     def avancer(self) -> None:
-        print("avancer")
+        """Avancer d'un rang"""
         self.modele_zone_gauche.acceder_suivant()
         self.vue.zone_gauche.rang = self.modele_zone_gauche.rang
         self.vue.zone_gauche.maj()

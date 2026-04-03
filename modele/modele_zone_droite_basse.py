@@ -31,8 +31,8 @@ def lister_structures(gestionnaire_bdd_personnes) -> list:
 
 
 def construire_liste_structures(structures: list, configuration_json: dict) -> list:
+    """construction de la liste des structures"""
     structure = configuration_json["Structure"]
-
     if configuration_json["Organisme"] == "Ecole":
         phrase = _("- choisir une %(structure)s -") % {"structure": structure}
     else:
