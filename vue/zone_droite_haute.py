@@ -80,6 +80,7 @@ class ZoneDroiteHaute(QWidget):
         self.verification_prenom = QCheckBox()
         self.layout_grille.addWidget(self.verification_prenom, 0, 2)
         self.verification_prenom.stateChanged.connect(self.etat_widgets_prenom)
+        self.prenom_entree.returnPressed.connect(self.entree_sur_prenom)
 
     def partie_nom(self) -> None:
         """Créer la zone du nom."""
@@ -110,8 +111,8 @@ class ZoneDroiteHaute(QWidget):
 
 
     def action_retour_prenom(self) -> None:
-        """Gérer la touche Entrée dans le champ prénom."""
-        if self.nom_entree.isEnabled():
+        """Entrée dans prénom : focus sur nom si demandé, sinon validation."""
+        if self.verification_nom.isChecked():
             self.nom_entree.setFocus()
         else:
             self.demande_valider.emit()
@@ -190,7 +191,6 @@ class ZoneDroiteHaute(QWidget):
         self.layout_droit_haut.addSpacing(10)
         self.layout_droit_haut.addLayout(layout_boutons)
    
-
     def partie_icones(self) -> None:
         """Créer la zone d'affichage de l'icône et du score."""
         # layout horizontal du bas
@@ -236,6 +236,7 @@ class ZoneDroiteHaute(QWidget):
         self.label_nom.setEnabled(False)
 
     def entree_sur_prenom(self) -> None:
+        """Entrée dans prénom : focus sur nom si actif, sinon validation."""
         if self.verification_nom.isChecked() and self.nom_entree.isEnabled():
             self.nom_entree.setFocus()
         else:
@@ -249,12 +250,16 @@ class ZoneDroiteHaute(QWidget):
             self.nom_entree.setFocus()
         
     def etat_widgets_nom(self) -> None:
-        """Activer/désactiver les widgets relatifs au nom."""
+        """Activer/désactiver les widgets nom."""
         etat: bool = self.verification_nom.isChecked()
+        if not etat and self.nom_entree.hasFocus():
+            self.nom_entree.clearFocus()
         self.label_nom.setEnabled(etat)
         self.nom_entree.setEnabled(etat)
+
         if not etat:
             self.nom_entree.clear()
+
         self.demande_activation_nom.emit(etat)
 
     def etat_widgets_prenom(self) -> None:

@@ -1,172 +1,145 @@
+# English translations for piveo-v package.
+# Copyright (C) 2026 THE piveo-v'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the piveo-v package.
+# Gerard <gerard@gerard-thinkcentre-m700>, 2026.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Piveo\n"
+"Project-Id-Version: piveo-v 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 15:20+0100\n"
+"POT-Creation-Date: 2026-04-05 17:13+0200\n"
+"PO-Revision-Date: 2026-04-05 17:51+0200\n"
+"Last-Translator: Gerard <gerard@gerard-thinkcentre-m700>\n"
+"Language-Team: English\n"
 "Language: en\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../app/cadre_droit_bas.py:34
-msgid "Apprentissage"
-msgstr "Learning"
-
-#: ../app/cadre_droit_bas.py:35
-msgid "Test mental"
-msgstr "Mental test"
-
-#: ../app/cadre_droit_bas.py:36
-msgid "Test ecrit"
-msgstr "Written test"
-
-#: ../app/cadre_droit_bas.py:37
-msgid "Rechercher"
-msgstr "Search"
-
-#: ../app/cadre_droit_bas.py:39
-msgid "Faire défiler les élèves"
-msgstr "Browse through students"
-
-#: ../app/cadre_droit_bas.py:40
-msgid "Deviner mentalement lorsque les noms sont masqués"
-msgstr "Guess mentally when the names are hidden"
-
-#: ../app/cadre_droit_bas.py:41
-msgid "Test écrit avec les deux champs ci-dessus"
-msgstr "Written test using the two fields above"
-
-#: ../app/cadre_droit_bas.py:42
-msgid "Rechercher un ou plusieurs personnes avec les champs ci-dessus"
-msgstr "Search for one or more people using the fields above"
-
-#: ../app/cadre_droit_bas.py:78
-msgid "Aléatoire"
-msgstr "Random"
-
-#: ../app/cadre_droit_bas.py:84
-msgid "Prenom+Nom"
-msgstr "First name + Last name"
-
-#: ../app/cadre_droit_bas.py:85 ../app/fenetre_principale.py:363
-msgid "Prenom"
-msgstr "First name"
-
-#: ../app/cadre_droit_bas.py:86 ../app/cadre_droit_haut.py:43
-#: ../app/cadre_gauche.py:50 ../app/fenetre_principale.py:365
-msgid "Nom"
-msgstr "Last name"
-
-#: ../app/cadre_droit_bas.py:117 ../app/cadre_droit_haut.py:111
-msgid "Valider"
-msgstr "Confirm"
-
-#: ../app/cadre_droit_bas.py:143
+#: modele/modele_zone_droite_basse.py:37
 #, python-format
 msgid "- choisir une %(structure)s -"
-msgstr "- select a %(structure)s -"
+msgstr "- choose a %(structure)s -"
 
-#: ../app/cadre_droit_bas.py:147
+#: modele/modele_zone_droite_basse.py:39
 #, python-format
 msgid "- choisir un %(structure)s -"
-msgstr "- select a %(structure)s -"
+msgstr "- choose a %(structure)s -"
 
-#: ../app/cadre_droit_haut.py:29 ../app/cadre_gauche.py:44
+#: vue/zone_droite_haute.py:64 vue/zone_gauche.py:72
 msgid "Prénom"
 msgstr "First name"
 
-#: ../app/cadre_droit_haut.py:40 ../app/fenetre_principale.py:161
+#: vue/zone_droite_haute.py:76
 msgid "Indiquez votre prénom"
 msgstr "Enter your first name"
 
-#: ../app/cadre_droit_haut.py:54 ../app/fenetre_principale.py:162
+#: vue/zone_droite_haute.py:88 vue/zone_gauche.py:79
+msgid "Nom"
+msgstr "Last name"
+
+#: vue/zone_droite_haute.py:101
 msgid "Indiquez votre nom"
 msgstr "Enter your last name"
 
-#: ../app/cadre_droit_haut.py:115
+#: vue/zone_droite_haute.py:174
+msgid "Valider"
+msgstr "Validate"
+
+#: vue/zone_droite_haute.py:179
 msgid "Effacer"
 msgstr "Clear"
 
-#: ../app/cadre_droit_haut.py:119
+#: vue/zone_droite_haute.py:184
 msgid "Suite"
 msgstr "Next"
 
-#: ../app/cadre_droit_haut.py:142 ../app/fenetre_principale.py:388
+#: vue/zone_droite_haute.py:205 vue/zone_droite_haute.py:288
 msgid "0/0"
 msgstr "0/0"
 
-#: ../app/cadre_gauche.py:47
-msgid "Prénom :"
-msgstr "First name:"
+#: vue/zone_gauche.py:68
+msgid "Prénom attendu:"
+msgstr "Expected first name:"
 
-#: ../app/cadre_gauche.py:53
-msgid "Nom :"
-msgstr "Last name:"
+#: vue/zone_gauche.py:76
+msgid "Nom attendu:"
+msgstr "Expected last name:"
 
-#: ../app/cadre_gauche.py:104
+#: vue/zone_gauche.py:152
 msgid "rang / effectif "
 msgstr "rank / total"
 
-#: ../app/choix_organisme.py:30
+#: vue/choix_organisme.py:31
 msgid "Piveo"
 msgstr "Piveo"
 
-#: ../app/choix_organisme.py:36
+#: vue/choix_organisme.py:37
 msgid "Mode de fonctionnement"
 msgstr "Operating mode"
 
-#: ../app/choix_organisme.py:44
+#: vue/choix_organisme.py:45
 msgid "École"
 msgstr "School"
 
-#: ../app/choix_organisme.py:45
+#: vue/choix_organisme.py:46
 msgid "Entreprise"
 msgstr "Company"
 
-#: ../app/choix_organisme.py:46
+#: vue/choix_organisme.py:47
 msgid "Parlement"
 msgstr "Parliament"
 
-#: ../app/choix_organisme.py:54
+#: vue/choix_organisme.py:55
 msgid "OK"
 msgstr "OK"
 
-#: ../app/fenetre_principale.py:39
-msgid "Piveo - "
-msgstr "Piveo - "
+#: vue/fenetre_principale.py:81
+msgid "Lecture"
+msgstr "Read"
 
-#: ../app/fenetre_principale.py:73
-msgid "Menu"
-msgstr "Menu"
+#: vue/fenetre_principale.py:82
+msgid "Deviner puis réponse"
+msgstr "Guess then answer"
 
-#: ../app/fenetre_principale.py:75
-msgid "Langues"
-msgstr "Languages"
+#: vue/fenetre_principale.py:83 vue/fenetre_principale.py:253
+msgid "Test écrit"
+msgstr "Written test"
 
-#: ../app/fenetre_principale.py:97
-msgid "Licence GPL-v3"
-msgstr "GPL-v3 License"
+#: vue/fenetre_principale.py:84
+msgid "Recherche"
+msgstr "Search"
 
-#: ../app/fenetre_principale.py:100
-msgid "Quitter"
-msgstr "Quit"
+#: vue/fenetre_principale.py:85 vue/fenetre_principale.py:255
+msgid "Mode aléatoire"
+msgstr "Random mode"
 
-#: ../app/fenetre_principale.py:129
+#: vue/fenetre_principale.py:121
+msgid "Langue"
+msgstr "Language"
+
+#: vue/fenetre_principale.py:215
 msgid "Attention"
 msgstr "Warning"
 
-#: ../app/fenetre_principale.py:130
+#: vue/fenetre_principale.py:216
 msgid "Les changements se feront au prochain démarrage."
 msgstr "Changes will take effect at the next startup."
 
-#: ../app/fenetre_principale.py:389
-msgid "Aucun résultat"
-msgstr "No results"
+#: vue/fenetre_principale.py:251
+msgid "Lire les noms et prénoms"
+msgstr "Read names and first names"
 
-#: ../app/fenetre_principale.py:389
-msgid "Aucune personne trouvée."
-msgstr "No person found."
+#: vue/fenetre_principale.py:252
+msgid "Deviner puis afficher la réponse"
+msgstr "Guess then display the answer"
 
-#: ../app/fenetre_principale.py:408
+#: vue/fenetre_principale.py:254
+msgid "Rechercher une personne"
+msgstr "Search for a person"
+
+#: vue/fenetre_principale.py:269
 msgid ""
 "Ce logiciel est distribué sous licence GNU GPL version 3.\n"
 "\n"
@@ -179,27 +152,21 @@ msgid ""
 msgstr ""
 "This software is distributed under the GNU GPL version 3 license.\n"
 "\n"
-"You may redistribute it and/or modify it under the terms of this license.\n"
+"You can redistribute it and/or modify it under the terms of this license.\n"
 "\n"
 "More information: https://www.gnu.org/licenses/gpl-3.0.html\n"
 "\n"
 "© 2026 Gérard Le Rest - ge.lerest@gmail.com"
 
-#: ../app/fenetre_principale.py:413
+#: vue/fenetre_principale.py:274
 msgid "GPL-v3"
 msgstr "GPL-v3"
 
-#~ msgid "Parti"
-#~ msgstr "Party"
+msgid "Classe"
+msgstr "Class"
 
-#~ msgid "Député"
-#~ msgstr "Member of Parliament"
+msgid "Options"
+msgstr "Options"
 
-#~ msgid "Commissions"
-#~ msgstr "Committees"
-
-#~ msgid "Département"
-#~ msgstr "Department"
-
-#~ msgid "Salarié"
-#~ msgstr "Employee"
+msgid "Élève"
+msgstr "Student"

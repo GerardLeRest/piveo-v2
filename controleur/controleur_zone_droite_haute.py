@@ -21,6 +21,8 @@ class ControleurZoneDroiteHaute:
         self.vue.zone_droite_haute.demande_effacer.connect(self.effacer)
         self.vue.zone_droite_haute.demande_suite.connect(self.suite)
         self.nbre_bonnes_rep = 0
+        self.vue.zone_droite_haute.demande_effacer.connect(self.effacer)
+        self.vue.zone_droite_haute.demande_suite.connect(self.suite)
 
     @Slot()
     def action_valider(self) -> None:
@@ -62,11 +64,11 @@ class ControleurZoneDroiteHaute:
     @Slot()
     def suite(self) -> None:
         """Passer à la personne suivante et afficher le score."""
-        self.controleur_zone_gauche.avancer()
-        self.vue.zone_droite_haute.cacher_image_check()
-        # calcul simple - reste dans le controleur
         rang_affiche = (self.vue.zone_gauche.rang // 2) + 1
         self.vue.zone_droite_haute.affichage_score(self.nbre_bonnes_rep, rang_affiche)
+
+        self.controleur_zone_gauche.avancer()
+        self.vue.zone_droite_haute.cacher_image_check()
 
     def rechercher_personnes(self, liste: list) -> list:
         """rechercher suivant les prenoms/noms"""

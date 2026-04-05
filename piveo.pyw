@@ -3,7 +3,7 @@
 
 """
 G Le Rest - 2026
-fichier d"entrée
+fichier d'entrée
 """
 
 import sys
@@ -45,7 +45,7 @@ traduction = gettext.translation(
 )
 traduction.install()
 
-# lancement de la fenêtre "Oranisme"
+# lancement de la fenêtre "Organisme"
 from vue.choix_organisme import ChoixOrganisme
 
 def main():

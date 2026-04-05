@@ -153,12 +153,12 @@ class ZoneGauche (QWidget):
         layout_bas.addWidget(self.num_Ordre_Pers, alignment=Qt.AlignCenter)
         # affichage de la structure 
         self.structure=QLabel() # label de la structure
-        self.structure.setText(_(libelle(self.configuration_json["Structure"])))
+        self.structure.setText(_(libelle(_(self.configuration_json["Structure"]))))
         self.structure.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 11pt;")
         layout_bas.addWidget(self.structure, alignment=Qt.AlignCenter)
         # affichage des options
         self.specialites = QLabel() # permet de changer le texte du label
-        self.specialites.setText(_(libelle(self.configuration_json["Specialite"])))
+        self.specialites.setText(_(libelle(_(self.configuration_json["Specialite"]))))
         self.specialites.setStyleSheet("font-size: 10pt;")
         layout_bas.addWidget(self.specialites, alignment=Qt.AlignCenter)
         # attachement au layout gauche

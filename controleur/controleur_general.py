@@ -49,6 +49,8 @@ class ControleurGeneral:
         self.vue.demande_mode_recherche.connect(self.mode_recherche)
         self.vue.demande_mode_aleatoire.connect(self.mode_aleatoire)
 
+        self.mode_lecture() # bug à la mise sous tension
+
         
     @Slot()
     def action_valider(self) -> None:
@@ -91,25 +93,23 @@ class ControleurGeneral:
         self.controleur_zone_droite_haute.nbre_bonnes_rep = 0
         # act/désac des boutons
         self.vue.zone_gauche.desactiver_boutons()
-        self.vue.zone_droite_haute.activer_boutons_champs()
         liste = self.vue.zone_droite_basse.liste_personnes_filtree.copy()
         if self.aleatoire:
             random.shuffle(liste)
-        #self.controleur_zone_gauche.charger_liste(liste, self.mode)
         # voir mode deviner
         liste = self.controleur_zone_gauche.deviner_reponses(liste)
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
-
         # activer les cases de vérification
         self.vue.zone_droite_haute.verification_prenom.setEnabled(True)
         self.vue.zone_droite_haute.verification_nom.setEnabled(True)
-
         # cocher les cases
         self.vue.zone_droite_haute.verification_prenom.setChecked(True)
         self.vue.zone_droite_haute.verification_nom.setChecked(True)
-
         # remettre la zone propre
-        self.vue.zone_droite_haute.activer_boutons_champs()
+        if liste:
+            self.vue.zone_droite_haute.activer_boutons_champs()
+        else:
+            self.vue.zone_droite_haute.desactiver_boutons_champs()
         self.vue.zone_droite_haute.effacer_reponses()
         self.vue.zone_droite_haute.cacher_image_check()
 
@@ -130,10 +130,15 @@ class ControleurGeneral:
 
     def mettre_a_jour_liste_personnes(self, liste_personnes: list) -> None:
         """Réception de la liste filtrée."""
-        # on met à jour la liste dans la vue (important)
         self.vue.zone_droite_basse.liste_personnes_filtree = liste_personnes
-        # on lance le mode lecture seulement maintenant
-        self.mode_lecture()
+        if self.mode == "lecture":
+            self.mode_lecture()
+        elif self.mode == "deviner":
+            self.mode_deviner()
+        elif self.mode == "ecrit":
+            self.mode_ecrit()
+        elif self.mode == "rechercher":
+            self.mode_rechercher()
 
     def mode_aleatoire(self, etat: bool) -> None:
         """indiquer l'état aléatoire"""

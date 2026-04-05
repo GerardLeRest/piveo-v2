@@ -33,14 +33,14 @@ class ZoneDroiteBasse(QWidget):
         self.specialite_selectionnee = "TOUS"
         self.initialiser()
 
-    def initialiser(self):
+    def initialiser(self) -> None:
         """Initialisation des widgets et des connexions."""
         # Layout principal de la zone droite basse
         layout_bas_droit = QVBoxLayout()
         layout_bas_droit.setContentsMargins(0, 0, 0, 0)
         # Labels
-        label_classe = QLabel("Classe")
-        label_options = QLabel("Options")
+        label_classe = QLabel(_(self.configuration_json["Structure"]))
+        label_options = QLabel(_(self.configuration_json["Specialite"]))
         # Combobox
         self.comboBox_Gauche = QComboBox()
         self.comboBox_droite = QComboBox()
@@ -48,57 +48,41 @@ class ZoneDroiteBasse(QWidget):
         self.comboBox_droite.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.comboBox_Gauche.setMinimumHeight(32)
         self.comboBox_droite.setMinimumHeight(32)
-        # Bouton
-        self.bouton_valider = QPushButton("Confirm")
-        self.bouton_valider.setFixedWidth(140)
-        self.bouton_valider.setMinimumHeight(32)
-        self.bouton_valider.setFixedWidth(180)
-        self.bouton_valider.setObjectName("bouton_action")
         # Grille
         grille_choix = QGridLayout()
         grille_choix.setContentsMargins(0, 0, 0, 0)
         grille_choix.setHorizontalSpacing(12)
         grille_choix.setVerticalSpacing(13)
         grille_choix.setRowMinimumHeight(2, 35)
-        # ajout des widgets dans ka grille
+        # Ajout des widgets dans la grille
         grille_choix.addWidget(label_classe, 0, 0)
         grille_choix.addWidget(label_options, 0, 1)
         grille_choix.addWidget(self.comboBox_Gauche, 1, 0)
         grille_choix.addWidget(self.comboBox_droite, 1, 1)
-        grille_choix.addWidget(self.bouton_valider, 2, 0, 1, 2, alignment=Qt.AlignHCenter | Qt.AlignBottom)
         grille_choix.setColumnStretch(0, 1)
         grille_choix.setColumnStretch(1, 1)
+        # ajouter la grille au layaout_bas_droit
         layout_bas_droit.addLayout(grille_choix)
         layout_bas_droit.addStretch()
         self.setLayout(layout_bas_droit)
-        # Chargement des structures disponibles pour l'interface
-        structures_ui = self.controleur_combo_box.recuperer_structures_ui(self.configuration_json)
-        self.comboBox_Gauche.addItems(structures_ui)
         # Connexions des signaux
         self.comboBox_Gauche.currentTextChanged.connect(self.choisir_structure_specialites)
         self.comboBox_droite.currentTextChanged.connect(self.choisir_specialite)
-        self.bouton_valider.clicked.connect(self.valider_choix)
-        # Émission initiale de la liste courante
-        self.demande_envoi_liste_personnes.emit(self.liste_personnes)
-        # Initialisation de la combobox des spécialités
-        self.creer_combo_specialites()
-        # Style du bouton
-        self.setStyleSheet("""
-        QPushButton#bouton_action {
-            background-color: #7daeb8;
-            color: white;
-            border: 1px solid #6b9aa3;
-            border-radius: 12px;
-            font-weight: bold;
-            padding: 6px 12px;
-        }
-        QPushButton#bouton_action:hover {
-            background-color: #8bbbc4;
-        }
-        QPushButton#bouton_action:pressed {
-            background-color: #6d9ea8;
-        }
-        """)
+        # Chargement des structures disponibles pour l'interface
+        structures_ui = self.controleur_combo_box.recuperer_structures_ui(self.configuration_json)
+        # Remplissage contrôlé de la combobox de gauche
+        self.comboBox_Gauche.blockSignals(True)
+        self.comboBox_Gauche.addItems(structures_ui)
+        self.comboBox_Gauche.blockSignals(False)
+        # Initialisation explicite
+        if structures_ui:
+            self.choisir_structure_specialites(self.comboBox_Gauche.currentText())
+        else:
+            self.liste_personnes = []
+            self.liste_personnes_filtree = []
+            self.liste_specialites = []
+            self.creer_combo_specialites()
+            self.demande_envoi_liste_personnes.emit([])
 
     def choisir_structure_specialites(self, texte: str) -> None:
         """Met à jour les personnes et les spécialités selon la structure choisie."""
@@ -107,6 +91,7 @@ class ZoneDroiteBasse(QWidget):
             self.controleur_combo_box.choisir_structure_specialites(structure_choisie)
         )
         self.creer_combo_specialites()
+        self.valider_choix()
 
     def creer_combo_specialites(self) -> None:
         """Remplit la combobox des spécialités."""
@@ -117,6 +102,7 @@ class ZoneDroiteBasse(QWidget):
     def choisir_specialite(self, texte: str) -> None:
         """Met à jour la spécialité sélectionnée."""
         self.specialite_selectionnee = texte
+        self.valider_choix()
 
     def valider_choix(self) -> None:
         """Valider la structure et la spécialité choisies."""
