@@ -66,7 +66,6 @@ class ControleurZoneDroiteHaute:
         """Passer à la personne suivante et afficher le score."""
         rang_affiche = (self.vue.zone_gauche.rang // 2) + 1
         self.vue.zone_droite_haute.affichage_score(self.nbre_bonnes_rep, rang_affiche)
-
         self.controleur_zone_gauche.avancer()
         self.vue.zone_droite_haute.cacher_image_check()
 

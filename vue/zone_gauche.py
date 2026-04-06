@@ -26,8 +26,6 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Signal, QSize, Qt
 from PySide6.QtGui import QPixmap, QIcon
 
-from modele.textes_interface import libelle
-
 
 icones = [
     "Gnome-go-first.png",
@@ -72,7 +70,7 @@ class ZoneGauche (QWidget):
         self.prenom.setText(_("Prénom"))
         self.prenom.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 16px")
         self.layout_grille.addWidget(self.prenom, 0, 1)
-        # nom
+        # Qlabel nom
         self.label_nom = QLabel(_("Nom attendu:"))
         self.layout_grille.addWidget(self.label_nom, 1, 0, alignment=Qt.AlignLeft)
         self.nom = QLabel("-")
@@ -153,12 +151,12 @@ class ZoneGauche (QWidget):
         layout_bas.addWidget(self.num_Ordre_Pers, alignment=Qt.AlignCenter)
         # affichage de la structure 
         self.structure=QLabel() # label de la structure
-        self.structure.setText(_(libelle(_(self.configuration_json["Structure"]))))
+        self.structure.setText(_(self.configuration_json["Structure"]))
         self.structure.setStyleSheet("color: #76aeba; font-weight: bold; font-size: 11pt;")
         layout_bas.addWidget(self.structure, alignment=Qt.AlignCenter)
         # affichage des options
         self.specialites = QLabel() # permet de changer le texte du label
-        self.specialites.setText(_(libelle(_(self.configuration_json["Specialite"]))))
+        self.specialites.setText(_(self.configuration_json["Specialite"]))
         self.specialites.setStyleSheet("font-size: 10pt;")
         layout_bas.addWidget(self.specialites, alignment=Qt.AlignCenter)
         # attachement au layout gauche
@@ -235,10 +233,10 @@ class ZoneGauche (QWidget):
         """mise a jour de la structure et de la spécialité"""
         # Structure (classe / département / parti)
         structure_interne = self.liste_personnes[self.rang][2]
-        self.structure.setText(libelle(structure_interne))
+        self.structure.setText(_(structure_interne))
         # Options (liste)
         options = self.liste_personnes[self.rang][3]
-        options_ui = [libelle(opt) for opt in options] # affichage ui
+        options_ui = [_(opt) for opt in options]
         texteOptions = " - ".join(options_ui)
         self.specialites.setText(texteOptions)
 

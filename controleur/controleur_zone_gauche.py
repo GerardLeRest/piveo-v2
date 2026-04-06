@@ -14,7 +14,6 @@ class ControleurZoneGauche:
     def __init__(self, vue):
         self.vue = vue
         self.modele_zone_gauche = ModeleZoneGauche(self.vue.zone_gauche.liste_personnes)
-
         # zone gauche
         self.vue.zone_gauche.demande_avancer.connect(self.avancer)
         self.vue.zone_gauche.demande_reculer.connect(self.reculer)

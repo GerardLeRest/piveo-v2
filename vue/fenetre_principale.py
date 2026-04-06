@@ -114,56 +114,44 @@ class FenetrePrincipale(QMainWindow):
         """Construire le menu."""
         # barre de menus
         menu_bar = self.menuBar()
-
         # menus
-        menu_mode = QMenu("Mode", self)
-        menu_option = QMenu("Option", self)
+        menu_mode = QMenu(_("Mode"), self)
+        menu_option = QMenu(_("Option"), self)
         menu_langue = QMenu(_("Langue"), self)
-        menu_aide = QMenu("Aide", self)
-        menu_fichier = QMenu("Fichier", self)
-
+        menu_aide = QMenu(_("Aide"), self)
+        menu_fichier = QMenu(_("Fichier"), self)
         # groupe des langues
         groupe_langue = QActionGroup(self)
         groupe_langue.setExclusive(True)
-
         # objet de gestion lecture / écriture de la langue
         self.gestion_langue = GestionLangue(FICHIER_LANGUE)
-
         # actions de langue
         self.action_brezhoneg = QAction("Brezhoneg", self, checkable=True)
         self.action_brezhoneg.triggered.connect(lambda: self.changer_langue("br"))
-
         self.action_english = QAction("English", self, checkable=True)
         self.action_english.triggered.connect(lambda: self.changer_langue("en"))
-
         self.action_espagnol = QAction("Español", self, checkable=True)
         self.action_espagnol.triggered.connect(lambda: self.changer_langue("es"))
-
         self.action_francais = QAction("Français", self, checkable=True)
         self.action_francais.triggered.connect(lambda: self.changer_langue("fr"))
-
         # autres actions
         action_lecture = self.act_lecture # voir init
         action_deviner = self.act_deviner
         action_ecrit = self.act_ecrit
         action_recherche = self.act_recherche
         action_aleatoire = self.act_aleatoire
-        action_licence = QAction("Licence GPL-V3", self)
-        action_quitter = QAction("Quitter", self)
-        
+        action_licence = QAction(_("Licence GPL-V3"), self)
+        action_quitter = QAction(_("Quitter"), self)
         # icones des menus
         action_licence.setIcon(QIcon(str(DOSSIER_ICONES / "cadenas.svg")))
         action_quitter.setIcon(QIcon(str(DOSSIER_ICONES / "quit.png")))
         menu_langue.setIcon(QIcon(str(DOSSIER_ICONES / "traduction.svg")))
-
         # connexions
         action_licence.triggered.connect(self.afficher_licence)
         action_quitter.triggered.connect(self.close)
-
         # récupération de la langue sélectionnée
         langue_selectionnee = self.gestion_langue.lire()
         self.recuperation_code_langue(langue_selectionnee)
-
         # ajout des actions de langue
         for action in (
             self.action_brezhoneg,
@@ -173,19 +161,15 @@ class FenetrePrincipale(QMainWindow):
         ):
             groupe_langue.addAction(action)
             menu_langue.addAction(action)
-
         # composition des menus
         menu_mode.addAction(action_lecture)
         menu_mode.addAction(action_deviner)
         menu_mode.addAction(action_ecrit)
         menu_mode.addAction(action_recherche)
-
         menu_option.addMenu(menu_langue)
         menu_option.addAction(action_aleatoire)
-
         menu_aide.addAction(action_licence)
         menu_fichier.addAction(action_quitter)
-
         # ajout à la barre de menus
         menu_bar.addMenu(menu_mode)
         menu_bar.addMenu(menu_option)
@@ -221,7 +205,6 @@ class FenetrePrincipale(QMainWindow):
         barre_outils = QToolBar("Modes")
         barre_outils.setIconSize(QSize(32, 32))
         self.addToolBar(barre_outils)
-
         # rendre clickable les actions
         self.act_lecture.setCheckable(True)
         self.act_deviner.setCheckable(True)

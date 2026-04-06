@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-05 17:51+0200\n"
+"POT-Creation-Date: 2026-04-06 14:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: modele/modele_zone_droite_basse.py:23 vue/zone_droite_basse.py:33
+#: vue/zone_droite_basse.py:110
+msgid "TOUS"
+msgstr ""
 
 #: modele/modele_zone_droite_basse.py:37
 #, python-format
@@ -27,35 +32,35 @@ msgstr ""
 msgid "- choisir un %(structure)s -"
 msgstr ""
 
-#: vue/zone_droite_haute.py:64 vue/zone_gauche.py:72
+#: vue/zone_droite_haute.py:63 vue/zone_gauche.py:72
 msgid "Prénom"
 msgstr ""
 
-#: vue/zone_droite_haute.py:76
+#: vue/zone_droite_haute.py:75
 msgid "Indiquez votre prénom"
 msgstr ""
 
-#: vue/zone_droite_haute.py:88 vue/zone_gauche.py:79
+#: vue/zone_droite_haute.py:87 vue/zone_gauche.py:79
 msgid "Nom"
 msgstr ""
 
-#: vue/zone_droite_haute.py:101
+#: vue/zone_droite_haute.py:100
 msgid "Indiquez votre nom"
 msgstr ""
 
-#: vue/zone_droite_haute.py:174
+#: vue/zone_droite_haute.py:173
 msgid "Valider"
 msgstr ""
 
-#: vue/zone_droite_haute.py:179
+#: vue/zone_droite_haute.py:178
 msgid "Effacer"
 msgstr ""
 
-#: vue/zone_droite_haute.py:184
+#: vue/zone_droite_haute.py:183
 msgid "Suite"
 msgstr ""
 
-#: vue/zone_droite_haute.py:205 vue/zone_droite_haute.py:288
+#: vue/zone_droite_haute.py:204 vue/zone_droite_haute.py:280
 msgid "0/0"
 msgstr ""
 
@@ -115,8 +120,32 @@ msgstr ""
 msgid "Mode aléatoire"
 msgstr ""
 
+#: vue/fenetre_principale.py:119
+msgid "Mode"
+msgstr ""
+
+#: vue/fenetre_principale.py:120
+msgid "Option"
+msgstr ""
+
 #: vue/fenetre_principale.py:121
 msgid "Langue"
+msgstr ""
+
+#: vue/fenetre_principale.py:122
+msgid "Aide"
+msgstr ""
+
+#: vue/fenetre_principale.py:123
+msgid "Fichier"
+msgstr ""
+
+#: vue/fenetre_principale.py:151
+msgid "Licence GPL-V3"
+msgstr ""
+
+#: vue/fenetre_principale.py:152
+msgid "Quitter"
 msgstr ""
 
 #: vue/fenetre_principale.py:215
@@ -153,4 +182,10 @@ msgstr ""
 
 #: vue/fenetre_principale.py:274
 msgid "GPL-v3"
+msgstr ""
+
+msgid "Classe"
+msgstr ""
+
+msgid "Options"
 msgstr ""

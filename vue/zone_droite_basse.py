@@ -10,7 +10,6 @@ from pathlib import Path
 from PySide6.QtWidgets import ( QWidget, QComboBox, QGridLayout, QLabel, QVBoxLayout, QHBoxLayout,
                                 QPushButton, QSizePolicy, QFrame)
 from PySide6.QtCore import Qt, Signal
-from modele.textes_interface import libelle
 from modele.gestionnaire_BDD import GestionnaireBDD
 from controleur.controleur_zone_droite_basse import ControleurZoneDroiteBasse
 
@@ -30,7 +29,7 @@ class ZoneDroiteBasse(QWidget):
         self.liste_personnes = []
         self.liste_personnes_filtree = []
         self.liste_specialites = []
-        self.specialite_selectionnee = "TOUS"
+        self.specialite_selectionnee = _("TOUS")
         self.initialiser()
 
     def initialiser(self) -> None:
@@ -107,7 +106,7 @@ class ZoneDroiteBasse(QWidget):
     def valider_choix(self) -> None:
         """Valider la structure et la spécialité choisies."""
         self.specialite_selectionnee = self.comboBox_droite.currentText()
-        if self.specialite_selectionnee == "TOUS":
+        if self.specialite_selectionnee == _("TOUS"):
             self.liste_personnes_filtree = self.liste_personnes
         else:
             self.liste_personnes_filtree = [

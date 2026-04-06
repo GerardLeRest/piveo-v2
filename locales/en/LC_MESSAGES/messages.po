@@ -1,14 +1,9 @@
-# English translations for piveo-v package.
-# Copyright (C) 2026 THE piveo-v'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the piveo-v package.
-# Gerard <gerard@gerard-thinkcentre-m700>, 2026.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: piveo-v 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-05 17:13+0200\n"
-"PO-Revision-Date: 2026-04-05 17:51+0200\n"
+"POT-Creation-Date: 2026-04-06 14:44+0200\n"
+"PO-Revision-Date: 2026-04-06 14:46+0200\n"
 "Last-Translator: Gerard <gerard@gerard-thinkcentre-m700>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -16,6 +11,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modele/modele_zone_droite_basse.py:23 vue/zone_droite_basse.py:33
+#: vue/zone_droite_basse.py:110
+msgid "TOUS"
+msgstr "ALL"
 
 #: modele/modele_zone_droite_basse.py:37
 #, python-format
@@ -27,35 +27,35 @@ msgstr "- choose a %(structure)s -"
 msgid "- choisir un %(structure)s -"
 msgstr "- choose a %(structure)s -"
 
-#: vue/zone_droite_haute.py:64 vue/zone_gauche.py:72
+#: vue/zone_droite_haute.py:63 vue/zone_gauche.py:72
 msgid "Prénom"
 msgstr "First name"
 
-#: vue/zone_droite_haute.py:76
+#: vue/zone_droite_haute.py:75
 msgid "Indiquez votre prénom"
 msgstr "Enter your first name"
 
-#: vue/zone_droite_haute.py:88 vue/zone_gauche.py:79
+#: vue/zone_droite_haute.py:87 vue/zone_gauche.py:79
 msgid "Nom"
 msgstr "Last name"
 
-#: vue/zone_droite_haute.py:101
+#: vue/zone_droite_haute.py:100
 msgid "Indiquez votre nom"
 msgstr "Enter your last name"
 
-#: vue/zone_droite_haute.py:174
+#: vue/zone_droite_haute.py:173
 msgid "Valider"
 msgstr "Validate"
 
-#: vue/zone_droite_haute.py:179
+#: vue/zone_droite_haute.py:178
 msgid "Effacer"
 msgstr "Clear"
 
-#: vue/zone_droite_haute.py:184
+#: vue/zone_droite_haute.py:183
 msgid "Suite"
 msgstr "Next"
 
-#: vue/zone_droite_haute.py:205 vue/zone_droite_haute.py:288
+#: vue/zone_droite_haute.py:204 vue/zone_droite_haute.py:280
 msgid "0/0"
 msgstr "0/0"
 
@@ -97,7 +97,7 @@ msgstr "OK"
 
 #: vue/fenetre_principale.py:81
 msgid "Lecture"
-msgstr "Read"
+msgstr "Reading"
 
 #: vue/fenetre_principale.py:82
 msgid "Deviner puis réponse"
@@ -115,9 +115,33 @@ msgstr "Search"
 msgid "Mode aléatoire"
 msgstr "Random mode"
 
+#: vue/fenetre_principale.py:119
+msgid "Mode"
+msgstr "Mode"
+
+#: vue/fenetre_principale.py:120
+msgid "Option"
+msgstr "Option"
+
 #: vue/fenetre_principale.py:121
 msgid "Langue"
 msgstr "Language"
+
+#: vue/fenetre_principale.py:122
+msgid "Aide"
+msgstr "Help"
+
+#: vue/fenetre_principale.py:123
+msgid "Fichier"
+msgstr "File"
+
+#: vue/fenetre_principale.py:151
+msgid "Licence GPL-V3"
+msgstr "GPL-V3 License"
+
+#: vue/fenetre_principale.py:152
+msgid "Quitter"
+msgstr "Quit"
 
 #: vue/fenetre_principale.py:215
 msgid "Attention"
@@ -129,7 +153,7 @@ msgstr "Changes will take effect at the next startup."
 
 #: vue/fenetre_principale.py:251
 msgid "Lire les noms et prénoms"
-msgstr "Read names and first names"
+msgstr "Read first and last names"
 
 #: vue/fenetre_principale.py:252
 msgid "Deviner puis afficher la réponse"
@@ -152,7 +176,7 @@ msgid ""
 msgstr ""
 "This software is distributed under the GNU GPL version 3 license.\n"
 "\n"
-"You can redistribute it and/or modify it under the terms of this license.\n"
+"You may redistribute it and/or modify it under the terms of this license.\n"
 "\n"
 "More information: https://www.gnu.org/licenses/gpl-3.0.html\n"
 "\n"
@@ -167,6 +191,3 @@ msgstr "Class"
 
 msgid "Options"
 msgstr "Options"
-
-msgid "Élève"
-msgstr "Student"

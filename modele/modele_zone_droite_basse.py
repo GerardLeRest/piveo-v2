@@ -20,7 +20,7 @@ def creer_specialites(liste_personnes: list) -> list:
                 liste_specialites.append(option)
 
     liste_specialites.sort()
-    liste_specialites.insert(0, "TOUS")
+    liste_specialites.insert(0, _("TOUS"))
 
     return liste_specialites
 

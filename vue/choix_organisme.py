@@ -106,7 +106,6 @@ class ChoixOrganisme(QWidget):
         # Chemin COMPLET vers la base de données
         chemin_bdd = USER_BASE / "BaseDonnees" / configuration_json["BaseDonnees"]
         conn = sqlite3.connect(chemin_bdd)  # connexion à la BDD
-
         # Lancement de la fenêtre principale
         self.fenetre_principale = FenetrePrincipale(configuration_json, conn, None)
         self.fenetre_principale.show()

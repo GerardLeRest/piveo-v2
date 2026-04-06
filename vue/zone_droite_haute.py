@@ -58,12 +58,11 @@ class ZoneDroiteHaute(QWidget):
 
     def partie_prenom(self) -> None:
         """Créer la zone du prénom."""
-        # céation de la grille
         self.layout_grille = QGridLayout()
-        # label nom
+
         self.label_prenom = QLabel(_("Prénom"))
         self.layout_grille.addWidget(self.label_prenom, 0, 0)
-        # champs prenom_entree
+
         self.prenom_entree = QLineEdit()
         self.prenom_entree.setStyleSheet("""
             QLineEdit {
@@ -75,12 +74,11 @@ class ZoneDroiteHaute(QWidget):
         """)
         self.prenom_entree.setPlaceholderText(_("Indiquez votre prénom"))
         self.layout_grille.addWidget(self.prenom_entree, 0, 1)
-        self.prenom_entree.returnPressed.connect(self.action_retour_prenom)
-        # checkbox prenom
+        # checkBox "prénom"
         self.verification_prenom = QCheckBox()
         self.layout_grille.addWidget(self.verification_prenom, 0, 2)
         self.verification_prenom.stateChanged.connect(self.etat_widgets_prenom)
-        self.prenom_entree.returnPressed.connect(self.entree_sur_prenom)
+        self.prenom_entree.returnPressed.connect(self.action_retour_prenom)
 
     def partie_nom(self) -> None:
         """Créer la zone du nom."""
@@ -235,13 +233,6 @@ class ZoneDroiteHaute(QWidget):
         self.label_prenom.setEnabled(False)
         self.label_nom.setEnabled(False)
 
-    def entree_sur_prenom(self) -> None:
-        """Entrée dans prénom : focus sur nom si actif, sinon validation."""
-        if self.verification_nom.isChecked() and self.nom_entree.isEnabled():
-            self.nom_entree.setFocus()
-        else:
-            self.demande_valider.emit()
-
     def gestion_focus(self) -> None:
         """Gérer le focus des champs et la touche Entrée."""
         if self.verification_prenom.isChecked():
@@ -256,10 +247,8 @@ class ZoneDroiteHaute(QWidget):
             self.nom_entree.clearFocus()
         self.label_nom.setEnabled(etat)
         self.nom_entree.setEnabled(etat)
-
         if not etat:
             self.nom_entree.clear()
-
         self.demande_activation_nom.emit(etat)
 
     def etat_widgets_prenom(self) -> None:
@@ -270,7 +259,6 @@ class ZoneDroiteHaute(QWidget):
         if not etat:
             self.prenom_entree.clear()
         self.demande_activation_prenom.emit(etat)
-
 
     def partie_icones(self) -> None:
         """Créer la zone d'affichage de l'icône et du score."""
