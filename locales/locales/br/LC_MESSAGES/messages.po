@@ -1,167 +1,171 @@
+# Breton translations for piveo-v package.
+# Copyright (C) 2026 THE piveo-v'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the piveo-v package.
+# Gerard <gerard@gerard-thinkcentre-m700>, 2026.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: piveo-v 2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-06 14:44+0200\n"
-"PO-Revision-Date: 2026-04-06 14:46+0200\n"
+"PO-Revision-Date: 2026-04-06 17:08+0200\n"
 "Last-Translator: Gerard <gerard@gerard-thinkcentre-m700>\n"
-"Language-Team: Spanish\n"
-"Language: es\n"
+"Language-Team: Breton\n"
+"Language: br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: modele/modele_zone_droite_basse.py:23 vue/zone_droite_basse.py:33
 #: vue/zone_droite_basse.py:110
 msgid "TOUS"
-msgstr "TODOS"
+msgstr ""
 
 #: modele/modele_zone_droite_basse.py:37
 #, python-format
 msgid "- choisir une %(structure)s -"
-msgstr "- elegir una %(structure)s -"
+msgstr ""
 
 #: modele/modele_zone_droite_basse.py:39
 #, python-format
 msgid "- choisir un %(structure)s -"
-msgstr "- elegir una %(structure)s -"
+msgstr ""
 
 #: vue/zone_droite_haute.py:63 vue/zone_gauche.py:72
 msgid "Prénom"
-msgstr "Nombre"
+msgstr ""
 
 #: vue/zone_droite_haute.py:75
 msgid "Indiquez votre prénom"
-msgstr "Introduzca su nombre"
+msgstr ""
 
 #: vue/zone_droite_haute.py:87 vue/zone_gauche.py:79
 msgid "Nom"
-msgstr "Apellido"
+msgstr ""
 
 #: vue/zone_droite_haute.py:100
 msgid "Indiquez votre nom"
-msgstr "Introduzca su apellido"
+msgstr ""
 
 #: vue/zone_droite_haute.py:173
 msgid "Valider"
-msgstr "Validar"
+msgstr ""
 
 #: vue/zone_droite_haute.py:178
 msgid "Effacer"
-msgstr "Borrar"
+msgstr ""
 
 #: vue/zone_droite_haute.py:183
 msgid "Suite"
-msgstr "Siguiente"
+msgstr ""
 
 #: vue/zone_droite_haute.py:204 vue/zone_droite_haute.py:280
 msgid "0/0"
-msgstr "0/0"
+msgstr ""
 
 #: vue/zone_gauche.py:68
 msgid "Prénom attendu:"
-msgstr "Nombre esperado:"
+msgstr ""
 
 #: vue/zone_gauche.py:76
 msgid "Nom attendu:"
-msgstr "Apellido esperado:"
+msgstr ""
 
 #: vue/zone_gauche.py:152
 msgid "rang / effectif "
-msgstr "posición / total"
+msgstr ""
 
 #: vue/choix_organisme.py:31
 msgid "Piveo"
-msgstr "Piveo"
+msgstr ""
 
 #: vue/choix_organisme.py:37
 msgid "Mode de fonctionnement"
-msgstr "Modo de funcionamiento"
+msgstr ""
 
 #: vue/choix_organisme.py:45
 msgid "École"
-msgstr "Escuela"
+msgstr ""
 
 #: vue/choix_organisme.py:46
 msgid "Entreprise"
-msgstr "Empresa"
+msgstr ""
 
 #: vue/choix_organisme.py:47
 msgid "Parlement"
-msgstr "Parlamento"
+msgstr ""
 
 #: vue/choix_organisme.py:55
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 #: vue/fenetre_principale.py:81
 msgid "Lecture"
-msgstr "Lectura"
+msgstr ""
 
 #: vue/fenetre_principale.py:82
 msgid "Deviner puis réponse"
-msgstr "Adivinar y luego responder"
+msgstr ""
 
 #: vue/fenetre_principale.py:83 vue/fenetre_principale.py:253
 msgid "Test écrit"
-msgstr "Prueba escrita"
+msgstr ""
 
 #: vue/fenetre_principale.py:84
 msgid "Recherche"
-msgstr "Búsqueda"
+msgstr ""
 
 #: vue/fenetre_principale.py:85 vue/fenetre_principale.py:255
 msgid "Mode aléatoire"
-msgstr "Modo aleatorio"
+msgstr ""
 
 #: vue/fenetre_principale.py:119
 msgid "Mode"
-msgstr "Modo"
+msgstr ""
 
 #: vue/fenetre_principale.py:120
 msgid "Option"
-msgstr "Opción"
+msgstr ""
 
 #: vue/fenetre_principale.py:121
 msgid "Langue"
-msgstr "Idioma"
+msgstr ""
 
 #: vue/fenetre_principale.py:122
 msgid "Aide"
-msgstr "Ayuda"
+msgstr ""
 
 #: vue/fenetre_principale.py:123
 msgid "Fichier"
-msgstr "Archivo"
+msgstr ""
 
 #: vue/fenetre_principale.py:151
 msgid "Licence GPL-V3"
-msgstr "Licencia GPL-V3"
+msgstr ""
 
 #: vue/fenetre_principale.py:152
 msgid "Quitter"
-msgstr "Salir"
+msgstr ""
 
 #: vue/fenetre_principale.py:215
 msgid "Attention"
-msgstr "Atención"
+msgstr ""
 
 #: vue/fenetre_principale.py:216
 msgid "Les changements se feront au prochain démarrage."
-msgstr "Los cambios se aplicarán en el próximo inicio."
+msgstr ""
 
 #: vue/fenetre_principale.py:251
 msgid "Lire les noms et prénoms"
-msgstr "Leer nombres y apellidos"
+msgstr ""
 
 #: vue/fenetre_principale.py:252
 msgid "Deviner puis afficher la réponse"
-msgstr "Adivinar y mostrar la respuesta"
+msgstr ""
 
 #: vue/fenetre_principale.py:254
 msgid "Rechercher une personne"
-msgstr "Buscar una persona"
+msgstr ""
 
 #: vue/fenetre_principale.py:269
 msgid ""
@@ -174,20 +178,13 @@ msgid ""
 "\n"
 "© 2026 Gérard Le Rest - ge.lerest@gmail.com"
 msgstr ""
-"Este software se distribuye bajo la licencia GNU GPL versión 3.\n"
-"\n"
-"Puede redistribuirlo y/o modificarlo según los términos de esta licencia.\n"
-"\n"
-"Más información: https://www.gnu.org/licenses/gpl-3.0.html\n"
-"\n"
-"© 2026 Gérard Le Rest - ge.lerest@gmail.com"
 
 #: vue/fenetre_principale.py:274
 msgid "GPL-v3"
-msgstr "GPL-v3"
+msgstr ""
 
 msgid "Classe"
-msgstr "Clase"
+msgstr ""
 
 msgid "Options"
-msgstr "Opciones"
+msgstr ""
