@@ -1,26 +1,28 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 """
 G Le Rest - 2026
-Gestion des données dans le dossier Path.home() / ".local" / piveo
+Gestion des données dans le dossier utilisateur
 """
 import shutil
+import sys
 from pathlib import Path
 
 APP_NAME = "piveo"
 USER_BASE = Path.home() / ".local" / APP_NAME
 
+def get_resources_base() -> Path:
+    """Retourne le dossier ressources (compatible PyInstaller)"""
+    if hasattr(sys, "_MEIPASS"):
+        return Path(sys._MEIPASS) / "ressources"
+    return Path(__file__).resolve().parent.parent / "ressources"
+
 def init_donnees_utiliisateurs() -> None:
     """
-    Initialise les données utilisateur uniquement si ~/.local/piveo n'existe pas.
-    Si le dossier existe déjà, on ne touche à rien.
+    Initialise les données utilisateur.
     """
-    resources_base = Path(__file__).resolve().parent.parent / "ressources"
+    resources_base = get_resources_base()
 
-    # Si le dossier utilisateur existe déjà : on ne fait rien
     if USER_BASE.exists():
-        return
+        shutil.rmtree(USER_BASE)
 
-    # Sinon, installation complète des ressources
     shutil.copytree(resources_base, USER_BASE)
+   

@@ -50,6 +50,8 @@ from vue.choix_organisme import ChoixOrganisme
 
 def main():
     app = QApplication(sys.argv)
+    # theme sous windows
+    app.setStyle("Fusion")
     fenetre = ChoixOrganisme()
     fenetre.show()
     sys.exit(app.exec())

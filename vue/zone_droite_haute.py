@@ -12,6 +12,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Signal, Qt
+from pathlib import Path
 
 # ⚠️ IMPORTANT
 # fonctionnement global
@@ -22,6 +23,7 @@ from builtins import _
 
 import os
 import sys
+from modele.choix_chemin_ressources import chemin_ressources
 
 
 REPERTOIRE_RACINE = os.path.dirname(os.path.abspath(__file__))  # répertoire du fichier py
@@ -312,9 +314,11 @@ class ZoneDroiteHaute(QWidget):
             return False
 
         if resultat:
-            pixmap = QPixmap("ressources/fichiers/icones/check.png")
+            chemin_icone = chemin_ressources("ressources/fichiers/icones/check.png")
         else:
-            pixmap = QPixmap("ressources/fichiers/icones/cross.png")
+            chemin_icone = chemin_ressources("ressources/fichiers/icones/cross.png")
+
+        pixmap = QPixmap(str(chemin_icone))
 
         self.label_image_gauche.setPixmap(
             pixmap.scaled(30, 30, Qt.KeepAspectRatio, Qt.SmoothTransformation)

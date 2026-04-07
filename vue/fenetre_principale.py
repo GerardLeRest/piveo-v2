@@ -48,7 +48,8 @@ class FenetrePrincipale(QMainWindow):
 
     def __init__(self, configuration_json, connecteur_bdd, parent=None):
         super().__init__(parent)
-
+        self.resize(650, 480)
+        self.setMinimumSize(650, 480)
         self.configuration_json = configuration_json
         self.gestionnaire_bdd = GestionnaireBDD(connecteur_bdd)
         self.liste_personnes = self.gestionnaire_bdd.liste_personnes
