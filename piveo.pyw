@@ -11,7 +11,7 @@ import locale
 import gettext
 from pathlib import Path
 from PySide6.QtWidgets import QApplication
-from modele.chargement import init_donnees_utiliisateurs
+from modele.chargement import init_donnees_utilisateurs
 from modele.gestion_langue import GestionLangue
 from modele.choix_chemin_ressources import chemin_ressources
 
@@ -20,7 +20,7 @@ LOCALE_DIR = chemin_ressources("locales")
 
 # copie de ressources vers ~/.local/piveo
 # (uniquement si le dossier n'existe pas)
-init_donnees_utiliisateurs()
+init_donnees_utilisateurs()
 
 # fichier configuration pour les 4 fichiers json
 rep_config = Path.home() / ".local" / "piveo" / "configurations_json"

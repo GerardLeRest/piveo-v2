@@ -47,6 +47,12 @@ class ControleurZoneDroiteHaute:
         resultat = self.vue.zone_droite_haute.afficher_image_check(resultat_prenom, resultat_nom)
         if resultat:
             self.nbre_bonnes_rep += 1
+        if self.vue.zone_gauche.rang < len(self.vue.zone_gauche.liste_personnes) - 1:
+            self.vue.zone_gauche.rang += 1
+        else:
+            self.vue.zone_gauche.rang = 0
+        self.vue.zone_gauche.maj()
+        
 
     @Slot()
     def rechercher(self) -> None:

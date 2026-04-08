@@ -119,7 +119,7 @@ class ControleurGeneral:
         # act/désac des boutons
         self.vue.zone_droite_haute.activer_boutons_champs()
         self.vue.zone_gauche.activer_boutons()
-        self.vue.zone_droite_haute.bout_effacer.setEnabled(False) 
+        self.vue.zone_droite_haute.bout_effacer.setEnabled(True) 
         self.vue.zone_droite_haute.bout_suite.setEnabled(False)
         # champs et image
         self.vue.zone_droite_haute.effacer_reponses()
