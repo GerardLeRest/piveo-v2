@@ -13,15 +13,9 @@ SQLite3 database.
 
 Languages: French, English, Spanish, Breton
 
-```{=html}
 <p align="center">
-```
-
-`<img src="ressources/fichiers/images/accueil.png" alt="Home">`{=html}
-
-```{=html}
+<img src="ressources/fichiers/images/accueil.png" alt="Home">
 </p>
-```
 
 ## How It Works
 
@@ -31,15 +25,9 @@ The interface is divided into three areas:
 - **Top-right panel**: allows the user to answer questions\
 - **Bottom-right panel**: contains settings
 
-```{=html}
 <p align="center">
-```
-
-`<img src="ressources/fichiers/images/interface.png" alt="Interface">`{=html}
-
-```{=html}
+<img src="ressources/fichiers/images/interface.png" alt="Interface">
 </p>
-```
 
 ### Available Modes
 
@@ -121,15 +109,9 @@ chmod +x ~/Piveo-2.2.1-x86_64.AppImage
 ./Piveo-2.2.1-x86_64.AppImage
 ```
 
-```{=html}
 <p align="center">
-```
-
-`<img src="fichiers/images/piveo.png" alt="Icon">`{=html}
-
-```{=html}
+<img src="ressources/fichiers/images/piveo.png" alt="Icon">
 </p>
-```
 
 ## (Optional) Menu Integration
 

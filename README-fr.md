@@ -109,7 +109,7 @@ chmod +x ~/Piveo-2.2.1-x86_64.AppImage
 ```
 
 <p align="center">
-  <img src="fichiers/images/piveo.png" alt="Icône">
+  <img src="ressources/fichiers/images/piveo.png" alt="Icône">
 </p>
 
 ## (Optionnel) Intégration au menu
