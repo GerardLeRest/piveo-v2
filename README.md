@@ -1,4 +1,4 @@
- 🇫🇷 [Lire la version française](README.fr.md)
+ 🇫🇷 [Lire la version française](README-fr.md)
 
 # Piveo
 
