@@ -131,6 +131,12 @@ sudo apt install alacarte
 - https://github.com/GerardLeRest/Piveo\
 - https://doc.ubuntu-fr.org/Piveo
 
+## Data Protection
+
+This software operates entirely locally: no data is transmitted or stored remotely.
+
+The user (or the organization using the software) is responsible for the use of the data they import. When using personal data (names, photos, etc.), they must ensure compliance with applicable regulations (including GDPR).
+
 ## License & Images
 
 This project is distributed under the GPL-v3 license.\
