@@ -57,7 +57,7 @@ class ControleurZoneDroiteHaute:
     @Slot()
     def rechercher(self) -> None:
         """Lancer la recherche des personnes."""
-        liste = self.gestionnaire_bdd.charger_personnes()
+        liste = self.gestionnaire_bdd.liste_personnes
         liste_personnes = self.rechercher_personnes(liste)
         self.controleur_zone_gauche.charger_liste(liste_personnes, "recherche")
 

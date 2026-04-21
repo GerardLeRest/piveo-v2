@@ -15,6 +15,7 @@ class ModeleRecherche:
 
     def trouver(self) -> list:
         """Rechercher les personnes suivant les données rentrées."""
+        self.liste_finale = []
         nom = self.vue.zone_droite_haute.nom_entree.text().lower().strip()
         prenom = self.vue.zone_droite_haute.prenom_entree.text().lower().strip()
         # sélection des prénoms / noms

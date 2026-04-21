@@ -15,6 +15,7 @@ from pathlib import Path
 import json, sqlite3
 from vue.fenetre_principale import FenetrePrincipale
 from modele.choix_chemin_ressources import chemin_ressources
+from modele.construction_BDD import ConstructionBDD
 from builtins import _
 from controleur.controleur_zone_gauche import ControleurZoneGauche
 
@@ -91,10 +92,13 @@ class ChoixOrganisme(QWidget):
         # récupération du fichier json de configuration
         if self.radio_ecole.isChecked():
             fichier_config = "ConfigEcole.json"
+            chemin_CSV = USER_BASE / "fichiers" / "eleves"
         elif self.radio_entreprise.isChecked():
             fichier_config = "ConfigEntreprise.json"
+            chemin_CSV = USER_BASE / "fichiers" / "salaries"
         else:
             fichier_config = "ConfigParlement.json"
+            chemin_CSV = USER_BASE / "fichiers" / "deputes"
         # charger la configuration choisie
         try:
             chemin_config = USER_BASE / "configurations_json" / fichier_config
@@ -105,7 +109,9 @@ class ChoixOrganisme(QWidget):
             return
         # Chemin COMPLET vers la base de données
         chemin_bdd = USER_BASE / "BaseDonnees" / configuration_json["BaseDonnees"]
-        conn = sqlite3.connect(chemin_bdd)  # connexion à la BDD
+        construction_BDD = ConstructionBDD(chemin_bdd, chemin_CSV)
+        # on utilise la connexion de contruction_BDD
+        conn = construction_BDD.connexion  
         # Lancement de la fenêtre principale
         self.fenetre_principale = FenetrePrincipale(configuration_json, conn, None)
         self.fenetre_principale.show()
