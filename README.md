@@ -95,12 +95,12 @@ https://github.com/GerardLeRest/Piveo/releases
 #### 2. Download the latest version
 
 Example:\
-Piveo-2.2.1-x86_64.AppImage
+Piveo-X.X.X-x86_64.AppImage (X.X.X: release)
 
 #### 3. Make it executable
 
 ```bash
-chmod +x ~/Piveo-2.2.1-x86_64.AppImage
+chmod +x ~/Piveo-X.X.X-x86_64.AppImage
 ```
 
 #### 4. Run the application
@@ -108,6 +108,14 @@ chmod +x ~/Piveo-2.2.1-x86_64.AppImage
 ```bash
 ./Piveo-2.2.1-x86_64.AppImage
 ```
+
+#### 5. Data directory
+
+Linux :
+~/.local/piveo
+
+Windows :
+C:\Users\username\local\piveo
 
 <p align="center">
 <img src="ressources/fichiers/images/piveo.png" alt="Icon">

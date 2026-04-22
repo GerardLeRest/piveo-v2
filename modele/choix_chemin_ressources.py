@@ -19,7 +19,6 @@ def dossier_ressources() -> Path:
             return Path(sys._MEIPASS)  # type: ignore[attr-defined]
         # --onedir : ressources à côté de l'exe
         return Path(sys.executable).resolve().parent
-
     # dev : autre
     return Path(__file__).resolve().parent.parent
 
