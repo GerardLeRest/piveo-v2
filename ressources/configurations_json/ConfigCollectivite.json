@@ -1,0 +1,8 @@
+{
+  "Organisme": "Collectivité territoriale",
+  "Structure": "Direction",
+  "Personne": "Agent",
+  "Specialite": "Domaines",
+  "BaseDonnees": "agents.db",
+  "CheminPhotos": "agents"
+}
