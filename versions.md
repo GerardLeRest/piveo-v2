@@ -46,6 +46,7 @@ ajout de Tooltips et leurs traductions
 version 2.0.0
 
 zone gauche avec la nouvelle interface et une structure MVC
+
 version 2.1.0
 
 zone haut droite basse
@@ -58,4 +59,10 @@ version 2.3.0
 
 gestion des différents controleurs
 
+version 2.4.0
 
+création de sa propre base de données avec les 3 fichier csv
+
+version 2.4.1
+
+insertion des recommanations de sécurité

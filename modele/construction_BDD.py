@@ -5,6 +5,8 @@ class ConstructionBDD:
     def __init__(self,chemin_bdd, chemin_CSV):
         self.chemin_bdd = chemin_bdd
         self.chemin_CSV = chemin_CSV
+        if chemin_bdd.exists():
+            chemin_bdd.unlink() # suppression et recréation de la base
         self.connexion = sqlite3.connect(self.chemin_bdd)
         self.curseur = self.connexion.cursor()
         self.creation_tables()
@@ -52,13 +54,6 @@ class ConstructionBDD:
     
     def remplissage_tables(self)->None:
         """remplissage des tables avec les fichiers CSV"""
-        # effacement des anciennes données
-        self.curseur.execute("DELETE FROM personnes_specialites")
-        self.curseur.execute("DELETE FROM personnes")
-        self.curseur.execute("DELETE FROM specialites")
-        self.curseur.execute("DELETE FROM sqlite_sequence WHERE name='personnes'")
-        self.curseur.execute("DELETE FROM sqlite_sequence WHERE name='specialites'")
-        self.connexion.commit()
         # table "personnes"
         chemin_personnes = self.chemin_CSV / "personnes.csv"
         with open(chemin_personnes, newline='', encoding="utf-8") as f:
