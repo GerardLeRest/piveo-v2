@@ -51,7 +51,7 @@ Le programme utilise :
 - Des fichiers d'initialisation CSV
 - Une base de données SQLite3
 
-Trois organismes sont fournis par défaut (Établissement scolaire, Parlement, Entreprise), mais il est possible d’ajouter un organisme personnalisé (ex. : club de sport) en créant sa propre base de données, ses images et ses fichiers CSV.
+Trois organismes sont fournis par défaut (Établissement scolaire, Collectivité, Entreprise), mais il est possible d’ajouter un organisme personnalisé (ex. : club de sport) en créant sa propre base de données, ses images et ses fichiers CSV.
 
 Le choix de l’organisme se fait au lancement de l'application.
 

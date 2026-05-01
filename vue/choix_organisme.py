@@ -3,7 +3,7 @@
 
 """
 Fenêtre d'accueil – choix de l'organisme :
-École, Entreprise, Parlement
+École, Entreprise, Collectivité
 """
 
 from PySide6.QtWidgets import (

@@ -123,8 +123,8 @@ msgid "Entreprise"
 msgstr "Entreprise"
 
 #: ../app/choix_organisme.py:46
-msgid "Parlement"
-msgstr "Parlement"
+msgid "Collectivité"
+msgstr "Collectivité"
 
 #: ../app/choix_organisme.py:54
 msgid "OK"

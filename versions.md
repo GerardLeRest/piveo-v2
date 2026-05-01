@@ -63,6 +63,10 @@ version 2.4.0
 
 création de sa propre base de données avec les 3 fichier csv
 
-version 2.4.1
+version 2.5.0
 
-insertion des recommanations de sécurité
+insertion des recommanations de sécurité sur la page d'accueil
+
+version 2.5.1
+correction de la traduction Collectivité en anglais (en)
+qui remplace Parlement

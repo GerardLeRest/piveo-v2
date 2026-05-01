@@ -92,7 +92,7 @@ msgid "Entreprise"
 msgstr ""
 
 #: vue/choix_organisme.py:47
-msgid "Parlement"
+msgid "Collectivité"
 msgstr ""
 
 #: vue/choix_organisme.py:55

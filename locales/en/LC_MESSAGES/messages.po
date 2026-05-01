@@ -88,8 +88,8 @@ msgid "Entreprise"
 msgstr "Company"
 
 #: vue/choix_organisme.py:47
-msgid "Parlement"
-msgstr "Parliament"
+msgid "Collectivité"
+msgstr "Local authoritory"
 
 #: vue/choix_organisme.py:55
 msgid "OK"
