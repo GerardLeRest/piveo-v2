@@ -89,7 +89,7 @@ msgstr "Embregerezh"
 
 #: vue/choix_organisme.py:47
 msgid "Collectivité"
-msgstr "Parlamant"
+msgstr "Kevredigezh"
 
 #: vue/choix_organisme.py:55
 msgid "OK"

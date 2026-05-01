@@ -114,7 +114,7 @@ class ChoixOrganisme(QWidget):
             fichier_config = "ConfigEcole.json"
             chemin_CSV = USER_BASE / "fichiers" / "eleves"
         elif self.radio_entreprise.isChecked():
-            fichier_config = "ConfigCollectivite.json"
+            fichier_config = "ConfigEntreprise.json"
             chemin_CSV = USER_BASE / "fichiers" / "salaries"
         else:
             fichier_config = "ConfigCollectivite.json"

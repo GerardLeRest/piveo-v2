@@ -210,6 +210,7 @@ class ZoneGauche (QWidget):
             / self.configuration_json["CheminPhotos"]
             / nom_image
         )
+        print(chemin_image)
         # si l'image existe
         if chemin_image.exists():
             pixmap = QPixmap(str(chemin_image))

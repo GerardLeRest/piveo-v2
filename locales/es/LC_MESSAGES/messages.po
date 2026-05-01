@@ -89,7 +89,7 @@ msgstr "Empresa"
 
 #: vue/choix_organisme.py:47
 msgid "Collectivité"
-msgstr "Parlamento"
+msgstr "Colectividad"
 
 #: vue/choix_organisme.py:55
 msgid "OK"
