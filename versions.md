@@ -70,3 +70,7 @@ insertion des recommanations de sécurité sur la page d'accueil
 version 2.5.1
 correction de la traduction Collectivité qui remplace Parlement
 correction du bug des affichages des salaries
+
+version 2.5.2
+changement du fichier pesrsonnes.csv de salaries (inversion
+des prénoms et des noms)
