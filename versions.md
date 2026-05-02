@@ -68,6 +68,5 @@ version 2.5.0
 insertion des recommanations de sécurité sur la page d'accueil
 
 version 2.5.1
-correction de la traduction Collectivité en anglais (en)
-qui remplace Parlement
-correction du non affichage des salaries
+correction de la traduction Collectivité qui remplace Parlement
+correction du bug des affichages des salaries
