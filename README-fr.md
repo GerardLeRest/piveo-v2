@@ -2,14 +2,14 @@
 
 Dépôt GitHub : https://github.com/GerardLeRest/Piveo-v2
 
-# Piveo - Apprendre les prénoms et noms gratuitement
+# Piveo
 
 ## Objectif du projet
 
-Piveo est une application libre et open-source permettant d’apprendre et de mémoriser les prénoms, noms et visages (logiciel de trombinoscope) pour les écoles, les entreprises et les collectivités.  
+Piveo est une application libre, gratuite et open-source permettant d’apprendre et de mémoriser les prénoms, noms et visages pour les écoles, les entreprises et les collectivités. Elle constitue une alternative au trombinoscope. 
 Les cas d’usage typiques incluent les enseignants qui apprennent les noms de leurs élèves, les équipes qui accueillent de nouveaux employés, ou les organisations qui gèrent de grands groupes de personnes.
 
-Elle permet aux utilisateurs d’apprendre ou de retrouver les prénoms et noms des personnes à partir d’une base de données SQLite3.
+Elle permet aux utilisateurs d’apprendre ou de retrouver les prénoms et noms des personnes à partir d’une base de données SQLite3. La configuration de cette base de données se fait à l'aide de trois fichiers CSV.
 
 Langues : français, anglais, espagnol, breton
 
@@ -52,8 +52,14 @@ Le programme utilise :
 - PySide6
 - Fichiers CSV d’initialisation
 - Base de données SQLite3
+- Configuration par fichiers CSV
 
-Trois environnements par défaut sont fourni :
+<p align="center">
+<img src="ressources/fichiers/images/tableaux.png" alt="Tableaux CSV">
+</p>
+
+Trois environnements par défaut sont fournis :
+
 - Collectivité
 - École
 - Entreprise
@@ -84,7 +90,7 @@ pip install pyside6
 
 ### 🪟 Windows
 
-- Aller sur : https://github.com/GerardLeRest/Piveo/releases/\
+- Aller sur : https://github.com/GerardLeRest/Piveo-v2/releases/\
 - Télécharger "Piveo_Setup-X.X.X.exe"
 - Installer et lancer le logiciel
 
@@ -92,7 +98,7 @@ pip install pyside6
 
 #### 1. Télécharger l’AppImage
 
-https://github.com/GerardLeRest/Piveo/releases
+https://github.com/GerardLeRest/Piveo-v2/releases
 
 #### 2. Télécharger la dernière version
 
@@ -127,20 +133,6 @@ Windows : C:\Users\username\.local\piveo
 sudo apt install alacarte
 ```
 
-## Pourquoi choisir Piveo ?
-
-* **Confidentialité totale** : Fonctionne 100% en local (conforme RGPD). Idéal pour les établissements scolaires.
-* **Multi-environnements** : Modes adaptés pour l'École, l'Entreprise ou les Collectivités.
-* **Méthode efficace** : Apprentissage par la saisie clavier (mémorisation active) et non simple QCM.
-* **Multiplateforme** : Disponible en `.exe` pour Windows et `AppImage` pour Linux.
-* **Multilingue** : Supporte le Français, Anglais, Espagnol et Breton.
-
-## Notes
-
-- Compatible avec Python 3.8+
-- Testé sur Ubuntu et Windows
-- Application en cours de développement
-
 ## Liens
 
 - Téléchargements (Piveo v2) : https://github.com/GerardLeRest/piveo-v2/releases
@@ -148,14 +140,13 @@ sudo apt install alacarte
 - Documentation : https://doc.ubuntu-fr.org/Piveo
 - Forum Ubuntu-fr : https://forum.ubuntu-fr.org/viewtopic.php?id=2091784
 - Article LinuxFr : https://linuxfr.org/users/clisam/journaux/piveo-2-4-0-logiciel-d-apprentissage-de-prenoms-et-noms
-- Site web (Piveo) : https://gerardlerest.github.io/piveo-v2
+- Site web (Piveo) : https://gerardlerest.github.io/piveo
 
 ## Protection des données
 
 Ce logiciel fonctionne entièrement en local : aucune donnée n’est transmise ni stockée à distance.
 
 L’utilisateur (ou l’organisation utilisant le logiciel) est responsable de l’utilisation des données importées. Lors de l’utilisation de données personnelles (noms, photos, etc.), il doit veiller au respect des réglementations applicables (notamment le RGPD).
-
 
 ## Licence & Images
 
