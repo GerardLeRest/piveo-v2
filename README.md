@@ -1,22 +1,22 @@
-🇫🇷 [Lire la version française](README-fr.md)
+🇫🇷 [Lire la version française](README_FR.md)
 
-GitHub repository: https://github.com/GerardLeRest/Piveo
+GitHub repository: https://github.com/GerardLeRest/Piveo-v2
 
-# Piveo
+# Piveo - Learn first and last names for free
 
-## Project objective
+## Project goal
 
-Piveo is a free and open-source application that allows users to learn and memorize first names, last names, and faces (directory-style software) for schools, companies, and organizations.  
+Piveo is a free and open-source application designed to learn and memorize first names, last names, and faces (directory software) for schools, companies, and organizations.  
 Typical use cases include teachers learning their students’ names, teams onboarding new employees, or organizations managing large groups of people.
 
-It allows users to learn or find people’s first and last names using a SQLite3 database.
+It allows users to learn or retrieve people’s first and last names from an SQLite3 database.
 
 Languages: French, English, Spanish, Breton
 
 Piveo v2 is the current version of the software.
 
 <p align="center">
-<img src="ressources/fichiers/images/accueil0.png" alt="Home">
+<img src="ressources/fichiers/images/accueil.png" alt="Home">
 </p>
 
 ## How it works
@@ -25,7 +25,7 @@ The interface is divided into three areas:
 
 - **Left panel**: displays information about the person
 - **Top-right panel**: allows the user to enter answers
-- **Bottom-right panel**: contains settings
+- **Bottom-right panel**: contains the settings
 
 <p align="center">
 <img src="ressources/fichiers/images/interface.png" alt="Interface">
@@ -34,23 +34,23 @@ The interface is divided into three areas:
 ### Available modes
 
 1. **Browse**
-  - Allows navigation between people
-  - Navigation via buttons under the image
-  - Random mode available
+   - Allows you to navigate between people
+   - Navigation is done using the buttons below the image
+   - Random mode available
 2. **Guess**
-  - Thinking before displaying
-  - Random mode available
+   - Encourages the user to think of the name before it is displayed
+   - Random mode available
 3. **Written**
-  - Allows entering the first and last name in the top-right panel
-  - Random mode available
+   - Allows the user to enter the first and last name in the top-right panel
+   - Random mode available
 4. **Search**
-  - Allows finding one or more people
+   - Allows you to find one or more people
 
 The program uses:
 
 - Python 3
 - PySide6
-- Initialization CSV files
+- CSV initialization files
 - SQLite3 database
 
 Three default environments are provided:
@@ -62,7 +62,7 @@ The environment is selected when the application starts.
 
 ## Video
 
-[Presentation video of Piveo](https://youtu.be/upmGYy93n2w)
+[Piveo presentation video](https://youtu.be/upmGYy93n2w)
 
 ## Installation
 
@@ -84,9 +84,9 @@ pip install pyside6
 
 ### 🪟 Windows
 
-- Go to: https://github.com/GerardLeRest/Piveo/releases/\
+- Go to: https://github.com/GerardLeRest/Piveo/releases/
 - Download "Piveo_Setup-X.X.X.exe"
-- Install and launch the software
+- Install and run the software
 
 ### 🐧 GNU/Linux
 
@@ -114,8 +114,8 @@ chmod +x ~/Piveo-X.X.X-x86_64.AppImage
 #### 5. Data directory
 
 Directory where user data is stored:  
-Linux : ~/.local/piveo  
-Windows : C:\Users\username\local\piveo
+Linux   : ~/.local/piveo  
+Windows : C:\Users\username\.local\piveo
 
 <p align="center">
 <img src="ressources/fichiers/images/piveo.png" alt="Icon">
@@ -126,6 +126,14 @@ Windows : C:\Users\username\local\piveo
 ```bash
 sudo apt install alacarte
 ```
+
+## Why choose Piveo?
+
+* **Full privacy**: Works 100% locally (GDPR compliant). Ideal for schools.
+* **Multi-environment**: Modes adapted for Schools, Companies, or Communities.
+* **Effective method**: Learning by typing (active memorization), not just multiple-choice questions.
+* **Cross-platform**: Available as `.exe` for Windows and `AppImage` for Linux.
+* **Multilingual**: Supports French, English, Spanish, and Breton.
 
 ## Notes
 
@@ -146,11 +154,11 @@ sudo apt install alacarte
 
 This software runs entirely locally: no data is transmitted or stored remotely.
 
-The user (or the organization using the software) is responsible for how imported data is used. When using personal data (names, photos, etc.), they must ensure compliance with applicable regulations (notably GDPR).
+The user (or the organization using the software) is responsible for how imported data is used. When using personal data (names, photos, etc.), they must ensure compliance with applicable regulations, especially the GDPR.
 
 ## License & Images
 
-This project is distributed under the GPL-v3 license.\
+This project is distributed under the GPL-v3 license.  
 © 2026 Gérard Le Rest
 
 The portraits were generated using artificial intelligence and are used for non-commercial educational purposes (https://generated.photos/).
@@ -159,4 +167,4 @@ Icons: https://fonts.google.com/icons
 
 ## Keywords
 
-directory-style software, learn names, memorize faces, educational and professional software, onboarding new members
+directory software, learn names, memorize faces, educational and professional software, onboarding new members

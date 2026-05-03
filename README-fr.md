@@ -1,12 +1,12 @@
 🇬🇧 [Read the English version](README.md)
 
-Dépôt GitHub : https://github.com/GerardLeRest/Piveo
+Dépôt GitHub : https://github.com/GerardLeRest/Piveo-v2
 
 # Piveo - Apprendre les prénoms et noms gratuitement
 
 ## Objectif du projet
 
-Piveo est une application libre et open-source permettant d’apprendre et de mémoriser les prénoms, les noms et les visages (logiciel de trombinoscope) pour les écoles, les entreprises et les organisations.  
+Piveo est une application libre et open-source permettant d’apprendre et de mémoriser les prénoms, noms et visages (logiciel de trombinoscope) pour les écoles, les entreprises et les collectivités.  
 Les cas d’usage typiques incluent les enseignants qui apprennent les noms de leurs élèves, les équipes qui accueillent de nouveaux employés, ou les organisations qui gèrent de grands groupes de personnes.
 
 Elle permet aux utilisateurs d’apprendre ou de retrouver les prénoms et noms des personnes à partir d’une base de données SQLite3.
@@ -53,7 +53,7 @@ Le programme utilise :
 - Fichiers CSV d’initialisation
 - Base de données SQLite3
 
-Trois environnements par défaut sont fournis:
+Trois environnements par défaut sont fourni :
 - Collectivité
 - École
 - Entreprise
@@ -115,7 +115,7 @@ chmod +x ~/Piveo-X.X.X-x86_64.AppImage
 
 Répertoire où sont stockées les données utilisateur :
 Linux   : ~/.local/piveo
-Windows : C:\Users\username\local\piveo
+Windows : C:\Users\username\.local\piveo
 
 <p align="center">
 <img src="ressources/fichiers/images/piveo.png" alt="Icône">
@@ -129,7 +129,7 @@ sudo apt install alacarte
 
 ## Pourquoi choisir Piveo ?
 
-* **Confidentialité totale** : Fonctionne 100% en local (RGPD ready). Idéal pour les établissements scolaires.
+* **Confidentialité totale** : Fonctionne 100% en local (conforme RGPD). Idéal pour les établissements scolaires.
 * **Multi-environnements** : Modes adaptés pour l'École, l'Entreprise ou les Collectivités.
 * **Méthode efficace** : Apprentissage par la saisie clavier (mémorisation active) et non simple QCM.
 * **Multiplateforme** : Disponible en `.exe` pour Windows et `AppImage` pour Linux.
