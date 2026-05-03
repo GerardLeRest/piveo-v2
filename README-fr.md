@@ -13,7 +13,7 @@ Elle permet aux utilisateurs d’apprendre ou de retrouver les prénoms et noms 
 
 Langues : français, anglais, espagnol, breton
 
-Piveo v2 est la version actuelle du logiciel.
+Piveo v2 est la version actuelle du logiciel (v2.5.3).
 
 <p align="center">
 <img src="ressources/fichiers/images/accueil.png" alt="Accueil">

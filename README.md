@@ -13,7 +13,7 @@ It allows users to learn or retrieve people’s first and last names from an SQL
 
 Languages: French, English, Spanish, Breton
 
-Piveo v2 is the current version of the software.
+Piveo v2 is the current version of the software (v2.5.3).
 
 <p align="center">
 <img src="ressources/fichiers/images/accueil.png" alt="Home">
