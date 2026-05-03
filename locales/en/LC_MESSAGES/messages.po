@@ -128,7 +128,7 @@ msgstr "Operating mode"
 
 #: vue/choix_organisme.py:44
 msgid "Collectivité"
-msgstr "Local authoritory"
+msgstr "Community"
 
 #: vue/choix_organisme.py:45
 msgid "École"
