@@ -2,7 +2,7 @@
 
 Dépôt GitHub : https://github.com/GerardLeRest/Piveo
 
-# Piveo
+# Piveo - Apprendre les prénoms et noms gratuitement
 
 ## Objectif du projet
 
@@ -126,6 +126,14 @@ Windows : C:\Users\username\local\piveo
 ```bash
 sudo apt install alacarte
 ```
+
+## Pourquoi choisir Piveo ?
+
+* **Confidentialité totale** : Fonctionne 100% en local (RGPD ready). Idéal pour les établissements scolaires.
+* **Multi-environnements** : Modes adaptés pour l'École, l'Entreprise ou les Collectivités.
+* **Méthode efficace** : Apprentissage par la saisie clavier (mémorisation active) et non simple QCM.
+* **Multiplateforme** : Disponible en `.exe` pour Windows et `AppImage` pour Linux.
+* **Multilingue** : Supporte le Français, Anglais, Espagnol et Breton.
 
 ## Notes
 
