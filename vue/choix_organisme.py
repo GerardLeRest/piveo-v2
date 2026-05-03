@@ -63,7 +63,7 @@ class ChoixOrganisme(QWidget):
                 background-color: #f9f9f9;
             }
             """)
-        texte_rgpd=("<b>Protection des données</b><br><br>"
+        texte_rgpd=_("<b>Protection des données</b><br><br>"
                     "Ce logiciel traite des données personnelles.<br><br>"
                     "Son utilisation peut être soumise au Règlement général sur la protection des données (RGPD).<br><br>"
                     "L’utilisation des données s’inscrit dans le cadre défini par l’organisme.<br><br>")

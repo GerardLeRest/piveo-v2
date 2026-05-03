@@ -74,3 +74,7 @@ correction du bug des affichages des salaries
 version 2.5.2
 changement du fichier pesrsonnes.csv de salaries (inversion
 des prénoms et des noms)
+
+version 2.5.3
+traduction de la note d'informations sur la page d'accueil
+(français, anglais, espagnol, breton)

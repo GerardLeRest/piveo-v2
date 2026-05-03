@@ -2,171 +2,95 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Piveo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 15:20+0100\n"
+"POT-Creation-Date: 2026-05-03 12:03+0200\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../app/cadre_droit_bas.py:34
-msgid "Apprentissage"
-msgstr "Apprentissage"
+#: modele/modele_zone_droite_basse.py:23 vue/zone_droite_basse.py:32
+#: vue/zone_droite_basse.py:109
+msgid "TOUS"
+msgstr "TOUS"
 
-#: ../app/cadre_droit_bas.py:35
-msgid "Test mental"
-msgstr "Test mental"
-
-#: ../app/cadre_droit_bas.py:36
-msgid "Test ecrit"
-msgstr "Test écrit"
-
-#: ../app/cadre_droit_bas.py:37
-msgid "Rechercher"
-msgstr "Rechercher"
-
-#: ../app/cadre_droit_bas.py:39
-msgid "Faire défiler les élèves"
-msgstr "Faire défiler les élèves"
-
-#: ../app/cadre_droit_bas.py:40
-msgid "Deviner mentalement lorsque les noms sont masqués"
-msgstr "Deviner mentalement lorsque les noms sont masqués"
-
-#: ../app/cadre_droit_bas.py:41
-msgid "Test écrit avec les deux champs ci-dessus"
-msgstr "Test écrit avec les deux champs ci-dessus"
-
-#: ../app/cadre_droit_bas.py:42
-msgid "Rechercher un ou plusieurs personnes avec les champs ci-dessus"
-msgstr "Rechercher une ou plusieurs personnes avec les champs ci-dessus"
-
-#: ../app/cadre_droit_bas.py:78
-msgid "Aléatoire"
-msgstr "Aléatoire"
-
-#: ../app/cadre_droit_bas.py:84
-msgid "Prenom+Nom"
-msgstr "Prénom + Nom"
-
-#: ../app/cadre_droit_bas.py:85 ../app/fenetre_principale.py:363
-msgid "Prenom"
-msgstr "Prénom"
-
-#: ../app/cadre_droit_bas.py:86 ../app/cadre_droit_haut.py:43
-#: ../app/cadre_gauche.py:50 ../app/fenetre_principale.py:365
-msgid "Nom"
-msgstr "Nom"
-
-#: ../app/cadre_droit_bas.py:117 ../app/cadre_droit_haut.py:111
-msgid "Valider"
-msgstr "Valider"
-
-#: ../app/cadre_droit_bas.py:143
+#: modele/modele_zone_droite_basse.py:37
 #, python-format
 msgid "- choisir une %(structure)s -"
 msgstr "- choisir une %(structure)s -"
 
-#: ../app/cadre_droit_bas.py:147
+#: modele/modele_zone_droite_basse.py:39
 #, python-format
 msgid "- choisir un %(structure)s -"
 msgstr "- choisir un %(structure)s -"
 
-#: ../app/cadre_droit_haut.py:29 ../app/cadre_gauche.py:44
-msgid "Prénom"
-msgstr "Prénom"
+#: vue/fenetre_principale.py:82
+msgid "Lecture"
+msgstr "Lecture"
 
-#: ../app/cadre_droit_haut.py:40 ../app/fenetre_principale.py:161
-msgid "Indiquez votre prénom"
-msgstr "Indiquez votre prénom"
+#: vue/fenetre_principale.py:83
+msgid "Deviner puis réponse"
+msgstr "Deviner puis réponse"
 
-#: ../app/cadre_droit_haut.py:54 ../app/fenetre_principale.py:162
-msgid "Indiquez votre nom"
-msgstr "Indiquez votre nom"
+#: vue/fenetre_principale.py:84 vue/fenetre_principale.py:237
+msgid "Test écrit"
+msgstr "Test écrit"
 
-#: ../app/cadre_droit_haut.py:115
-msgid "Effacer"
-msgstr "Effacer"
+#: vue/fenetre_principale.py:85
+msgid "Recherche"
+msgstr "Recherche"
 
-#: ../app/cadre_droit_haut.py:119
-msgid "Suite"
-msgstr "Suite"
+#: vue/fenetre_principale.py:86 vue/fenetre_principale.py:239
+msgid "Mode aléatoire"
+msgstr "Mode aléatoire"
 
-#: ../app/cadre_droit_haut.py:142 ../app/fenetre_principale.py:388
-msgid "0/0"
-msgstr "0/0"
+#: vue/fenetre_principale.py:119
+msgid "Mode"
+msgstr "Mode"
 
-#: ../app/cadre_gauche.py:47
-msgid "Prénom :"
-msgstr "Prénom :"
+#: vue/fenetre_principale.py:120
+msgid "Option"
+msgstr "Option"
 
-#: ../app/cadre_gauche.py:53
-msgid "Nom :"
-msgstr "Nom :"
+#: vue/fenetre_principale.py:121
+msgid "Langue"
+msgstr "Langue"
 
-#: ../app/cadre_gauche.py:104
-msgid "rang / effectif "
-msgstr "rang / effectif "
+#: vue/fenetre_principale.py:122
+msgid "Aide"
+msgstr "Aide"
 
-#: ../app/choix_organisme.py:30
-msgid "Piveo"
-msgstr "Piveo"
+#: vue/fenetre_principale.py:123
+msgid "Fichier"
+msgstr "Fichier"
 
-#: ../app/choix_organisme.py:36
-msgid "Mode de fonctionnement"
-msgstr "Mode de fonctionnement"
+#: vue/fenetre_principale.py:144
+msgid "Licence GPL-V3"
+msgstr "Licence GPL-V3"
 
-#: ../app/choix_organisme.py:44
-msgid "École"
-msgstr "École"
-
-#: ../app/choix_organisme.py:45
-msgid "Entreprise"
-msgstr "Entreprise"
-
-#: ../app/choix_organisme.py:46
-msgid "Collectivité"
-msgstr "Collectivité"
-
-#: ../app/choix_organisme.py:54
-msgid "OK"
-msgstr "OK"
-
-#: ../app/fenetre_principale.py:39
-msgid "Piveo - "
-msgstr "Piveo - "
-
-#: ../app/fenetre_principale.py:73
-msgid "Menu"
-msgstr "Menu"
-
-#: ../app/fenetre_principale.py:75
-msgid "Langues"
-msgstr "Langues"
-
-#: ../app/fenetre_principale.py:97
-msgid "Licence GPL-v3"
-msgstr "Licence GPL-v3"
-
-#: ../app/fenetre_principale.py:100
+#: vue/fenetre_principale.py:145
 msgid "Quitter"
 msgstr "Quitter"
 
-#: ../app/fenetre_principale.py:129
+#: vue/fenetre_principale.py:200
 msgid "Attention"
 msgstr "Attention"
 
-#: ../app/fenetre_principale.py:130
+#: vue/fenetre_principale.py:201
 msgid "Les changements se feront au prochain démarrage."
 msgstr "Les changements se feront au prochain démarrage."
 
-#: ../app/fenetre_principale.py:389
-msgid "Aucun résultat"
-msgstr "Aucun résultat"
+#: vue/fenetre_principale.py:235
+msgid "Lire les noms et prénoms"
+msgstr "Lire les noms et prénoms"
 
-#: ../app/fenetre_principale.py:389
-msgid "Aucune personne trouvée."
-msgstr "Aucune personne trouvée."
+#: vue/fenetre_principale.py:236
+msgid "Deviner puis afficher la réponse"
+msgstr "Deviner puis afficher la réponse"
 
-#: ../app/fenetre_principale.py:408
+#: vue/fenetre_principale.py:238
+msgid "Rechercher une personne"
+msgstr "Rechercher une personne"
+
+#: vue/fenetre_principale.py:253
 msgid ""
 "Ce logiciel est distribué sous licence GNU GPL version 3.\n"
 "\n"
@@ -186,21 +110,86 @@ msgstr ""
 "\n"
 "© 2026 Gérard Le Rest - ge.lerest@gmail.com"
 
-#: ../app/fenetre_principale.py:413
+#: vue/fenetre_principale.py:258
 msgid "GPL-v3"
 msgstr "GPL-v3"
 
-#~ msgid "Parti"
-#~ msgstr "Parti"
+#: vue/choix_organisme.py:32
+msgid "Piveo"
+msgstr "Piveo"
 
-#~ msgid "Député"
-#~ msgstr "Député"
+#: vue/choix_organisme.py:39
+msgid "Mode de fonctionnement"
+msgstr "Mode de fonctionnement"
 
-#~ msgid "Commissions"
-#~ msgstr "Commissions"
+#: vue/choix_organisme.py:44
+msgid "Collectivité"
+msgstr "Collectivité"
 
-#~ msgid "Département"
-#~ msgstr "Département"
+#: vue/choix_organisme.py:45
+msgid "École"
+msgstr "École"
 
-#~ msgid "Salarié"
-#~ msgstr "Salarié"
+#: vue/choix_organisme.py:46
+msgid "Entreprise"
+msgstr "Entreprise"
+
+#: vue/choix_organisme.py:66
+msgid ""
+"<b>Protection des données</b><br><br>Ce logiciel traite des données "
+"personnelles.<br><br>Son utilisation peut être soumise au Règlement général "
+"sur la protection des données (RGPD).<br><br>L’utilisation des données "
+"s’inscrit dans le cadre défini par l’organisme.<br><br>"
+msgstr ""
+"<b>Protection des données</b><br><br>Ce logiciel traite des données "
+"personnelles.<br><br>Son utilisation peut être soumise au Règlement général "
+"sur la protection des données (RGPD).<br><br>L’utilisation des données "
+"s’inscrit dans le cadre défini par l’organisme.<br><br>"
+
+#: vue/choix_organisme.py:81
+msgid "OK"
+msgstr "OK"
+
+#: vue/zone_gauche.py:66
+msgid "Prénom attendu:"
+msgstr "Prénom attendu :"
+
+#: vue/zone_gauche.py:70 vue/zone_droite_haute.py:65
+msgid "Prénom"
+msgstr "Prénom"
+
+#: vue/zone_gauche.py:74
+msgid "Nom attendu:"
+msgstr "Nom attendu :"
+
+#: vue/zone_gauche.py:77 vue/zone_droite_haute.py:88
+msgid "Nom"
+msgstr "Nom"
+
+#: vue/zone_gauche.py:150
+msgid "rang / effectif "
+msgstr "rang / effectif "
+
+#: vue/zone_droite_haute.py:77
+msgid "Indiquez votre prénom"
+msgstr "Indiquez votre prénom"
+
+#: vue/zone_droite_haute.py:101
+msgid "Indiquez votre nom"
+msgstr "Indiquez votre nom"
+
+#: vue/zone_droite_haute.py:174
+msgid "Valider"
+msgstr "Valider"
+
+#: vue/zone_droite_haute.py:179
+msgid "Effacer"
+msgstr "Effacer"
+
+#: vue/zone_droite_haute.py:184
+msgid "Suite"
+msgstr "Suite"
+
+#: vue/zone_droite_haute.py:205 vue/zone_droite_haute.py:278
+msgid "0/0"
+msgstr "0/0"

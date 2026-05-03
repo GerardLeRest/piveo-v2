@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: piveo-v 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 14:44+0200\n"
+"POT-Creation-Date: 2026-05-03 12:03+0200\n"
 "PO-Revision-Date: 2026-04-06 14:46+0200\n"
 "Last-Translator: Gerard <gerard@gerard-thinkcentre-m700>\n"
 "Language-Team: English\n"
@@ -12,8 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: modele/modele_zone_droite_basse.py:23 vue/zone_droite_basse.py:33
-#: vue/zone_droite_basse.py:110
+#: modele/modele_zone_droite_basse.py:23 vue/zone_droite_basse.py:32
+#: vue/zone_droite_basse.py:109
 msgid "TOUS"
 msgstr "ALL"
 
@@ -27,91 +27,23 @@ msgstr "- choose a %(structure)s -"
 msgid "- choisir un %(structure)s -"
 msgstr "- choose a %(structure)s -"
 
-#: vue/zone_droite_haute.py:63 vue/zone_gauche.py:72
-msgid "Prénom"
-msgstr "First name"
-
-#: vue/zone_droite_haute.py:75
-msgid "Indiquez votre prénom"
-msgstr "Enter your first name"
-
-#: vue/zone_droite_haute.py:87 vue/zone_gauche.py:79
-msgid "Nom"
-msgstr "Last name"
-
-#: vue/zone_droite_haute.py:100
-msgid "Indiquez votre nom"
-msgstr "Enter your last name"
-
-#: vue/zone_droite_haute.py:173
-msgid "Valider"
-msgstr "Validate"
-
-#: vue/zone_droite_haute.py:178
-msgid "Effacer"
-msgstr "Clear"
-
-#: vue/zone_droite_haute.py:183
-msgid "Suite"
-msgstr "Next"
-
-#: vue/zone_droite_haute.py:204 vue/zone_droite_haute.py:280
-msgid "0/0"
-msgstr "0/0"
-
-#: vue/zone_gauche.py:68
-msgid "Prénom attendu:"
-msgstr "Expected first name:"
-
-#: vue/zone_gauche.py:76
-msgid "Nom attendu:"
-msgstr "Expected last name:"
-
-#: vue/zone_gauche.py:152
-msgid "rang / effectif "
-msgstr "rank / total"
-
-#: vue/choix_organisme.py:31
-msgid "Piveo"
-msgstr "Piveo"
-
-#: vue/choix_organisme.py:37
-msgid "Mode de fonctionnement"
-msgstr "Operating mode"
-
-#: vue/choix_organisme.py:45
-msgid "École"
-msgstr "School"
-
-#: vue/choix_organisme.py:46
-msgid "Entreprise"
-msgstr "Company"
-
-#: vue/choix_organisme.py:47
-msgid "Collectivité"
-msgstr "Local authoritory"
-
-#: vue/choix_organisme.py:55
-msgid "OK"
-msgstr "OK"
-
-#: vue/fenetre_principale.py:81
+#: vue/fenetre_principale.py:82
 msgid "Lecture"
 msgstr "Reading"
 
-#: vue/fenetre_principale.py:82
+#: vue/fenetre_principale.py:83
 msgid "Deviner puis réponse"
 msgstr "Guess then answer"
 
-#: vue/fenetre_principale.py:83 vue/fenetre_principale.py:253
+#: vue/fenetre_principale.py:84 vue/fenetre_principale.py:237
 msgid "Test écrit"
 msgstr "Written test"
 
-#: vue/fenetre_principale.py:84
+#: vue/fenetre_principale.py:85
 msgid "Recherche"
 msgstr "Search"
 
-#: vue/fenetre_principale.py:85 vue/fenetre_principale.py:255
+#: vue/fenetre_principale.py:86 vue/fenetre_principale.py:239
 msgid "Mode aléatoire"
 msgstr "Random mode"
 
@@ -135,35 +67,35 @@ msgstr "Help"
 msgid "Fichier"
 msgstr "File"
 
-#: vue/fenetre_principale.py:151
+#: vue/fenetre_principale.py:144
 msgid "Licence GPL-V3"
 msgstr "GPL-V3 License"
 
-#: vue/fenetre_principale.py:152
+#: vue/fenetre_principale.py:145
 msgid "Quitter"
 msgstr "Quit"
 
-#: vue/fenetre_principale.py:215
+#: vue/fenetre_principale.py:200
 msgid "Attention"
 msgstr "Warning"
 
-#: vue/fenetre_principale.py:216
+#: vue/fenetre_principale.py:201
 msgid "Les changements se feront au prochain démarrage."
 msgstr "Changes will take effect at the next startup."
 
-#: vue/fenetre_principale.py:251
+#: vue/fenetre_principale.py:235
 msgid "Lire les noms et prénoms"
 msgstr "Read first and last names"
 
-#: vue/fenetre_principale.py:252
+#: vue/fenetre_principale.py:236
 msgid "Deviner puis afficher la réponse"
 msgstr "Guess then display the answer"
 
-#: vue/fenetre_principale.py:254
+#: vue/fenetre_principale.py:238
 msgid "Rechercher une personne"
 msgstr "Search for a person"
 
-#: vue/fenetre_principale.py:269
+#: vue/fenetre_principale.py:253
 msgid ""
 "Ce logiciel est distribué sous licence GNU GPL version 3.\n"
 "\n"
@@ -182,12 +114,92 @@ msgstr ""
 "\n"
 "© 2026 Gérard Le Rest - ge.lerest@gmail.com"
 
-#: vue/fenetre_principale.py:274
+#: vue/fenetre_principale.py:258
 msgid "GPL-v3"
 msgstr "GPL-v3"
 
-msgid "Classe"
-msgstr "Class"
+#: vue/choix_organisme.py:32
+msgid "Piveo"
+msgstr "Piveo"
 
-msgid "Options"
-msgstr "Options"
+#: vue/choix_organisme.py:39
+msgid "Mode de fonctionnement"
+msgstr "Operating mode"
+
+#: vue/choix_organisme.py:44
+msgid "Collectivité"
+msgstr "Local authoritory"
+
+#: vue/choix_organisme.py:45
+msgid "École"
+msgstr "School"
+
+#: vue/choix_organisme.py:46
+msgid "Entreprise"
+msgstr "Company"
+
+#: vue/choix_organisme.py:66
+msgid ""
+"<b>Protection des données</b><br><br>Ce logiciel traite des données "
+"personnelles.<br><br>Son utilisation peut être soumise au Règlement général "
+"sur la protection des données (RGPD).<br><br>L’utilisation des données "
+"s’inscrit dans le cadre défini par l’organisme.<br><br>"
+msgstr ""
+"<b>Data Protection</b><br><br>This software processes personal data."
+"<br><br>Its use may be subject to the General Data Protection Regulation "
+"(GDPR).<br><br>The use of data is governed by the framework defined by the "
+"organization.<br><br>"
+
+#: vue/choix_organisme.py:81
+msgid "OK"
+msgstr "OK"
+
+#: vue/zone_gauche.py:66
+msgid "Prénom attendu:"
+msgstr "Expected first name:"
+
+#: vue/zone_gauche.py:70 vue/zone_droite_haute.py:65
+msgid "Prénom"
+msgstr "First name"
+
+#: vue/zone_gauche.py:74
+msgid "Nom attendu:"
+msgstr "Expected last name:"
+
+#: vue/zone_gauche.py:77 vue/zone_droite_haute.py:88
+msgid "Nom"
+msgstr "Last name"
+
+#: vue/zone_gauche.py:150
+msgid "rang / effectif "
+msgstr "rank / total"
+
+#: vue/zone_droite_haute.py:77
+msgid "Indiquez votre prénom"
+msgstr "Enter your first name"
+
+#: vue/zone_droite_haute.py:101
+msgid "Indiquez votre nom"
+msgstr "Enter your last name"
+
+#: vue/zone_droite_haute.py:174
+msgid "Valider"
+msgstr "Validate"
+
+#: vue/zone_droite_haute.py:179
+msgid "Effacer"
+msgstr "Clear"
+
+#: vue/zone_droite_haute.py:184
+msgid "Suite"
+msgstr "Next"
+
+#: vue/zone_droite_haute.py:205 vue/zone_droite_haute.py:278
+msgid "0/0"
+msgstr "0/0"
+
+#~ msgid "Classe"
+#~ msgstr "Class"
+
+#~ msgid "Options"
+#~ msgstr "Options"
