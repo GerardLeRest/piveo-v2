@@ -17,7 +17,7 @@ Available languages: French, English, Spanish, Breton
 Piveo v2 is the current version of the software (v2.5.3).
 
 <p align="center">
-<img src="ressources/fichiers/images/accueil.png" alt="Home">
+<img src="ressources/fichiers/images/accueil0.png" alt="Home">
 </p>
 
 ## How it works
