@@ -2,8 +2,6 @@
   🇬🇧 English | <a href="README-fr.md">🇫🇷 Français</a>
 </p>
 
-GitHub repository: https://github.com/GerardLeRest/Piveo-v2
-
 # Piveo
 
 ## Project overview

@@ -2,8 +2,6 @@
   Français | <a href="README.md">🇬🇧 English</a>
 </p>
 
-Dépôt GitHub : https://github.com/GerardLeRest/Piveo-v2
-
 # Piveo
 
 ## Objectif du projet
