@@ -1,4 +1,6 @@
-🇬🇧 [Read the English version](README.md)
+<p align="center">
+  Français | <a href="README.md">🇬🇧 English</a>
+</p>
 
 Dépôt GitHub : https://github.com/GerardLeRest/Piveo-v2
 
