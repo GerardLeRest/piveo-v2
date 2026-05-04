@@ -6,12 +6,12 @@ Dépôt GitHub : https://github.com/GerardLeRest/Piveo-v2
 
 ## Objectif du projet
 
-Piveo est une application libre, gratuite et open-source permettant d’apprendre et de mémoriser les prénoms, noms et visages pour les écoles, les entreprises et les collectivités. Elle constitue une alternative au trombinoscope. 
+Piveo est une application libre, gratuite et open-source permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
 Les cas d’usage typiques incluent les enseignants qui apprennent les noms de leurs élèves, les équipes qui accueillent de nouveaux employés, ou les organisations qui gèrent de grands groupes de personnes.
 
-Elle permet aux utilisateurs d’apprendre ou de retrouver les prénoms et noms des personnes à partir d’une base de données SQLite3. La configuration de cette base de données se fait à l'aide de trois fichiers CSV.
+Chaque organisme repose sur une base de données de type SQL. Piveo permet d’en simplifier l’administration à l’aide de trois fichiers CSV situés dans le dossier de travail (voir ci-dessous).
 
-Langues : français, anglais, espagnol, breton
+Langues disponibles : français, anglais, espagnol, breton
 
 Piveo v2 est la version actuelle du logiciel (v2.5.3).
 
@@ -46,7 +46,7 @@ L’interface est divisée en trois zones :
 4. **Recherche**
    - Permet de retrouver une ou plusieurs personnes
 
-Le programme utilise :
+Le programme repose sur les technologies suivantes :
 
 - Python 3
 - PySide6
@@ -75,7 +75,7 @@ L’environnement est sélectionné au lancement de l’application.
 ### 🔗 Depuis les sources
 
 ```bash
-git clone https://github.com/GerardLeRest/Piveo
+git clone https://github.com/GerardLeRest/Piveo-v2
 cd piveo-v2
 ```
 
