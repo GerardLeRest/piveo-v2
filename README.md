@@ -128,6 +128,7 @@ chmod +x ~/Piveo-X.X.X-x86_64.AppImage
 ```bash
 ./Piveo-X.X.X-x86_64.AppImage
 ```
+Documentation ubuntu-fr: https://doc.ubuntu-fr.org/appimage
 
 #### 5. Data directory
 

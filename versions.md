@@ -78,3 +78,7 @@ des prénoms et des noms)
 version 2.5.3
 traduction de la note d'informations sur la page d'accueil
 (français, anglais, espagnol, breton)
+
+version 2.5.4
+relecture - suppression doublons
+centrage d'une image rectangulaire (l90 - ZoneGauche)

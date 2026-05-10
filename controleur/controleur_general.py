@@ -52,17 +52,6 @@ class ControleurGeneral:
         self.mode_lecture() # bug à la mise sous tension
 
         
-    @Slot()
-    def action_valider(self) -> None:
-        """Traiter le bouton Valider selon le mode courant."""
-        if self.mode == "ecrit":
-            self.controleur_zone_droite_haute.valider()
-
-        elif self.mode == "recherche":
-            liste = self.gestionnaire_bdd.charger_personnes()
-            liste_personnes = self.controleur_zone_droite_haute.rechercher_personnes(liste)
-            self.controleur_zone_gauche.charger_liste(liste_personnes, "recherche")
-
     def mode_lecture(self) -> None:
         """Activer le mode lecture."""
         # activer/désactiver bouton
@@ -125,7 +114,7 @@ class ControleurGeneral:
         self.vue.zone_droite_haute.effacer_reponses()
         self.vue.zone_droite_haute.cacher_image_check()
         self.vue.zone_droite_haute.gestion_focus()
-        liste = self.gestionnaire_bdd.charger_personnes() # récupération de toutes les pesrsonnes (BDD)
+        liste = self.gestionnaire_bdd.charger_personnes() # récupération de toutes les personnes (BDD)
         self.controleur_zone_gauche.charger_liste(liste, self.mode)
 
     def mettre_a_jour_liste_personnes(self, liste_personnes: list) -> None:

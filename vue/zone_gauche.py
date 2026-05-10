@@ -87,6 +87,7 @@ class ZoneGauche (QWidget):
         # Création du QLabel de l'image
         self.label_image = QLabel()
         self.label_image.setFixedSize(128, 128)
+        self.label_image.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_image.setStyleSheet("border: 1px solid #666; background-color: #f0f0f0;")
         self.label_image.setAlignment(Qt.AlignmentFlag.AlignCenter)
         # Chargement de l'image par défaut
@@ -210,7 +211,6 @@ class ZoneGauche (QWidget):
             / self.configuration_json["CheminPhotos"]
             / nom_image
         )
-        print(chemin_image)
         # si l'image existe
         if chemin_image.exists():
             pixmap = QPixmap(str(chemin_image))

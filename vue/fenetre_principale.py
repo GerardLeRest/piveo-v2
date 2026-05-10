@@ -241,12 +241,6 @@ class FenetrePrincipale(QMainWindow):
         self.act_lecture.setChecked(True)
         # rendre état checkable (niveau 0 ou 1)
         self.act_aleatoire.setCheckable(True)
-        # connexion 
-        self.act_lecture.triggered.connect(self.demande_mode_lecture.emit)
-        self.act_deviner.triggered.connect(self.demande_mode_deviner.emit)
-        self.act_ecrit.triggered.connect(self.demande_mode_ecrit.emit)
-        self.act_recherche.triggered.connect(self.demande_mode_recherche.emit)
-        self.act_aleatoire.toggled.connect(self.demande_mode_aleatoire.emit)
 
     def afficher_licence(self):
         texte = _(
