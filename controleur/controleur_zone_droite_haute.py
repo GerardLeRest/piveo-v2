@@ -21,9 +21,7 @@ class ControleurZoneDroiteHaute:
         self.vue.zone_droite_haute.demande_effacer.connect(self.effacer)
         self.vue.zone_droite_haute.demande_suite.connect(self.suite)
         self.nbre_bonnes_rep = 0
-        self.vue.zone_droite_haute.demande_effacer.connect(self.effacer)
-        self.vue.zone_droite_haute.demande_suite.connect(self.suite)
-
+        
     @Slot()
     def action_valider(self) -> None:
         """Choisir entre validation ou recherche selon le mode actif."""
