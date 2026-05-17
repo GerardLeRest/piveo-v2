@@ -4,6 +4,8 @@
 
 # Piveo
 
+## Free and Open-Source Software for Learning and Memorizing First and Last Names
+
 ## Project overview
 
 Piveo is a free and open-source application designed to help users learn first names, last names, and faces. It provides a practical alternative to traditional photo directories.
@@ -128,6 +130,7 @@ chmod +x ~/Piveo-X.X.X-x86_64.AppImage
 ```bash
 ./Piveo-X.X.X-x86_64.AppImage
 ```
+
 Documentation ubuntu-fr: https://doc.ubuntu-fr.org/appimage
 
 #### 5. Data directory

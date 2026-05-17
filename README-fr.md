@@ -4,6 +4,8 @@
 
 # Piveo
 
+## Logiciel libre et gratuit pour apprendre et mémoriser les noms et les prénoms.
+
 ## Objectif du projet
 
 Piveo est une application libre, gratuite et open-source permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
@@ -116,6 +118,7 @@ chmod +x ~/Piveo-X.X.X-x86_64.AppImage
 ```bash
 ./Piveo-X.X.X-x86_64.AppImage
 ```
+
 Documentation ubuntu-fr: https://doc.ubuntu-fr.org/appimage
 
 #### 5. Répertoire des données
