@@ -151,7 +151,6 @@ sudo apt install alacarte
 ## Links
 
 - Downloads (Piveo v2): https://github.com/GerardLeRest/piveo-v2/releases
-- 
 - Documentation: https://doc.ubuntu-fr.org/Piveo
 - Ubuntu-fr forum: https://forum.ubuntu-fr.org/viewtopic.php?id=2091784
 - LinuxFr article: https://linuxfr.org/users/clisam/journaux/piveo-2-4-0-logiciel-d-apprentissage-de-prenoms-et-noms
