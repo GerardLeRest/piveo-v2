@@ -2,9 +2,7 @@
   Français | <a href="README.md">🇬🇧 English</a>
 </p>
 
-# Piveo
-
-## Logiciel libre et gratuit pour apprendre et mémoriser les noms et les prénoms.
+# Piveo: Logiciel libre et gratuit pour apprendre et mémoriser les noms et les prénoms.
 
 ## Objectif du projet
 

@@ -2,9 +2,7 @@
   🇬🇧 English | <a href="README-fr.md">🇫🇷 Français</a>
 </p>
 
-# Piveo
-
-## Free and Open-Source Software for Learning and Memorizing First and Last Names
+# Piveo: Free and Open-Source Software for Learning and Memorizing First and Last Names
 
 ## Project overview
 
