@@ -19,7 +19,7 @@ Operating systems: GNU/Linux, Windows
 Piveo v2 is the current version of the software (v2.5.3).
 
 <p align="center">
-<img src="ressources/fichiers/images/accueil.png" alt="Piveo home screen">
+<img src="ressources/fichiers/images/accueil0.png" alt="Piveo home screen">
 </p>
 
 ## How it works
