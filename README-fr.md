@@ -2,21 +2,24 @@
   Français | <a href="README.md">🇬🇧 English</a>
 </p>
 
-# Piveo: Logiciel libre et gratuit pour apprendre et mémoriser les noms et les prénoms.
+# Piveo - Logiciel libre et gratuit pour apprendre et mémoriser les noms et les prénoms.
 
 ## Objectif du projet
 
 Piveo est une application libre, gratuite et open-source permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
+
 Les cas d’usage typiques incluent les enseignants qui apprennent les noms de leurs élèves, les équipes qui accueillent de nouveaux employés, ou les organisations qui gèrent de grands groupes de personnes.
 
 Chaque organisme repose sur une base de données de type SQL. Piveo permet d’en simplifier l’administration à l’aide de trois fichiers CSV situés dans le dossier de travail (voir ci-dessous).
 
 Langues disponibles : français, anglais, espagnol, breton
 
+OS: GNU/Linux, Windows
+
 Piveo v2 est la version actuelle du logiciel (v2.5.3).
 
 <p align="center">
-<img src="ressources/fichiers/images/accueil.png" alt="Accueil">
+<img src="ressources/fichiers/images/accueil.png" alt="Écran d'accueil du logiciel de trombinoscope Piveo">
 </p>
 
 ## Fonctionnement
@@ -28,7 +31,7 @@ L’interface est divisée en trois zones :
 - **Panneau en bas à droite** : contient les paramètres
 
 <p align="center">
-<img src="ressources/fichiers/images/interface.png" alt="Interface">
+<img src="ressources/fichiers/images/interface.png" alt="Interface utilisateur de Piveo">
 </p>
 
 ### Modes disponibles
@@ -50,12 +53,11 @@ Le programme repose sur les technologies suivantes :
 
 - Python 3
 - PySide6
-- Fichiers CSV d’initialisation
 - Base de données SQLite3
-- Configuration par fichiers CSV
+- Initialisation et configuration par fichiers CSV
 
 <p align="center">
-<img src="ressources/fichiers/images/tableaux.png" alt="Tableaux CSV">
+<img src="ressources/fichiers/images/tableaux.png" alt="Structure des fichiers CSV de configuration Piveo">
 </p>
 
 Trois environnements par défaut sont fournis :
@@ -122,11 +124,11 @@ Documentation ubuntu-fr: https://doc.ubuntu-fr.org/appimage
 #### 5. Répertoire des données
 
 Répertoire où sont stockées les données utilisateur :
-Linux   : ~/.local/piveo
+GNU/Linux   : ~/.local/piveo
 Windows : C:\Users\username\.local\piveo
 
 <p align="center">
-<img src="ressources/fichiers/images/piveo.png" alt="Icône">
+<img src="ressources/fichiers/images/piveo.png" alt="Icône du logiciel">
 </p>
 
 ## (Optionnel) Intégration au menu
@@ -157,7 +159,3 @@ Ce projet est distribué sous licence GPL-v3.\
 Les portraits ont été générés à l’aide de l’intelligence artificielle et sont utilisés à des fins éducatives non commerciales (https://generated.photos/).
 
 Icônes : https://fonts.google.com/icons
-
-## Mots-clés
-
-trombinoscope, apprendre les noms, mémoriser les visages, logiciel éducatif et professionnel, intégration de nouveaux membres
