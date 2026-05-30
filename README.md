@@ -12,9 +12,9 @@ Typical use cases include teachers learning students’ names, teams welcoming n
 
 Each environment relies on an SQL database. Piveo simplifies administration through three CSV configuration files located in the working directory (see below).
 
-Available languages: French, English, Spanish, Breton
+**Available languages**: French, English, Spanish, Breton
 
-Operating systems: GNU/Linux, Windows
+**Operating systems**: GNU/Linux, Windows
 
 Piveo v2 is the current version of the software (v2.5.3).
 
@@ -69,9 +69,9 @@ The application is based on the following technologies:
 
 Three default environments are provided:
 
-- Community
-- School
-- Company
+- **Community**
+- **School**
+- **Company**
 
 The environment is selected when launching the application.
 

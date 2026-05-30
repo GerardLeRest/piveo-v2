@@ -6,15 +6,15 @@
 
 ## Objectif du projet
 
-Piveo est une **application libre, gratuite ** permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
+Piveo est une **application libre, gratuite** permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
 
 Les cas d’usage typiques incluent les enseignants qui apprennent les noms de leurs élèves, les équipes qui accueillent de nouveaux employés, ou les organisations qui gèrent de grands groupes de personnes.
 
 Chaque organisme repose sur une base de données de type SQL. Piveo permet d’en simplifier l’administration à l’aide de trois fichiers CSV situés dans le dossier de travail (voir ci-dessous).
 
-Langues disponibles : français, anglais, espagnol, breton
+**Langues disponibles** : français, anglais, espagnol, breton
 
-OS: GNU/Linux, Windows
+**OS***: GNU/Linux, Windows
 
 Piveo v2 est la version actuelle du logiciel (v2.5.3).
 
@@ -62,9 +62,9 @@ Le programme repose sur les technologies suivantes :
 
 Trois environnements par défaut sont fournis :
 
-- Collectivité
-- École
-- Entreprise
+- **Collectivité**
+- **École**
+- **Entreprise**
 
 L’environnement est sélectionné au lancement de l’application.
 
