@@ -6,7 +6,7 @@
 
 ## Project goal
 
-Piveo is a free and open-source application that helps users learn names, first names, and faces. It can be considered an alternative to the traditional photo directory.
+Piveo is a **free and open-source application** that helps users learn names, first names, and faces. It can be considered an alternative to the traditional photo directory.
 
 Typical use cases include teachers learning students’ names, teams welcoming new employees, or organizations managing large groups of people.
 

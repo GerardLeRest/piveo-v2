@@ -82,3 +82,4 @@ traduction de la note d'informations sur la page d'accueil
 version 2.5.4
 relecture - suppression doublons
 centrage d'une image rectangulaire (l90 - ZoneGauche)
+changement des README

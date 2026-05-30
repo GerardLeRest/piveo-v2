@@ -6,7 +6,7 @@
 
 ## Objectif du projet
 
-Piveo est une application libre, gratuite et open-source permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
+Piveo est une **application libre, gratuite ** permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
 
 Les cas d’usage typiques incluent les enseignants qui apprennent les noms de leurs élèves, les équipes qui accueillent de nouveaux employés, ou les organisations qui gèrent de grands groupes de personnes.
 
