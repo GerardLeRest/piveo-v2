@@ -14,7 +14,7 @@ Each environment relies on an SQL database. Piveo simplifies administration thro
 
 **Available languages**: French, English, Spanish, Breton
 
-**Operating systems**: GNU/Linux, Windows
+****Operating systems:** GNU/Linux (tested on Ubuntu 24.04), Windows
 
 Piveo v2 is the current version of the software (v2.5.3).
 
