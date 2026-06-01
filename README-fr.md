@@ -14,7 +14,7 @@ Chaque organisme repose sur une base de données de type SQL. Piveo permet d’e
 
 **Langues disponibles** : français, anglais, espagnol, breton
 
-**OS***: GNU/Linux (testé sur Ubuntu 24.04), Windows
+**OS***: GNU/Linux (testé sur Ubuntu 24.04 LTS), Windows
 
 Piveo v2 est la version actuelle du logiciel (v2.5.3).
 
