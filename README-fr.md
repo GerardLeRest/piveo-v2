@@ -2,33 +2,33 @@
   Français | <a href="README.md">🇬🇧 English</a>
 </p>
 
-# Piveo - Logiciel libre et gratuit pour apprendre et mémoriser les noms et les prénoms.
+# Piveo – Logiciel libre et gratuit pour apprendre les prénoms, les noms et les visages
 
 ## Objectif du projet
 
-Piveo est une **application libre, gratuite** permettant d’apprendre les prénoms, noms et visages. Elle constitue une alternative au trombinoscope. 
+Piveo est une **application libre et gratuite** qui aide les utilisateurs à apprendre les prénoms, les noms et les visages. Elle peut être considérée comme une alternative au trombinoscope traditionnel.
 
-Les cas d’usage typiques incluent les enseignants qui apprennent les noms de leurs élèves, les équipes qui accueillent de nouveaux employés, ou les organisations qui gèrent de grands groupes de personnes.
+Les cas d'utilisation typiques incluent les enseignants souhaitant apprendre les noms de leurs élèves, les équipes accueillant de nouveaux employés ou les organisations gérant de grands groupes de personnes.
 
-Chaque organisme repose sur une base de données de type SQL. Piveo permet d’en simplifier l’administration à l’aide de trois fichiers CSV situés dans le dossier de travail (voir ci-dessous).
+Chaque environnement repose sur une base de données SQL. Piveo simplifie l'administration grâce à trois fichiers de configuration CSV situés dans le répertoire de travail (voir ci-dessous).
 
-**Langues disponibles** : français, anglais, espagnol, breton
+**Langues disponibles :** français, anglais, espagnol, breton
 
-**OS***: GNU/Linux (testé sur Ubuntu 24.04 LTS), Windows
+**Systèmes d'exploitation :** GNU/Linux (testé sous Ubuntu 24.04 LTS), Windows
 
 Piveo v2 est la version actuelle du logiciel (v2.5.3).
 
 <p align="center">
-<img src="ressources/fichiers/images/accueil.png" alt="Écran d'accueil du logiciel de trombinoscope Piveo">
+<img src="ressources/fichiers/images/accueil0.png" alt="Écran d'accueil de Piveo">
 </p>
 
 ## Fonctionnement
 
-L’interface est divisée en trois zones :
+L'interface est divisée en trois parties :
 
-- **Panneau gauche** : affiche les informations sur la personne
-- **Panneau en haut à droite** : permet à l’utilisateur de saisir ses réponses
-- **Panneau en bas à droite** : contient les paramètres
+* **Partie gauche :** affiche les informations concernant la personne
+* **Partie supérieure droite :** permet à l'utilisateur de saisir ses réponses
+* **Partie inférieure droite :** contient les paramètres
 
 <p align="center">
 <img src="ressources/fichiers/images/interface.png" alt="Interface utilisateur de Piveo">
@@ -37,40 +37,49 @@ L’interface est divisée en trois zones :
 ### Modes disponibles
 
 1. **Parcourir**
-   - Permet de naviguer entre les personnes
-   - Navigation via les boutons sous l’image
-   - Mode aléatoire disponible
+   
+   * Permet de parcourir les personnes
+   * Boutons de navigation situés sous l'image
+   * Mode aléatoire disponible
+
 2. **Deviner**
-   - Incite à réfléchir au nom avant affichage
-   - Mode aléatoire disponible
+   
+   * Encourage l'utilisateur à retrouver le nom avant de l'afficher
+   * Mode aléatoire disponible
+
 3. **Écrit**
-   - Permet de saisir le prénom et le nom dans le panneau en haut à droite
-   - Mode aléatoire disponible
-4. **Recherche**
-   - Permet de retrouver une ou plusieurs personnes
+   
+   * Permet à l'utilisateur de saisir le prénom et le nom dans la partie supérieure droite
+   * Mode aléatoire disponible
 
-Le programme repose sur les technologies suivantes :
+4. **Rechercher**
+   
+   * Permet de rechercher une ou plusieurs personnes
 
-- Python 3
-- PySide6
-- Base de données SQLite3
-- Initialisation et configuration par fichiers CSV
+L'application repose sur les technologies suivantes :
+
+* Python 3
+* PySide6
+* SQLite
+* Initialisation et configuration à l'aide de fichiers CSV
 
 <p align="center">
-<img src="ressources/fichiers/images/tableaux.png" alt="Structure des fichiers CSV de configuration Piveo">
+<img src="ressources/fichiers/images/tableaux.png" alt="Structure des fichiers de configuration CSV de Piveo">
 </p>
 
-Trois environnements par défaut sont fournis :
+Trois environnements sont fournis par défaut :
 
-- **Collectivité**
-- **École**
-- **Entreprise**
+* **Communauté**
+* **École**
+* **Entreprise**
 
-L’environnement est sélectionné au lancement de l’application.
+L'environnement est sélectionné au lancement de l'application.
 
 ## Vidéo
 
-[Vidéo de présentation de Piveo](https://youtu.be/upmGYy93n2w)
+Vidéo de présentation de Piveo :
+
+https://youtu.be/upmGYy93n2w
 
 ## Installation
 
@@ -78,12 +87,12 @@ L’environnement est sélectionné au lancement de l’application.
 
 ```bash
 git clone https://github.com/GerardLeRest/Piveo-v2
-cd piveo-v2
+cd Piveo-v2
 ```
 
 ```bash
-python3 -m venv mon_env
-source mon_env/bin/activate
+python3 -m venv my_env
+source my_env/bin/activate
 ```
 
 ```bash
@@ -92,46 +101,63 @@ pip install pyside6
 
 ### 🪟 Windows
 
-- Aller sur : https://github.com/GerardLeRest/Piveo-v2/releases/\
-- Télécharger "Piveo_Setup-X.X.X.exe"
-- Installer et lancer le logiciel
-
-### 🐧 GNU/Linux
-
-#### 1. Télécharger l’AppImage
+Rendez-vous sur :
 
 https://github.com/GerardLeRest/Piveo-v2/releases
 
-#### 2. Télécharger la dernière version
+Téléchargez :
+
+`Piveo_Setup-X.X.X.exe`
+
+Installez puis lancez le logiciel.
+
+### 🐧 GNU/Linux
+
+#### 1. Télécharger le paquet .deb
+
+Rendez-vous sur :
+
+https://github.com/GerardLeRest/Piveo-v2/releases
+
+Téléchargez la dernière version.
 
 Exemple :
-Piveo-X.X.X-x86_64.AppImage (X.X.X : version)
 
-#### 3. Rendre exécutable
+`piveo_X.X.X-Y_amd64.deb`
 
-```bash
-chmod +x ~/Piveo-X.X.X-x86_64.AppImage
-```
+* `X.X.X` = version de Piveo
+* `Y` = révision du paquet Debian
 
-#### 4. Lancer l’application
+#### 2. Installer le paquet
 
 ```bash
-./Piveo-X.X.X-x86_64.AppImage
+sudo apt install ./piveo_X.X.X-Y_amd64.deb
 ```
 
-Documentation ubuntu-fr: https://doc.ubuntu-fr.org/appimage
+#### 3. Lancer l'application
 
-#### 5. Répertoire des données
+In a terminal:
 
-Répertoire où sont stockées les données utilisateur :
-GNU/Linux   : ~/.local/piveo
-Windows : C:\Users\username\.local\piveo
+```bash
+piveo
+```
+
+ou cliquez sur l'icône Piveo dans le menu des applications.
+
+#### 4. Répertoire des données
+
+Les données de l'utilisateur sont stockées dans :
+
+* GNU/Linux : `~/.local/piveo`
+* Windows : `C:\Users\username\.local\piveo`
 
 <p align="center">
-<img src="ressources/fichiers/images/piveo.png" alt="Icône du logiciel">
+<img src="ressources/fichiers/images/piveo.png" alt="Icône de Piveo">
 </p>
 
-## (Optionnel) Intégration au menu
+## Intégration facultative au menu
+
+Sous GNU/Linux, le menu des applications peut être personnalisé à l'aide d'Alacarte :
 
 ```bash
 sudo apt install alacarte
@@ -139,23 +165,32 @@ sudo apt install alacarte
 
 ## Liens
 
-- Téléchargements (Piveo v2) : https://github.com/GerardLeRest/piveo-v2/releases
-- Documentation : https://doc.ubuntu-fr.org/Piveo
-- Forum Ubuntu-fr : https://forum.ubuntu-fr.org/viewtopic.php?id=2091784
-- Article LinuxFr : https://linuxfr.org/users/clisam/journaux/piveo-2-4-0-logiciel-d-apprentissage-de-prenoms-et-noms
-- Site web (Piveo) : https://gerardlerest.github.io/piveo
+* Téléchargements (Piveo v2) :
+  https://github.com/GerardLeRest/Piveo-v2/releases
+* Documentation :
+  https://doc.ubuntu-fr.org/Piveo
+* Forum Ubuntu-fr :
+  https://forum.ubuntu-fr.org/viewtopic.php?id=2091784
+* Article LinuxFr :
+  https://linuxfr.org/users/clisam/journaux/piveo-2-4-0-logiciel-d-apprentissage-de-prenoms-et-noms
+* Site web :
+  https://gerardlerest.github.io/piveo
 
 ## Protection des données
 
-Ce logiciel fonctionne entièrement en local : aucune donnée n’est transmise ni stockée à distance.
+Ce logiciel fonctionne entièrement hors ligne : aucune donnée n'est transmise ni stockée à distance.
 
-L’utilisateur (ou l’organisation utilisant le logiciel) est responsable de l’utilisation des données importées. Lors de l’utilisation de données personnelles (noms, photos, etc.), il doit veiller au respect des réglementations applicables (notamment le RGPD).
+L'utilisateur (ou l'organisation utilisant le logiciel) est responsable de l'utilisation des données importées. En cas d'utilisation de données personnelles (noms, photos, etc.), l'utilisateur doit veiller au respect de la réglementation applicable, notamment du RGPD.
 
-## Licence & Images
+## Licence et images
 
-Ce projet est distribué sous licence GPL-v3.\
+Ce projet est distribué sous licence GPL-v3.
 © 2026 Gérard Le Rest
 
-Les portraits ont été générés à l’aide de l’intelligence artificielle et sont utilisés à des fins éducatives non commerciales (https://generated.photos/).
+Les portraits ont été générés à l'aide de l'intelligence artificielle et sont utilisés à des fins éducatives non commerciales :
 
-Icônes : https://fonts.google.com/icons
+https://generated.photos/
+
+Icônes :
+
+https://fonts.google.com/icons

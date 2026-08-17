@@ -83,3 +83,4 @@ version 2.5.4
 relecture - suppression doublons
 centrage d'une image rectangulaire (l90 - ZoneGauche)
 changement des README
+installation à l'aide d'un .deb (ubuntu24.04.x et ubuntu6.04.x) et non plus une AppImage (uniquement valable pour ubuntu24.04.x)

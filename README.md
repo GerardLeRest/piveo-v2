@@ -2,19 +2,19 @@
   <a href="README_FR.md">🇫🇷 Français</a> | English
 </p>
 
-# Piveo – Free and open-source software for learning and memorizing names and faces
+# Piveo – Free and open-source software for learning names and faces
 
 ## Project goal
 
-Piveo is a **free and open-source application** that helps users learn names, first names, and faces. It can be considered an alternative to the traditional photo directory.
+Piveo is a **free and open-source application** that helps users learn first names, last names, and faces. It can be considered an alternative to the traditional photo directory.
 
 Typical use cases include teachers learning students’ names, teams welcoming new employees, or organizations managing large groups of people.
 
 Each environment relies on an SQL database. Piveo simplifies administration through three CSV configuration files located in the working directory (see below).
 
-**Available languages**: French, English, Spanish, Breton
+**Available languages:** French, English, Spanish, Breton
 
-****Operating systems:** GNU/Linux (tested on Ubuntu 24.04 LTS), Windows
+**Operating systems:** GNU/Linux (tested on Ubuntu 24.04 LTS), Windows
 
 Piveo v2 is the current version of the software (v2.5.3).
 
@@ -26,9 +26,9 @@ Piveo v2 is the current version of the software (v2.5.3).
 
 The interface is divided into three sections:
 
-- **Left panel**: displays information about the person
-- **Top-right panel**: allows the user to enter answers
-- **Bottom-right panel**: contains the settings
+* **Left panel:** displays information about the person
+* **Top-right panel:** allows the user to enter answers
+* **Bottom-right panel:** contains the settings
 
 <p align="center">
 <img src="ressources/fichiers/images/interface.png" alt="Piveo user interface">
@@ -38,30 +38,30 @@ The interface is divided into three sections:
 
 1. **Browse**
    
-   - Navigate through people
-   - Navigation buttons below the image
-   - Random mode available
+   * Navigate through people
+   * Navigation buttons below the image
+   * Random mode available
 
 2. **Guess**
    
-   - Encourages the user to think of the name before displaying it
-   - Random mode available
+   * Encourages the user to think of the name before displaying it
+   * Random mode available
 
 3. **Written**
    
-   - Allows the user to type the first name and last name in the top-right panel
-   - Random mode available
+   * Allows the user to type the first name and last name in the top-right panel
+   * Random mode available
 
 4. **Search**
    
-   - Allows users to search for one or several people
+   * Allows users to search for one or several people
 
 The application is based on the following technologies:
 
-- Python 3
-- PySide6
-- SQLite3
-- Initialization and configuration through CSV files
+* Python 3
+* PySide6
+* SQLite
+* Initialization and configuration through CSV files
 
 <p align="center">
 <img src="ressources/fichiers/images/tableaux.png" alt="Structure of Piveo CSV configuration files">
@@ -69,9 +69,9 @@ The application is based on the following technologies:
 
 Three default environments are provided:
 
-- **Community**
-- **School**
-- **Company**
+* **Community**
+* **School**
+* **Company**
 
 The environment is selected when launching the application.
 
@@ -87,7 +87,7 @@ https://youtu.be/upmGYy93n2w
 
 ```bash
 git clone https://github.com/GerardLeRest/Piveo-v2
-cd piveo-v2
+cd Piveo-v2
 ```
 
 ```bash
@@ -101,69 +101,71 @@ pip install pyside6
 
 ### 🪟 Windows
 
-- Go to:
-  https://github.com/GerardLeRest/Piveo-v2/releases
-- Download:
-  `Piveo_Setup-X.X.X.exe`
-- Install and launch the software
-
-### 🐧 GNU/Linux
-
-#### 1. Download the AppImage
+Go to:
 
 https://github.com/GerardLeRest/Piveo-v2/releases
 
-#### 2. Download the latest version
+Download:
+
+`Piveo_Setup-X.X.X.exe`
+
+Install and launch the software.
+
+### 🐧 GNU/Linux
+
+#### 1. Download the .deb package
+
+Go to:
+
+https://github.com/GerardLeRest/Piveo-v2/releases
+
+Download the latest version.
 
 Example:
 
-`Piveo-X.X.X-x86_64.AppImage`
-(X.X.X = version number)
+`piveo_X.X.X-Y_amd64.deb`
 
-#### 3. Make it executable
+* `X.X.X` = Piveo version
+* `Y` = Debian package revision
 
-```bash
-chmod +x ~/Piveo-X.X.X-x86_64.AppImage
-```
-
-#### 4. Launch the application
+#### 2. Install it
 
 ```bash
-./Piveo-X.X.X-x86_64.AppImage
+sudo apt install ./piveo_X.X.X-Y_amd64.deb
 ```
 
-Ubuntu-fr documentation:
+#### 3. Launch the application
 
-https://doc.ubuntu-fr.org/appimage
+In a terminal:
 
-#### 5. Data directory
+```bash
+piveo
+```
 
-Directory where user data is stored:
+or click the Piveo icon in the application menu.
 
-- GNU/Linux: `~/.local/piveo`
-- Windows: `C:\Users\username\.local\piveo`
+#### 4. Data directory
+
+User data is stored in:
+
+* GNU/Linux: `~/.local/piveo`
+* Windows: `C:\Users\username\.local\piveo`
 
 <p align="center">
 <img src="ressources/fichiers/images/piveo.png" alt="Piveo icon">
 </p>
 
-## (Optional) Menu integration
-
-```bash
-sudo apt install alacarte
-```
-
 ## Links
 
-- Downloads (Piveo v2):
-  https://github.com/GerardLeRest/piveo-v2/releases
-- Documentation:
+* Downloads (Piveo v2):
+  https://github.com/GerardLeRest/Piveo-v2/releases
+* Documentation:
   https://doc.ubuntu-fr.org/Piveo
-- Ubuntu-fr forum:
+* Ubuntu-fr forum:
   https://forum.ubuntu-fr.org/viewtopic.php?id=2091784
-- LinuxFr article:
+* LinuxFr article:
   https://linuxfr.org/users/clisam/journaux/piveo-2-4-0-logiciel-d-apprentissage-de-prenoms-et-noms
-- Website:
+* Website:
   https://gerardlerest.github.io/piveo
 
 ## Data protection
@@ -174,7 +176,7 @@ The user (or the organization using the software) is responsible for the use of 
 
 ## License & Images
 
-This project is distributed under the GPL-v3 license.  
+This project is distributed under the GPL-v3 license.
 © 2026 Gérard Le Rest
 
 The portraits were generated using artificial intelligence and are used for non-commercial educational purposes:
