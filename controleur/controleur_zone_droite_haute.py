@@ -34,23 +34,27 @@ class ControleurZoneDroiteHaute:
     def valider(self) -> None:
         """Valider la réponse en mode écrit."""
         prenom_saisi, nom_saisi = self.vue.zone_droite_haute.recuperer_saisie()
-        personne = self.vue.zone_gauche.liste_personnes[self.vue.zone_gauche.rang + 1]
+
+        personne = self.vue.zone_gauche.liste_personnes[
+            self.vue.zone_gauche.rang + 1
+        ]
         prenom_attendu = personne[0].lower()
         nom_attendu = personne[1].lower()
-        #création du modèle ModeleZoneDroiteHaute
+        # création du modèle ModeleZoneDroiteHaute
         modele = ModeleZoneDroiteHaute(prenom_attendu, nom_attendu)
         resultat_prenom = modele.comparer_prenom(prenom_saisi)
         resultat_nom = modele.comparer_nom(nom_saisi)
         # récupération du résultat
-        resultat = self.vue.zone_droite_haute.afficher_image_check(resultat_prenom, resultat_nom)
+        resultat = self.vue.zone_droite_haute.afficher_image_check(
+            resultat_prenom,
+            resultat_nom
+        )
         if resultat:
             self.nbre_bonnes_rep += 1
-        if self.vue.zone_gauche.rang < len(self.vue.zone_gauche.liste_personnes) - 1:
-            self.vue.zone_gauche.rang += 1
-        else:
-            self.vue.zone_gauche.rang = 0
-        self.vue.zone_gauche.maj()
-        
+        # désactiver le bouton Valider après validation
+        self.vue.zone_droite_haute.bout_valider.setEnabled(False)
+        # afficher la correction
+        self.controleur_zone_gauche.avancer()
 
     @Slot()
     def rechercher(self) -> None:
@@ -72,6 +76,8 @@ class ControleurZoneDroiteHaute:
         self.vue.zone_droite_haute.affichage_score(self.nbre_bonnes_rep, rang_affiche)
         self.controleur_zone_gauche.avancer()
         self.vue.zone_droite_haute.cacher_image_check()
+        # réactiver Valider pour la nouvelle personne
+        self.vue.zone_droite_haute.bout_valider.setEnabled(True)
 
     def rechercher_personnes(self, liste: list) -> list:
         """rechercher suivant les prenoms/noms"""
