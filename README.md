@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="README-FR.md">🇫🇷 Français</a> | English
+  <a href="README-fr.md">🇫🇷 Français</a> | English
 </p>
 
 # Piveo – Free and open-source software for learning names and faces
