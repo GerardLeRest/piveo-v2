@@ -203,9 +203,9 @@ class ZoneGauche (QWidget):
     def maj_Photo(self) -> None:
         """Mise à jour de la photo"""
         nom_image = self.liste_personnes[self.rang][4]
+        USER_BASE = Path.home() / ".local" / "piveo"
         chemin_image = (
-            dossier_racine
-            / "ressources"
+            USER_BASE
             / "fichiers"
             / "photos"
             / self.configuration_json["CheminPhotos"]
