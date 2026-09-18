@@ -88,3 +88,8 @@ installation à l'aide d'un .deb (ubuntu24.04.x et ubuntu6.04.x) et non plus une
 version 2.5.5:
 correctif du bug bouton suite deux fois
 désactiver valider (haut droit) lorsque l'on valide la solution par la touche entrée
+
+version 2.5.6:
+
+
+correctif du bug lors de l'ajout d'une photo extérieure au logiciel
