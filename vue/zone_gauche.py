@@ -212,10 +212,6 @@ class ZoneGauche (QWidget):
             / nom_image
         )
 
-        print("nom_image =", repr(nom_image))
-        print("chemin_image =", chemin_image)
-        print("existe =", chemin_image.exists())
-
         # si l'image existe
         if chemin_image.exists():
             pixmap = QPixmap(str(chemin_image))
