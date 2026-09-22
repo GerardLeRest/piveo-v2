@@ -2,15 +2,16 @@ import sqlite3, csv
 
 class ConstructionBDD:
 
-    def __init__(self,chemin_bdd, chemin_CSV):
+    def __init__(self, chemin_bdd, chemin_CSV):
         self.chemin_bdd = chemin_bdd
         self.chemin_CSV = chemin_CSV
-        if chemin_bdd.exists():
-            chemin_bdd.unlink() # suppression et recréation de la base
+        base_a_creer = not chemin_bdd.exists()
         self.connexion = sqlite3.connect(self.chemin_bdd)
         self.curseur = self.connexion.cursor()
-        self.creation_tables()
-        self.remplissage_tables()
+        self.curseur.execute("PRAGMA foreign_keys = ON;")
+        if base_a_creer:
+            self.creation_tables()
+            self.remplissage_tables()
 
     def creation_tables(self)->None:
         """création des tables"""
