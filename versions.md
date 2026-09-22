@@ -91,5 +91,10 @@ désactiver valider (haut droit) lorsque l'on valide la solution par la touche e
 
 version 2.5.6:
 
-
 correctif du bug lors de l'ajout d'une photo extérieure au logiciel
+
+version 2.5.7:
+
+- changement des images par des images crées par ChatGPT
+
+- il n'y plus de recréations de photos si elles ont été modifiées
