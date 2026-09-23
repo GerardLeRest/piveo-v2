@@ -321,7 +321,7 @@ class ZoneDroiteHaute(QWidget):
         pixmap = QPixmap(str(chemin_icone))
 
         self.label_image_gauche.setPixmap(
-            pixmap.scaled(30, 30, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            pixmap.scaled(48, 48, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         )
         return resultat
 

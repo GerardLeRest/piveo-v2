@@ -97,4 +97,6 @@ version 2.5.7:
 
 - changement des images par des images crées par ChatGPT
 
-- il n'y plus de recréations de photos si elles ont été modifiées
+- Correction d'un bug lors des changements de personnes (réaparition  des anciennes images)
+
+- changement des icones check.png et cross.png
