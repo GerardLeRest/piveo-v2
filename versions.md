@@ -100,3 +100,6 @@ version 2.5.7:
 - Correction d'un bug lors des changements de personnes (réaparition  des anciennes images)
 
 - changement des icones check.png et cross.png
+
+À Vérifier prochaine version:
+- changement d'adresse mail dans la fenêtre d'information

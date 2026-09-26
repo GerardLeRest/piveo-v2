@@ -247,6 +247,6 @@ class FenetrePrincipale(QMainWindow):
             "Ce logiciel est distribué sous licence GNU GPL version 3.\n\n"
             "Vous pouvez le redistribuer et/ou le modifier selon les termes de cette licence.\n\n"
             "Plus d'informations : https://www.gnu.org/licenses/gpl-3.0.html\n\n"
-            "© 2026 Gérard Le Rest - ge.lerest@gmail.com"
+            "© 2026 Gérard Le Rest - gerard.lerest@orange.fr"
         )
         QMessageBox.information(self, _("GPL-v3"), texte)
