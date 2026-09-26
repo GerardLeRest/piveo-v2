@@ -101,5 +101,7 @@ version 2.5.7:
 
 - changement des icones check.png et cross.png
 
-À Vérifier prochaine version:
+version 2.5.8
+
 - changement d'adresse mail dans la fenêtre d'information
+- changement de l'image de l'inconnu par celle créée par chatGPT
