@@ -1,10 +1,19 @@
 # 1 - Récupération des sources et création de l’archive
 
 - On récupère le dépôt Git complet de Piveo depuis GitHub. `git clone` crée le dossier
-`~/construction-piveo/piveo-v2` s’il n’existe pas. On se déplace dans ce dossier
+`~/construction-piveo/piveo-v2` s’il n’existe pas. On se déplace dans ce dossier :
+
 ```bash
 git clone --branch base_propre https://github.com/GerardLeRest/piveo-v2.git ~/construction-piveo/piveo-v2
 cd ~/construction-piveo/piveo-v2
+```
+
+**Remarque :** pour la première construction (voir ci-dessus), si le dépôt n'est pas encore présent dans `~/construction-piveo`, on le clone avec `git clone`.
+Pour une nouvelle version, le dépôt existe déjà. Il ne faut pas le cloner à nouveau : on se place dans `piveo-v2` et on le met à jour avec `git pull` :
+
+```bash
+cd ~/construction-piveo/piveo-v2
+git pull
 ```
 
 - On crée l’archive `piveo_2.5.7.orig.tar.gz` à partir des fichiers
@@ -14,7 +23,7 @@ enregistrés dans le dernier commit de la branche (`HEAD`) :
 git archive --format=tar.gz --prefix=piveo-2.5.7/ HEAD > ../piveo_2.5.7.orig.tar.gz
 ```
 
-`Attention: ../` place l’archive dans `~/construction-piveo`, à côté du dépôt (~/construction-piveo/piveo-v2)
+**Attention :** `../` place l’archive dans `~/construction-piveo`, à côté du dépôt (`~/construction-piveo/piveo-v2`).
 
 # 2 - Dossier piveo-2.5.7
 
@@ -112,11 +121,10 @@ Description: application éducative d'association de prénoms et de visages
 ```
 
 - optional: priorité normale pour ce logiciel. Cela ne concerne pas le fonctionnement de Debian.
-- Build-Depends: dépendances nécessaires pour construire le paquet. 
-- python3-pyside6.qtwidgets : son installation entraîne automatiquement celle de ses dépendances nécessaires.
+- Build-Depends: debhelper-compat (= 13) : indique la version de debhelper utilisée pour construire le paquet
 - Standards-Version: version des règles Debian prises comme référence
 - Rules-Requires-Root: no: la construction ne nécessite pas les privilèges de root.
-- Depends...:dépendances nécessaires pour utiliser le paquet installé
+- Depends : dépendances nécessaires pour utiliser le paquet installé. L'installation de `python3-pyside6.qtwidgets` entraîne automatiquement celle de ses propres dépendances.
 - ${misc:Depends}: permet à `debhelper` d’ajouter certaines dépendances automatiquement.
 
 ## 3.2 debian/changelog
@@ -186,7 +194,7 @@ chmod +x debian/piveo-launcher
 
 ## 3.5 debian/install
 
-- liste des fichiers/dossiers à installer dans le futur paquet :
+- liste des fichiers à installer dans le futur paquet :
 
 ```bash
 piveo.py usr/share/piveo/
@@ -281,16 +289,16 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Pivéo
 
 Files: *
-Copyright: 2026 Prénom Nom
+Copyright: 2026 Gérard Le Rest
 License: GPL-3
 
 Files: ressources/fichiers/photos/*
-Copyright: 2026 Prénom Nom
+Copyright: 2026 Gérard Le Rest
 Comment: Portraits générés avec ChatGPT.
 License: CC0-1.0
 
 Files: ressources/fichiers/images/*
-Copyright: 2026 Prénom Nom
+Copyright: 2026 Gérard Le Rest
 Comment: Images créées pour Piveo, dont des captures d’écran
  et le portrait inconnu.jpg généré avec ChatGPT.
 License: CC0-1.0
@@ -299,7 +307,7 @@ Files: piveo.ico
  piveo.png
  ressources/fichiers/images/piveo.png
  ressources/fichiers/logos/logoPiveo.png
-Copyright: 2026 Prénom Nom
+Copyright: 2026 Gérard Le Rest
 Comment: Icônes générées avec ChatGPT.
 License: CC0-1.0
 ```
@@ -309,9 +317,9 @@ les icônes GNOME et les textes des licences.
 
 # 4 - Construction et installation du paquet
 
-Après la version 2.5.7, la branche `base_propre` a été mise à jour avec
-la nouvelle image `inconnu.jpg` et l’adresse e-mail corrigée. Une archive
-`piveo_2.5.8.orig.tar.gz` a été créée à partir de ce nouveau `HEAD`, puis
+Après la version 2.5.7, le dépôt local a été mis à jour avec git pull depuis la branche base_propre,
+qui contenait la nouvelle image inconnu.jpg et l’adresse e-mail corrigée.
+Une archive `piveo_2.5.8.orig.tar.gz` a été créée à partir de ce nouveau `HEAD`, puis
 extraite dans `~/construction-piveo/piveo-2.5.8`. Les fichiers Debian
 préparés pour la 2.5.7 ont été repris et adaptés : `debian/changelog`
 indique `2.5.8-1`, la page de manuel indique 2.5.8 et
@@ -334,4 +342,5 @@ Pour installer le paquet, depuis une session root (`su -`) :
 apt install /home/gerard/construction-piveo/piveo_2.5.8-1_all.deb
 ```
 
-Piveo 2.5.8 a été lancé et a fonctionné dans la VM Debian 13 et sur un Debian 13 live-USB.
+Piveo 2.5.8 a été lancé dans la VM. L’ajout d’un élève et la suppression de
+deux élèves ont fonctionné.
