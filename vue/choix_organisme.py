@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Fenêtre d'accueil – choix de l'organisme :
 École, Entreprise, Collectivité

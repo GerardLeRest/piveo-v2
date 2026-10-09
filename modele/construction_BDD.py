@@ -1,3 +1,7 @@
+"""
+Gestion de la langue
+"""
+
 import sqlite3, csv
 
 class ConstructionBDD:

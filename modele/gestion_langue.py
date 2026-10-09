@@ -1,10 +1,10 @@
+"""
+Gestion de la langue
+"""
+
 from pathlib import Path
 import json
 
-"""
-G Le Rest - 2026
-Gestion de la langue
-"""
 
 class GestionLangue:
     """Gestion de la langue de l'application (lecture / écriture)."""

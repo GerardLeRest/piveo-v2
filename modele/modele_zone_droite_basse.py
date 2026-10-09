@@ -1,8 +1,4 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*
-
 """
-G Le Rest - 2026
 Gestion des listes pour les combobox
 """
 

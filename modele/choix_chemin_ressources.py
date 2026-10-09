@@ -1,10 +1,10 @@
+"""
+Gestion du dossier de fonctionnement suivant l'OS
+"""
+
 from pathlib import Path
 import sys
 
-"""
-G Le Rest - 2026
-Gestion du dossier de fonctionnement suivant l'OS
-"""
 
 def dossier_ressources() -> Path:
     """

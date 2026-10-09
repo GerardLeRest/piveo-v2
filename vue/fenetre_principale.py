@@ -1,8 +1,4 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 """
-G Le Rest - 2026
 fenêtre contenant les trois zones
 ainsi que les icônes et les menus
 """

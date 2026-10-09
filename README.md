@@ -179,7 +179,7 @@ The user (or the organization using the software) is responsible for the use of 
 This project is distributed under the GPL-v3 license.
 © 2026 Gérard Le Rest
 
-The portraits were generated using artificial intelligence and are used for non-commercial educational purposes:
+The portraits were generated using artificial intelligence ChatGPT.
 
 https://generated.photos/
 

@@ -1,5 +1,4 @@
 """
-G Le Rest - 2026
 Gestion des données dans le dossier utilisateur
 """
 import shutil

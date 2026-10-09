@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*
-
 """
 Choix de la structure et de la spécialité.
 """

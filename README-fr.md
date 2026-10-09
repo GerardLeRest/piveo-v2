@@ -187,9 +187,7 @@ L'utilisateur (ou l'organisation utilisant le logiciel) est responsable de l'uti
 Ce projet est distribué sous licence GPL-v3.
 © 2026 Gérard Le Rest
 
-Les portraits ont été générés à l'aide de l'intelligence artificielle et sont utilisés à des fins éducatives non commerciales :
-
-https://generated.photos/
+Les portraits ont été générés à l'aide de l'intelligence artificielle ChatGPT.
 
 Icônes :
 

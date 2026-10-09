@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 """
 Rechercher une ou plusieurs personnes dans
 l'établissement ou effectuer un test écrit.

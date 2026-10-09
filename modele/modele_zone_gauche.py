@@ -1,8 +1,4 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*
-
 """
-G Le Rest - 2026
 gestion du rang de la liste des personnes
 et ses informations
 """
