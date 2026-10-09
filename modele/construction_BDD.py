@@ -22,6 +22,7 @@ class ConstructionBDD:
         self.curseur.execute("""
             PRAGMA foreign_keys = ON;
         """)
+        # table "personnes"
         self.curseur.execute("""
         CREATE TABLE IF NOT EXISTS personnes(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,7 +33,7 @@ class ConstructionBDD:
         )
         """)
         self.connexion.commit()
-        """création des tables"""
+        # table "specialites"
         self.curseur.execute("""
         CREATE TABLE IF NOT EXISTS specialites(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,6 +41,7 @@ class ConstructionBDD:
         )
         """)
         self.connexion.commit()
+        # table "personnes_specialites"
         self.curseur.execute("""
         CREATE TABLE IF NOT EXISTS personnes_specialites (
         id_personne  INTEGER NOT NULL,
