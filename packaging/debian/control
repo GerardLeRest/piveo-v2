@@ -1,0 +1,16 @@
+Source: piveo
+Section: education
+Priority: optional
+Maintainer: Gérard Le Rest <gerard.lerest@orange.fr>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.2
+Rules-Requires-Root: no
+
+Package: piveo
+Architecture: all
+Depends: ${misc:Depends},
+         python3,
+         python3-pyside6.qtwidgets
+Description: application éducative d'association de prénoms et de visages
+ Piveo est une application éducative permettant de travailler
+ l'association entre des prénoms et des visages.

@@ -1,0 +1,14 @@
+piveo (2.5.8-1) trixie; urgency=medium
+
+  * Mise à jour de l'adresse e-mail dans la fenêtre d'information.
+  * Remplacement du portrait « inconnu » par une image créée pour Piveo.
+  * Suppression du fichier inutilisé inconnu_modele.svg.
+
+ -- Gérard Le Rest <gerard.lerest@orange.fr>  Sat, 26 Sep 2026 16:44:36 +0200
+
+
+piveo (2.5.7-1) trixie; urgency=medium
+
+  * Paquet Debian de Piveo 2.5.7.
+
+ -- Gérard Le Rest <gerard.lerest@orange.fr>  Sat, 26 Sep 2026 13:02:21 +0200

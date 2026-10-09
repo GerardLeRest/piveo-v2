@@ -1,0 +1,9 @@
+piveo.py usr/share/piveo/
+controleur usr/share/piveo/
+modele usr/share/piveo/
+vue usr/share/piveo/
+locales usr/share/piveo/
+ressources usr/share/piveo/
+
+debian/piveo.desktop usr/share/applications/
+piveo.png usr/share/icons/hicolor/256x256/apps/

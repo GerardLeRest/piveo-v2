@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Piveo
+Comment=Apprentissage des visages, prénoms et noms
+Exec=piveo
+Icon=piveo
+Terminal=false
+Categories=Education;

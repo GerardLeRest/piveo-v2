@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PYTHONPATH="/usr/share/piveo"
+exec python3 /usr/share/piveo/piveo.py "$@"
