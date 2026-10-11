@@ -19,7 +19,7 @@ Each environment relies on an SQL database. Piveo simplifies administration thro
 Piveo v2 is the current version of the software (v2.5.3).
 
 <p align="center">
-<img src="ressources/fichiers/images/accueil0.png" alt="Piveo home screen">
+<img src="ressources/fichiers/images/accueil.png" alt="Piveo home screen">
 </p>
 
 ## How it works
@@ -31,7 +31,7 @@ The interface is divided into three sections:
 * **Bottom-right panel:** contains the settings
 
 <p align="center">
-<img src="ressources/fichiers/images/interface.png" alt="Piveo user interface">
+<img src="ressources/fichiers/images/interface-en.png" alt="Piveo user interface">
 </p>
 
 ### Available modes

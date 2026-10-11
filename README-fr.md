@@ -19,7 +19,7 @@ Chaque environnement repose sur une base de données SQL. Piveo simplifie l'admi
 Piveo v2 est la version actuelle du logiciel (v2.5.3).
 
 <p align="center">
-<img src="ressources/fichiers/images/accueil0.png" alt="Écran d'accueil de Piveo">
+<img src="ressources/fichiers/images/accueil-fr.png" alt="Écran d'accueil de Piveo">
 </p>
 
 ## Fonctionnement
@@ -31,7 +31,7 @@ L'interface est divisée en trois parties :
 * **Partie inférieure droite :** contient les paramètres
 
 <p align="center">
-<img src="ressources/fichiers/images/interface.png" alt="Interface utilisateur de Piveo">
+<img src="ressources/fichiers/images/interface-fr.png" alt="Interface utilisateur de Piveo">
 </p>
 
 ### Modes disponibles

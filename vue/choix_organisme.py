@@ -92,7 +92,7 @@ class ChoixOrganisme(QWidget):
         layout.addWidget(bouton,alignment=Qt.AlignCenter)
         #Logo
         label_logo=QLabel()
-        chemin_logo=chemin_ressources("ressources/fichiers/logos/logoPiveo.png")
+        chemin_logo=chemin_ressources("ressources/fichiers/images/piveo.png")
         pixmap=QPixmap(str(chemin_logo))
         if not pixmap.isNull():
             label_logo.setPixmap(pixmap.scaledToWidth(90,Qt.SmoothTransformation))
