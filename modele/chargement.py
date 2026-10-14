@@ -4,23 +4,18 @@ Gestion des données dans le dossier utilisateur
 import shutil
 import sys
 from pathlib import Path
+from choix_chemin_ressources import chemin_ressources
 
 APP_NAME = "piveo"
 USER_BASE = Path.home() / ".local" / APP_NAME
-
-def get_resources_base() -> Path:
-    """Retourne le dossier ressources (compatible PyInstaller)."""
-    if hasattr(sys, "_MEIPASS"):
-        return Path(sys._MEIPASS) / "ressources"
-    return Path(__file__).resolve().parent.parent / "ressources"
 
 def init_donnees_utilisateurs() -> None:
     """
     Initialise les données utilisateur uniquement lors de la première utilisation.
     Ensuite, les données appartiennent entièrement à l'utilisateur.
     """
-    resources_base = get_resources_base()
-    marqueur = USER_BASE / ".initialisation_terminee"
+    resources_base = chemin_ressources("ressources")
+    marqueur = USER_BASE / ".initialisation_terminee" # fichier témoin (données écrites ou non
 
     # Initialisation déjà effectuée : ne rien recopier
     if marqueur.exists():
