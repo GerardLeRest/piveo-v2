@@ -4,7 +4,7 @@ Gestion des données dans le dossier utilisateur
 import shutil
 import sys
 from pathlib import Path
-from choix_chemin_ressources import chemin_ressources
+from modele.choix_chemin_ressources import chemin_ressources
 
 APP_NAME = "piveo"
 USER_BASE = Path.home() / ".local" / APP_NAME
